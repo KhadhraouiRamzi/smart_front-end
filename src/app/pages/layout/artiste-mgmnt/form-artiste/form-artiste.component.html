@@ -29,6 +29,23 @@
                         <div *ngIf="f.nArtistique.errors.required">nArtistique is required</div>
                     </div>
                 </div>
+
+                <div class="form-group col-5">
+                    <label for="file">Image</label>
+                    <input type="file" formControlName="image" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" (change)="onFileChanged($event)">
+                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                        <div *ngIf="f.image.errors.required"> image is required</div>
+                    </div>
+                </div>
+                <!--<div class="form-group col-5">
+                    <label for="file">Image</label>
+                    <input type="file" formControlName="image" class="form-control" (change)="onFileChange($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" [(ngModel)]="u.image" />
+                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                        <div *ngIf="f.image.errors.required">Image is required</div>
+                    </div>
+                </div>-->
                 <div class="form-group col-5">
                     <label>Phone</label>
                     <input type="number" formControlName="phone" class="form-control"
@@ -43,6 +60,14 @@
                         [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="u.email" />
                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                         <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="u.password" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
                     </div>
                 </div>
 
@@ -79,47 +104,7 @@
                         <div *ngIf="f.nationnalite.errors.required">nationnalite is required</div>
                     </div>
                 </div>
-                <!-- 
-                <div class="form-group col-5">
-                    <label  for="file">Image</label>
-                    <input type="file" formControlName="image" class="form-control"    (change)="onFileChange($event)"
-                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" [(ngModel)]="u.image" />
-                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                        <div *ngIf="f.image.errors.required">Image is required</div>
-                    </div>
-                </div>
-
-  
-       
-                <div class="form-group col-5">
-                    <label>Image</label>
-                    <input type="image" formControlName="image" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" [(ngModel)]="u.image" />
-                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
-                        <div *ngIf="f.image.errors.required">image is required</div>
-                    </div>
-                </div>
-          <div class="form-group">
-                    <label for="file">File</label>
-                    <input 
-                        formControlName="file"
-                        id="file" 
-                        type="file" 
-                        class="form-control"
-                        (change)="onFileChange($event)">
-                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
-                        <div *ngIf="f.file.errors.required">File is required.</div>
-                    </div>
-                </div>
--->
-                <div class="form-group col-5">
-                    <label for="file">Contrat</label>
-                    <input type="file" formControlName="contrat" class="form-control" (change)="onFileChange($event)"
-                        [ngClass]="{ 'is-invalid': submitted && f.contrat.errors }" [(ngModel)]="u.contrat" />
-                    <div *ngIf="submitted && f.contrat.errors" class="invalid-feedback">
-                        <div *ngIf="f.contrat.errors.required">contrat is required</div>
-                    </div>
-                </div>
+         
 
                 <div class="form-group col-5">
                     <label>Part</label>
@@ -139,6 +124,34 @@
                     </div>
                 </div>
 
+                <div class="form-group col-5">
+                    <label>Marketing</label>
+                    <select formControlName="marketing" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.marketing.errors }" [(ngModel)]="u.marketing">
+                        <option *ngFor="let d of marketing" [ngValue]="d">
+                            {{ d.nom }}
+                        </option>
+                    </select>
+
+                    <div *ngIf="submitted && f.marketing.errors" class="invalid-feedback">
+                        <div *ngIf="f.marketing.errors.required">Marketing is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Role</label>
+                    <select formControlName="role" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.role.errors }" [(ngModel)]="u.role">
+                        <option *ngFor="let d of role" [ngValue]="d">
+                            {{ d.name }}
+                        </option>
+                    </select>
+
+                    <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                        <div *ngIf="f.role.errors.required">Role is required</div>
+                    </div>
+                </div>
+
 
             </div>
             <div class="form-group form-check">
@@ -147,11 +160,7 @@
                 <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
                 <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
             </div>
-            <!--
-            <div class="text-center">
-                <button class="btn btn-primary mr-1">Register</button>
-                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-            </div>-->
+         
             <nb-card-body>
                 <table>
                     <tr>
@@ -168,6 +177,14 @@
                                 <button *ngFor="let status of statuses2" nbButton [status]="status" outline
                                     (click)="onReset()">
                                     Cancel
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses3" nbButton [status]="status" outline
+                                    (click)="Retour()">
+                                    Retour
                                 </button>
                             </div>
                         </td>

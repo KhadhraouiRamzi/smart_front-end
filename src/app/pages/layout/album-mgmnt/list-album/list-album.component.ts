@@ -16,7 +16,7 @@ export class ListAlbumComponent implements OnInit {
   statuses: NbComponentStatus[] = [ 'success'  ];
   statuses2: NbComponentStatus[] = [ 'primary'  ];
   statuses3: NbComponentStatus[] = [ 'danger'  ];
-
+  statuses4: NbComponentStatus[] = ['info'];
 
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
@@ -66,6 +66,10 @@ export class ListAlbumComponent implements OnInit {
     this.displayBasic = true;
   }
 
+  
+  ajouter() {
+    this.r.navigate(['/pages/layout/form-album/']);
+  }
   modifier(u: album) {
 
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {

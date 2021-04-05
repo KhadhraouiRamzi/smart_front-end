@@ -24,12 +24,16 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
-  
-  
+ 
 } from '@nebular/theme';
+import { LoginsComponent } from './logins/logins.component';
+import { AuthGuardService } from './security/auth-guard.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,
+    LoginsComponent,
+    AuthComponent],
   imports: [
     ButtonModule,
     TableModule,

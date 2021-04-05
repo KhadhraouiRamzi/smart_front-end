@@ -1,12 +1,14 @@
 <nb-card>
     <nb-card-header>
-        <p>L'album est :</p>
+ 
+            <div *ngIf=retrievedImage> <img [src]="retrievedImage"></div>
+
     </nb-card-header>
     <nb-card-body>
 
         <div *ngIf="artiste">
             <table>
-                <tr>
+                           <tr>
                     <td>Nom artiste </td>
                     <td>:</td>
                     <td>{{artiste.nom}}</td>
@@ -27,56 +29,51 @@
                     <td>{{ artiste.phone }}</td>
                 </tr>
                 <tr>
-
                     <td>E-mail</td>
                     <td>:</td>
                     <td>{{ artiste.email }}</td>
                 </tr>
                 <tr>
                     <td>Contrat</td>
-
                     <td>:</td>
                     <td>{{ artiste.contrat }}</td>
                 </tr>
                 <tr>
-
                     <td>Date</td>
                     <td>:</td>
-                    <td>{{ artiste.date }}</td>
+                    <td>{{ artiste.date}}</td>
                 </tr>
                 <tr>
-
                     <td>Cin</td>
                     <td>:</td>
                     <td>{{ artiste.cin }}</td>
                 </tr>
                 <tr>
                     <td>Date Cin</td>
-
                     <td>:</td>
                     <td>{{ artiste.datecin }}</td>
                 </tr>
                 <tr>
-
                     <td>Part</td>
                     <td>:</td>
                     <td>{{ artiste.part }}</td>
                 </tr>
                 <tr>
-
                     <td>Nationnalite</td>
                     <td>:</td>
                     <td>{{ artiste.nationnalite }}</td>
                 </tr>
                 <tr>
                     <td>Retenu</td>
-
                     <td>:</td>
                     <td>{{ artiste.retenu }}</td>
                 </tr>
-
+                <tr>
+                    <td>Marketing</td>
+                    <td>:</td>
+                    <td>{{ artiste.marketing.nom }}</td>
+                </tr>
             </table>
-
         </div>
     </nb-card-body>
 </nb-card>

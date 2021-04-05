@@ -1,3 +1,5 @@
+/*import { marketing } from "./marketing";
+
 export class artiste {
   id: Number;
   cdate: Date;
@@ -15,5 +17,6 @@ export class artiste {
    phone: Number;
   proposition: String;
   retenu: Number;
+  marketing : marketing;
 
-}
+}*/

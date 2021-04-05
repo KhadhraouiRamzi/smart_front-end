@@ -21,11 +21,91 @@ import { FormAlbumComponent } from './album-mgmnt/form-album/form-album.componen
 import { EditAlbumComponent } from './album-mgmnt/edit-album/edit-album.component';
 import { DetailAlbumComponent } from './album-mgmnt/detail-album/detail-album.component';
 import { TestFormComponent } from './test-mgmnt/test-form/test-form.component';
+import { ListFournisseurComponent } from './fournisseur-mgmnt/list-fournisseur/list-fournisseur.component';
+import { ListMarketingComponent } from './marketing-mgmnt/list-marketing/list-marketing.component';
+import { FormFournisseurComponent } from './fournisseur-mgmnt/form-fournisseur/form-fournisseur.component';
+import { DetailFournisseurComponent } from './fournisseur-mgmnt/detail-fournisseur/detail-fournisseur.component';
+import { EditFournisseurComponent } from './fournisseur-mgmnt/edit-fournisseur/edit-fournisseur.component';
+import { EditMarketingComponent } from './marketing-mgmnt/edit-marketing/edit-marketing.component';
+import { DetailMarketingComponent } from './marketing-mgmnt/detail-marketing/detail-marketing.component';
+import { FormMarketingComponent } from './marketing-mgmnt/form-marketing/form-marketing.component';
+import { ListDeviseComponent } from './devise-mgmnt/list-devise/list-devise.component';
+import { EditDeviseComponent } from './devise-mgmnt/edit-devise/edit-devise.component';
+import { DetailDeviseComponent } from './devise-mgmnt/detail-devise/detail-devise.component';
+import { FormDeviseComponent } from './devise-mgmnt/form-devise/form-devise.component';
+import { ListFtpComponent } from './ftp-mgmnt/list-ftp/list-ftp.component';
+import { EditFtpComponent } from './ftp-mgmnt/edit-ftp/edit-ftp.component';
+import { DetailFtpComponent } from './ftp-mgmnt/detail-ftp/detail-ftp.component';
+import { FormFtpComponent } from './ftp-mgmnt/form-ftp/form-ftp.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
+    {
+      path: 'list-ftp',
+      component: ListFtpComponent,
+    },
+    {
+      path: 'edit-ftp/:id',
+      component: EditFtpComponent,
+    },
+    {
+      path: 'detail-ftp',
+      component: DetailFtpComponent,
+    },
+    {
+      path: 'form-ftp',
+      component: FormFtpComponent,
+    },
+    {
+      path: 'list-devise',
+      component: ListDeviseComponent,
+    },
+    {
+      path: 'edit-devise/:id',
+      component: EditDeviseComponent,
+    },
+    {
+      path: 'detail-devise',
+      component: DetailDeviseComponent,
+    },
+    {
+      path: 'form-devise',
+      component: FormDeviseComponent,
+    },
+    {
+      path: 'list-marketing',
+      component: ListMarketingComponent,
+    },
+    {
+      path: 'edit-marketing/:id',
+      component: EditMarketingComponent,
+    },
+    {
+      path: 'detail-marketing',
+      component: DetailMarketingComponent,
+    },
+    {
+      path: 'form-marketing',
+      component: FormMarketingComponent,
+    },
+    {
+      path: 'list-fournisseur',
+      component: ListFournisseurComponent,
+    },
+    {
+      path: 'edit-fournisseur/:id',
+      component: EditFournisseurComponent,
+    },
+    {
+      path: 'detail-fournisseur',
+      component: DetailFournisseurComponent,
+    },
+    {
+      path: 'form-fournisseur',
+      component: FormFournisseurComponent,
+    },
     {
       path: 'list-album',
       component: ListAlbumComponent,
@@ -60,6 +140,10 @@ const routes: Routes = [{
     },
     {
       path: 'detail-artiste',
+      component: DetailArtisteComponent,
+    },
+    {
+      path: 'detail-artiste/:id',
       component: DetailArtisteComponent,
     },
     {

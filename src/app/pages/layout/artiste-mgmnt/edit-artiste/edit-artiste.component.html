@@ -1,6 +1,6 @@
 <nb-card>
     <nb-card-header>
-        Edit Album
+        Edit Artise
     </nb-card-header>
     <nb-card-body>
 
@@ -10,7 +10,7 @@
                     <div class="form-row">
 
                         <div class="col-md-6" *ngIf="u">
-                            <table width=180% >
+                            <table width=180%>
                                 <tr>
                                     <td>
                                         <div>
@@ -108,8 +108,24 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Marketing:</label>
+                                            <select class="form-control" [(ngModel)]="u.marketing.id">
+                                                <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div type="file" *ngIf=retrievedImage> 
+                                            <img [src]="retrievedImage">
+                                             <input type="file" (change)="onFileChanged($event)">
+                                        </div>
+                                    </td>
+                                </tr>
+                             
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -122,7 +138,7 @@
                             <div class="buttons-row">
                                 <button *ngFor="let status of statuses" nbButton [status]="status" outline
                                     (click)="update(u)">
-                                    Update
+                                    Modifier
                                 </button>
                             </div>
                         </td>

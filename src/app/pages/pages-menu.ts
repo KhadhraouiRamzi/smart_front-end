@@ -19,42 +19,38 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Artiste',
     icon: 'people-outline',
-    children: [
-      {
-        title: 'List Artiste',
-        link: '/pages/layout/list-artiste',
-      },
-      {
-        title: 'Ajout Artiste',
-        link: '/pages/layout/form-artiste',
-      }
-    ],
+    link: '/pages/layout/list-artiste',
   },
   {
     title: 'Chanson',
     icon: 'music-outline',
-    children: [
-      {
-        title: 'List Chanson',
-        link: '/pages/layout/list-chanson',
-      },
-      {
-        title: 'Ajout Chanson',
-        link: '/pages/layout/form-chanson',
-      }
-    ],
+    link: '/pages/layout/list-chanson',
   },
   {
     title: 'Album',
-    icon: 'music-outline',
+    icon: 'grid-outline',
+    link: '/pages/layout/list-album',
+  },
+  {
+    title: 'Fournisseur',
+    icon: 'shuffle-2-outline',
+    link: '/pages/layout/list-fournisseur',
+    },
+  {
+    title: 'Paramétre',
+    icon: 'keypad-outline',
     children: [
       {
-        title: 'List Album',
-        link: '/pages/layout/list-album',
+        title: 'Marketing',
+        link: '/pages/layout/list-marketing',
       },
       {
-        title: 'Ajout Album',
-        link: '/pages/layout/form-album',
+        title: 'Devise',
+        link: '/pages/layout/list-devise',
+      },
+      {
+        title: 'FTP',
+        link: '/pages/layout/list-ftp',
       }
     ],
   },

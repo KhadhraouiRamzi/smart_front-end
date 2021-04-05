@@ -1,8 +1,7 @@
 import { DetailPlateformeComponent } from '../pages/layout/palteforme-mgmnt/detail-plateforme/detail-plateforme.component';
 import { album } from './album';
-import { artiste } from './artiste';
-import { fournisseur } from './fournisseur';
-import { plateforme } from './plateforme';
+ import { plateforme } from './plateforme';
+import { users } from './users';
 
 export class chanson {
     id: Number;
@@ -12,8 +11,7 @@ export class chanson {
     genre: string;
     rbt_src: String;
     type: String;
-    artiste : artiste;
+    user : users;
     plateforme : plateforme;
     album : album;
-    fournisseur : fournisseur;
    }

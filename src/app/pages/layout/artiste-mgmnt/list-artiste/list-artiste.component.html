@@ -1,88 +1,77 @@
 <nb-card>
-  <nb-card-header>
-      Liste des artistes
-
-  </nb-card-header>
-
-  <nb-card-body>
-      <div style="margin-left: 20px;margin-right: 20px;">
-          <nb-card>
-              <nb-card-body>
-                  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-                      <thead>
-                          <tr>
-                              <!--<th>ID</th>-->
-                              <th> Actions</th>
-                              <th>Nom Artiste</th>
-                              <th>Prénom Artiste</th>
-                              <th>Nom artestique</th>
-                              <th>Télephone</th>
-                              <th>E-mail</th>
-                              <th>Contrat</th>
-                              <th>Date contrat</th>
-                              <th>Cin</th>
-                              <th>Date Cin</th>
-                              <th>Part</th>
-                              <th>Nationalité</th>
-                              <th>retenu</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor="let p of artistes">
-                              <td>
-                                  <table>
-                                      <tr>
-                                          <div class="buttons-row">
-                                              <td>
-                                                  <a (click)="details(p)" *ngFor="let status of statuses" nbButton
-                                                      [status]="status" outline>
-                                                      <img [src]="'assets/images/detail.png'" /></a>
-                                              </td>
-
-                                              <td>
-                                                  <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
-                                                      [status]="status" outline>
-                                                      <img [src]="'assets/images/edit.png'" /></a>
-                                              </td>
-
-                                              <td>
-                                                  <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
-                                                      [status]="status" outline><img
-                                                          [src]="'assets/images/supprimer.png'" /></a>
-                                              </td>
-                                          </div>
-                                      </tr>
-                                  </table>
-                              </td>
-                              <td>{{ p.nom }}</td>
-                              <td>{{ p.prenom }}</td>
-                              <td>{{ p.nArtistique }}</td>
-                              <td>{{ p.phone }}</td>
-                              <td>{{ p.email }}</td>
-                              <td>{{ p.contrat }}</td>
-                              <td>{{ p.date }}</td>
-                              <td>{{ p.cin }}</td>
-                              <td>{{ p.datecin }}</td>
-                              <td>{{ p.part }}</td>
-                              <td>{{ p.nationnalite }}</td>
-                              <td>{{ p.retenu }}</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </nb-card-body>
-          </nb-card>
-      </div>
-      <!-- nbButton [status]="info"
+    <nb-card-header  *ngIf="artistes">
+        Liste des artistes
+    </nb-card-header>
+    <nb-card-body>
+        <div style="margin-left: 20px;margin-right: 20px;">
+            <nb-card>
+                <nb-card-body>
+                    <td>
+                        <a (click)="ajouter()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                            Ajout artiste</a>
+                    </td>
+                    <br>
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" border="0"   >
+                        <thead>
+                            <tr>
+                                <th>Actions</th>
+                                <th>Image</th>
+                                <th>Nom Artiste</th>
+                                <th>Prénom Artiste</th>
+                                <th>Nom artestique</th>
+                                <th>Télephone</th>
+                                <th>E-mail</th>
+                                <th>Part</th>
+                                <th>Retenu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of artistes">
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <div class="buttons-row">
+                                                <td>
+                                                    <a (click)="details(p)" *ngFor="let status of statuses" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/detail.png'" /></a>
+                                                </td>
+                                                <td>
+                                                    <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/edit.png'" /></a>
+                                                </td>
+                                                <td>
+                                                    <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
+                                                        [status]="status" outline><img  [src]="'assets/images/supprimer.png'" /></a>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>   <div *ngIf=retrievedImage> <img [src]="p.picByte"></div></td>
+                                <td>{{ p.nom}}</td>
+                                <td>{{ p.prenom }}</td>
+                                <td>{{ p.nArtistique }}</td>
+                                <td>{{ p.phone }}</td>
+                                <td>{{ p.email }}</td>
+                                <td>{{ p.part }}</td>
+                                <td>{{ p.retenu }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <!-- nbButton [status]="info"
           Dialog for details user with a seperate Component   -->
-      <p-dialog [modal]="true" header="Fiche artiste" [(visible)]="displayBasic" [style]="{width: '50vw'}"
-          [baseZIndex]="10000">
-          <ngx-detail-artiste [artiste]="currentartiste"></ngx-detail-artiste>
-          <ng-template pTemplate="footer">
-              <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
-              </p-button>
-          </ng-template>
-      </p-dialog>
-
-
-  </nb-card-body>
+        <p-dialog [modal]="true" header="Fiche artiste" [(visible)]="displayBasic" [style]="{width: '50vw'}"
+            [baseZIndex]="10000">
+            <ngx-detail-artiste [artiste]="currentartiste"></ngx-detail-artiste>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+        </p-dialog>
+    </nb-card-body>
 </nb-card>

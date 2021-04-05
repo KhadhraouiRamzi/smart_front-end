@@ -12,9 +12,9 @@
                     <td>{{chanson.nom}}</td>
                 </tr>
                 <tr>
-                    <td>Nom Artiste</td>
+                    <td>Artiste</td>
                     <td>:</td>
-                    <td>{{chanson.artiste.nom}}</td>
+                    <td>{{chanson.user.nom}} {{chanson.user.prenom}}</td>
                 </tr>
  
                 <tr>
@@ -35,7 +35,6 @@
                     <td>{{ chanson.genre }}</td>
                 </tr>
                 <tr>
-
                     <td>Rbt/Src</td>
                     <td>:</td>
                     <td>{{ chanson.rbt_src }}</td>
@@ -58,13 +57,7 @@
                     <td>:</td>
                     <td>{{ chanson.album.titre }}</td>
                 </tr>
-                <tr>
-
-                    <td>Fournisseur</td>
-                    <td>:</td>
-                    <td>{{ chanson.fournisseur.nom }}</td>
-                </tr>
-               
+    
             </table>
 
         </div>

@@ -55,6 +55,23 @@ import { DataTablesModule } from 'angular-datatables';
 import { FormsRoutingModule } from '../forms/forms-routing.module';
 import { TestFormComponent } from './test-mgmnt/test-form/test-form.component';
 import { TestListComponent } from './test-mgmnt/test-list/test-list.component';
+import { FormMarketingComponent } from './marketing-mgmnt/form-marketing/form-marketing.component';
+import { EditMarketingComponent } from './marketing-mgmnt/edit-marketing/edit-marketing.component';
+import { DetailMarketingComponent } from './marketing-mgmnt/detail-marketing/detail-marketing.component';
+import { ListDeviseComponent } from './devise-mgmnt/list-devise/list-devise.component';
+import { FormDeviseComponent } from './devise-mgmnt/form-devise/form-devise.component';
+import { EditDeviseComponent } from './devise-mgmnt/edit-devise/edit-devise.component';
+import { DetailDeviseComponent } from './devise-mgmnt/detail-devise/detail-devise.component';
+import { DetailFtpComponent } from './ftp-mgmnt/detail-ftp/detail-ftp.component';
+import { EditFtpComponent } from './ftp-mgmnt/edit-ftp/edit-ftp.component';
+import { FormFtpComponent } from './ftp-mgmnt/form-ftp/form-ftp.component';
+import { ListFtpComponent } from './ftp-mgmnt/list-ftp/list-ftp.component';
+import { ListCommunicationComponent } from './communication-mgmnt/list-communication/list-communication.component';
+import { FormCommunicationComponent } from './communication-mgmnt/form-communication/form-communication.component';
+import { EditCommunicationComponent } from './communication-mgmnt/edit-communication/edit-communication.component';
+import { DetailCommunicationComponent } from './communication-mgmnt/detail-communication/detail-communication.component';
+import { ListMarketingComponent } from './marketing-mgmnt/list-marketing/list-marketing.component';
+  
 
 @NgModule({
   imports: [
@@ -120,7 +137,23 @@ import { TestListComponent } from './test-mgmnt/test-list/test-list.component';
     EditFournisseurComponent,
     FormFournisseurComponent,
     TestFormComponent,
-    TestListComponent,
+    TestListComponent, 
+    ListMarketingComponent,
+    FormMarketingComponent,
+    EditMarketingComponent,
+    DetailMarketingComponent,
+    ListDeviseComponent,
+    FormDeviseComponent,
+    EditDeviseComponent,
+    DetailDeviseComponent,
+    DetailFtpComponent,
+    EditFtpComponent,
+    FormFtpComponent,
+    ListFtpComponent,
+    ListCommunicationComponent,
+    FormCommunicationComponent,
+    EditCommunicationComponent,
+    DetailCommunicationComponent,
   ],
   providers: [
     NewsService,

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
 import { album } from '../../../../models/album';
-import { artiste } from '../../../../models/artiste';
 import { chanson } from '../../../../models/chanson';
-import { fournisseur } from '../../../../models/fournisseur';
+ import { users } from '../../../../models/users';
 import { AlbumService } from '../../../../utils/services/album.service';
-import { ArtisteService } from '../../../../utils/services/artiste.service';
-import { ChansonService } from '../../../../utils/services/chanson.service';
-import { FournisseurService } from '../../../../utils/services/fournisseur.service';
-
+ import { ChansonService } from '../../../../utils/services/chanson.service';
+import { MarketingService } from '../../../../utils/services/marketing.service';
+import { UsersService } from '../../../../utils/services/users.service';
+ 
 @Component({
   selector: 'ngx-form-chanson',
   templateUrl: './form-chanson.component.html',
@@ -20,16 +20,17 @@ export class FormChansonComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   u: chanson = new chanson();
-  artiste: artiste[] = [];
+  user: users[] = [];
   album: album[] = [];
-  fournisseur: fournisseur[] = [];
-  statuses: NbComponentStatus[] = [ 'primary' ];
+   statuses: NbComponentStatus[] = [ 'primary' ];
   statuses2: NbComponentStatus[] = [ 'warning' ];
+  statuses3: NbComponentStatus[] = ['danger'];
+  statuses4: NbComponentStatus[] = ['info'];
 
 
 
-  constructor(private formBuilder: FormBuilder, private albumService :AlbumService ,private fournisseurService : FournisseurService
-     ,private artisteService: ArtisteService, private chansonService: ChansonService) { }
+  constructor(private formBuilder: FormBuilder, private albumService :AlbumService ,
+    private userService: UsersService, private chansonService: ChansonService,private r: Router) { }
 
   ngOnInit(): void {
     
@@ -41,34 +42,25 @@ export class FormChansonComponent implements OnInit {
       console.log(res);
 
     });
-
-    this.fournisseurService.getlistFournisseur().subscribe(res => {
-      this.fournisseur = res;
+ 
+    this.userService.getlistUser().subscribe(res => {
+      this.user = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.fournisseur);
-      console.log(res);
-
-    });
-
-    
-    this.artisteService.getlistArtiste().subscribe(res => {
-      this.artiste = res;
-      // Calling the DT trigger to manually render the table
-      console.log(this.artiste);
+      console.log(this.user);
       console.log(res);
 
     });
 
     this.registerForm = this.formBuilder.group({
       nom: ['', Validators.required],
+      nAlbum: ['', Validators.required],
+      nArtiste: ['', Validators.required],
       datec: ['', Validators.required],
       featuring: ['', Validators.required],
       genre: ['', Validators.required],
       rbt_src: ['', Validators.required],
       type: ['', Validators.required],
-      nArtiste: ['', Validators.required],
-      nAlbum: ['', Validators.required],
-      fournisseur: ['', Validators.required],
+
       acceptTerms: [false, Validators.requiredTrue]
     })
   }
@@ -77,7 +69,6 @@ export class FormChansonComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
@@ -85,20 +76,18 @@ export class FormChansonComponent implements OnInit {
     this.submitted = true;
 
     this.chansonService.addChanson(this.u).subscribe(res => {
-
       alert("ajout avec succès !");
       console.log(this.u);
-
       this.u = new chanson();
     });
   }
-
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
   }
-
-
-
+  
+  Retour() {
+    this.r.navigate(['/pages/layout/list-chanson/']);
+  }
 
 }

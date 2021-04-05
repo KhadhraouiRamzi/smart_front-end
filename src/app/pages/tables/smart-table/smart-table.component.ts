@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
 
 import { SmartTableData } from '../../../@core/data/smart-table';
-import { artiste } from '../../../models/artiste';
-import { ArtisteService } from '../../../utils/services/artiste.service';
+import { users } from '../../../models/users';
+import { UsersService } from '../../../utils/services/users.service';
+
 
 @Component({
   selector: 'ngx-smart-table',
@@ -12,9 +13,9 @@ import { ArtisteService } from '../../../utils/services/artiste.service';
   styleUrls: ['./smart-table.component.scss'],
 })
 export class SmartTableComponent {
-  artistes: artiste[] = [];
-  arts: artiste[] = [];
-  artiste: artiste;
+  artistes: users[] = [];
+  arts: users[] = [];
+  artiste: users;
 
   settings = {
     add: {
@@ -44,7 +45,7 @@ export class SmartTableComponent {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData, private artisteService: ArtisteService, private r: Router) {
+  constructor(private service: SmartTableData, private artisteService: UsersService, private r: Router) {
 
   }
 
@@ -53,7 +54,7 @@ export class SmartTableComponent {
     const data = this.service.getData();
     this.source.load(data);
 
-    this.artisteService.getlistArtiste().subscribe(
+    this.artisteService.getArts().subscribe(
       res => {
         this.artistes = res;
 

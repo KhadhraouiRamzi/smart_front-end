@@ -8,6 +8,11 @@
         <div style="margin-left: 20px;margin-right: 20px;">
             <nb-card>
                 <nb-card-body>
+                    <td>
+                        <a (click)="ajouter()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                            Ajout album</a>
+                    </td>
+                    <br>
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                         <thead>
                             <tr>

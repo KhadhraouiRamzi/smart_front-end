@@ -8,21 +8,22 @@
         <div style="margin-left: 20px;margin-right: 20px;">
             <nb-card>
                 <nb-card-body>
+                    <td>
+                        <a (click)="ajouter()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                            Ajout chanson</a>
+                    </td>
+                    <br>
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                         <thead>
                             <tr>
-                                <!--<th>ID</th>-->
                                 <th> Actions</th>
                                 <th>Nom Chanson</th>
-                                <th>Artiste</th>
+                                <th>Artiste/Fournisseur</th>
                                 <th>Featuring</th>
                                 <th>Date chanson</th>
-                                <th>Genre</th>
-                                <th>Rbt/Src</th>
-                                <th>type</th>
+                                <th>Catégorie</th>
                                 <th>Plateforme</th>
                                 <th>Album</th>
-                                <th>Fournisseur</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,19 +54,16 @@
                                     </table>
                                 </td>
                                 <td>{{ p.nom }}</td>
-                                <td>{{ p.artiste.nom }} {{ p.artiste.prenom }}</td>
+                                <td>{{ p.user.nom }} {{ p.user.prenom }}</td>
                                 <td>{{ p.featuring }}</td>
                                 <td>{{ p.datec }}</td>
                                 <td>{{ p.genre }}</td>
-                                <td>{{ p.rbt_src }}</td>
-                                <td>{{ p.type }}</td>
                                 <!--    
                                     <td *ngIf="p.plateforme.nom==='Null'" >nulle</td>
                                     <td *ngIf="p.plateforme.nom!=='Null'" >{{ p.plateforme.nom }}</td>
                                 -->
                                 <td>{{ p.plateforme.nom }}</td>
                                 <td>{{ p.album.titre }}</td>
-                                <td>{{ p.fournisseur.nom }}</td>
                             </tr>
                         </tbody>
                     </table>

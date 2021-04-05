@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { fournisseur } from '../../../../models/fournisseur';
 
 @Component({
   selector: 'ngx-detail-fournisseur',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DetailFournisseurComponent implements OnInit {
 
   constructor() { }
+  @Input() fournisseur : fournisseur;
 
   ngOnInit(): void {
   }

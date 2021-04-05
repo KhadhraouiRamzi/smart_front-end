@@ -2,10 +2,9 @@
 export class fournisseur {
     id: Number;
     nom : String;   
-    datef: Date;
+    dateF: Date;
     montant: Number;
     part: Number;
-    rbt_src: String;
-    proposition: String;
+     proposition: String;
    
    }

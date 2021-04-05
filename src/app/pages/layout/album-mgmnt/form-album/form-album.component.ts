@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { album } from '../../../../models/album';
 import { AlbumService } from '../../../../utils/services/album.service';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-form-album',
@@ -16,11 +17,13 @@ export class FormAlbumComponent implements OnInit {
   album: album[] = [];
   u: album = new album();
 
-  constructor(private albumService: AlbumService, private formBuilder: FormBuilder) { }
+  constructor(private albumService: AlbumService, private formBuilder: FormBuilder,private r: Router) { }
 
 //statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
 statuses: NbComponentStatus[] = [ 'primary' ];
 statuses2: NbComponentStatus[] = [ 'warning' ];
+statuses4: NbComponentStatus[] = ['info'];
+statuses3: NbComponentStatus[] = ['danger'];
 
   ngOnInit(): void {
 
@@ -64,6 +67,10 @@ statuses2: NbComponentStatus[] = [ 'warning' ];
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
+  }
+
+  Retour() {
+    this.r.navigate(['/pages/layout/list-album/']);
   }
 
   

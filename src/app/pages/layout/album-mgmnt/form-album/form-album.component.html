@@ -54,6 +54,14 @@
                                             Cancel
                                         </button>
                                     </td>
+                                    <td>
+                                        <div class="buttons-row">
+                                            <button *ngFor="let status of statuses3" nbButton [status]="status" outline
+                                                (click)="Retour()">
+                                                Retour
+                                            </button>
+                                        </div>
+                                    </td>
                                 </div>
                             </div>
                         </tr>
