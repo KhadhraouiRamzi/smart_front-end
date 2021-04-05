@@ -8,58 +8,52 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
-import { AuthGuardService } from './security/auth-guard.service';
-import { LoginsComponent } from './logins/logins.component'
-import { AuthComponent } from './auth/auth.component';
+import {AuthGuard} from "./auth/auth-guard.service";
 
 export const routes: Routes = [
   {
     path: 'pages',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/pages.module')
-      .then(m => m.PagesModule),
-  //canActivate :[AuthGuardService],
-
-  },
-  {
-    path: 'logins',
-    component: LoginsComponent,
-  },
-  {
-    path: 'test',
-    component: AuthComponent,
+      .then(m => m.PagesModule)
   },
   {
     path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
-  },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+    loadChildren: () => import('./auth/auth.module')
+      .then(m => m.NgxAuthModule),
+  }
+  /* {
+     path: 'auth',
+     component: NbAuthComponent,
+     children: [
+       {
+         path: '',
+         component: NbLoginComponent,
+       },
+       {
+         path: 'login',
+         component: NbLoginComponent,
+       },
+       {
+         path: 'register',
+         component: NbRegisterComponent,
+       },
+       {
+         path: 'logout',
+         component: NbLogoutComponent,
+       },
+       {
+         path: 'request-password',
+         component: NbRequestPasswordComponent,
+       },
+       {
+         path: 'reset-password',
+         component: NbResetPasswordComponent,
+       },
+     ],
+   }*/,
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login' },
 ];
 
 const config: ExtraOptions = {

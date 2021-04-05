@@ -24,19 +24,18 @@ import {
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
- 
+
 } from '@nebular/theme';
-import { LoginsComponent } from './logins/logins.component';
-import { AuthGuardService } from './security/auth-guard.service';
-import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { authInterceptorProviders } from './auth/auth.interceptor';
+
 
 @NgModule({
-  declarations: [AppComponent,
-    LoginsComponent,
-    AuthComponent],
+  declarations: [AppComponent],
   imports: [
     ButtonModule,
     TableModule,
+    ButtonModule,
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -54,7 +53,7 @@ import { AuthComponent } from './auth/auth.component';
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
   ],
-  providers: [],
+  providers: [authInterceptorProviders,AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {
