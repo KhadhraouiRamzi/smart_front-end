@@ -3,6 +3,10 @@
 /tmp
 /out-tsc
 
+# Intellij
+tslint.json
+tsconfig.json
+
 # dependencies
 /node_modules
 
