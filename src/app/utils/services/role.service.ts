@@ -18,6 +18,10 @@ export class RoleService {
     return this.backend.get<any>(this.baseUrl + "/listRole");
   }
 
+  getRoles(): Observable<any>{
+    return this.backend.get<any>(this.baseUrl + "/roless")
+  }
+
 
   getlistRole(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/roles");
@@ -42,5 +46,5 @@ export class RoleService {
   deleteRole(id) {
     return this.backend.delete(this.baseUrl + "/deleteRole/" + id);
   }
- 
+
 }
