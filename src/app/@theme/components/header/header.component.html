@@ -19,16 +19,16 @@
     <nb-action class="control-item" icon="email-outline"></nb-action>
     <nb-action class="control-item" icon="bell-outline"></nb-action>
     <nb-action class="user-action">
-      <nb-user *ngIf="user" [name]="user.nom+' '+user.prenom" [onlyPicture]="userPictureOnly" [picture]="user.image"  >
+      <nb-user [nbContextMenu]="userMenu" *ngIf="user" [name]="user.nom+' '+user.prenom" [onlyPicture]="userPictureOnly" [picture]="retrievedImage"  >
         <!--[onlyPicture]="userPictureOnly" [name]="currentUser.name"-->
         <!--[picture]="user?.picture"-->
       </nb-user>
     </nb-action>
   </nb-actions>
-  <nb-card-body>
+<!--  <nb-card-body>
     <div class="buttons-row">
       <button (click)="logOut()" nbButton status="danger" hero>Log out
       </button>
     </div>
-  </nb-card-body>
+  </nb-card-body>-->
 </div>

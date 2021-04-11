@@ -7,7 +7,7 @@ import { NgxAuthRoutingModule } from './auth-routing.module';
 import { NbAuthModule } from '@nebular/auth';
 import {
   NbAlertModule,
-  NbButtonModule,
+  NbButtonModule, NbCardModule,
   NbCheckboxModule,
   NbIconModule,
   NbInputModule,
@@ -35,6 +35,7 @@ import { ProfileComponent } from './profile/profile.component';
     NbIconModule,
     NbOptionModule,
     NbSelectModule,
+    NbCardModule,
   ],
   declarations: [
     NgxLoginComponent,NgxRegisterComponent, ProfileComponent],

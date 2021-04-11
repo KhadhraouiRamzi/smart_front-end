@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import {users} from "../../../models/users";
 import { UsersService } from '../../../utils/services/users.service';
 import { Router } from '@angular/router';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'ngx-header',
@@ -30,6 +31,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   currentTheme = 'dark';
 
   userMenu = [ { title: 'Profile' }, { title: 'Log out' } ];
+  retrieveResonse: any;
+  base64Data: any;
+  retrievedImage: any;
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -37,14 +41,40 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private userService: UsersService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              private token: TokenStorageService,private router: Router) {
+              private token: TokenStorageService,private router: Router,
+              private httpClient : HttpClient) {
   }
 
   ngOnInit() {
+
     this.currentTheme = this.themeService.currentTheme;
+
     let u=this.currentUser = this.token.getUser();
+
     this.userService.getUserById(u.id).subscribe(data=>{
+
       this.user=data;
+
+      this.httpClient.get('http://localhost:8081/get/' + this.user.name ).subscribe(res=>{
+
+        this.retrieveResonse = res;
+
+        this.base64Data = this.retrieveResonse.picByte;
+
+        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+
+      })
+    });
+
+    this.menuService.onItemClick().subscribe((event) => {
+      if (event.item.title === 'Log out') {
+        sessionStorage.removeItem('auth-user');
+        sessionStorage.removeItem('auth-token');
+        this.router.navigate(['/login']);
+      }
+      if (event.item.title === 'Profile') {
+        this.router.navigate(['auth/profile']);
+      }
     });
 
     const { xl } = this.breakpointService.getBreakpointsMap();
@@ -56,11 +86,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(themeName => this.currentTheme = themeName);
   }
 
-  logOut(){
-    sessionStorage.removeItem('auth-user');
-    sessionStorage.removeItem('auth-token');
-    this.router.navigate(['/login']);
-  }
 
   ngOnDestroy() {
     this.destroy$.next();
