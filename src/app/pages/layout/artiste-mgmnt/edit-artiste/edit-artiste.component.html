@@ -118,13 +118,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div type="file" *ngIf=retrievedImage> 
-                                            <img [src]="retrievedImage">
+                                        <div type="file">
+                                            <img style="width: 100px;height: 100px;border-radius: 100%;" [src]="retrievedImage">
                                              <input type="file" (change)="onFileChanged($event)">
                                         </div>
                                     </td>
                                 </tr>
-                             
+
                             </table>
                         </div>
                     </div>

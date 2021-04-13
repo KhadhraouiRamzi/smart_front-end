@@ -52,16 +52,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
     let u=this.currentUser = this.token.getUser();
 
     this.userService.getUserById(u.id).subscribe(data=>{
-
       this.user=data;
 
-      this.httpClient.get('http://localhost:8081/get/' + this.user.name ).subscribe(res=>{
+      this.userService.getImage(this.user.id).subscribe(res=>{
 
-        this.retrieveResonse = res;
+        if (res == null){
 
-        this.base64Data = this.retrieveResonse.picByte;
+          this.retrievedImage;
+        }
+        else if(!(res == null))
+        {
+          this.retrieveResonse = res;
 
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          this.base64Data = this.retrieveResonse.picByte;
+
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        }
+
 
       })
     });

@@ -59,8 +59,8 @@ export class ListArtisteComponent implements OnInit {
          console.log(array[i].name);
         let arr = array[i].picByte;
          //let img = this.artistes.prenom; this.artistes.name
- 
-         this.httpClient.get('http://localhost:8081/get/' +array[i].name ).subscribe(
+
+         this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
           response => {
             console.log(this.imageName);
             this.retrieveResonse = response;
@@ -110,7 +110,7 @@ export class ListArtisteComponent implements OnInit {
 
   }
 
-  
+
   ajouter() {
     this.r.navigate(['/pages/layout/form-artiste/']);
   }

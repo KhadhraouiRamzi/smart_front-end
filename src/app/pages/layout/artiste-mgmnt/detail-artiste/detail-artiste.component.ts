@@ -22,7 +22,7 @@ export class DetailArtisteComponent implements OnInit {
 
   ngOnChanges() { // <- it will run every time and give you the latest value of fieldType
     if (this.artiste) {
-      this.httpClient.get('http://localhost:8081/get/' + this.artiste.name).subscribe(
+      this.httpClient.get('http://localhost:8081/get/' + this.artiste.id).subscribe(
         res => {
           this.retrieveResonse = res;
           this.base64Data = this.retrieveResonse.picByte;
@@ -36,7 +36,7 @@ export class DetailArtisteComponent implements OnInit {
 
       console.log(this.artiste.name)
 
-  
+
     }
   }
 }

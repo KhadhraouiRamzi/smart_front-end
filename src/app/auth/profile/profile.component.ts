@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserById(u.id).subscribe(data=>{
       this.user=data;
 
-      this.httpClient.get('http://localhost:8081/get/' + this.user.name ).subscribe(res=>{
+      this.userService.getImage(this.user.id).subscribe(res=>{
 
         this.retrieveResonse = res;
 

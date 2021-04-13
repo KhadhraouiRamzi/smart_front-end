@@ -44,16 +44,16 @@ export class EditArtisteComponent implements OnInit {
         response => {
           this.u = response;
           console.log(response);
-          this.httpClient.get('http://localhost:8081/get/' + this.u.name ).subscribe(
+          this.httpClient.get('http://localhost:8081/get/' + this.u.id ).subscribe(
 
             res => {
               console.log(this.u);
               console.log(this.u.name);
-  
+
               this.retrieveResonse = res;
-  
+
               this.base64Data = this.retrieveResonse.picByte;
-  
+
               this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
               console.log( this.retrievedImage);
               console.log( res);
@@ -71,11 +71,11 @@ export class EditArtisteComponent implements OnInit {
         console.log(res);
       });
 
-      
+
   }
 
   update(u: users) {
- 
+
     this.submitted = true;
 
     console.log(this.selectedFile);
@@ -102,7 +102,7 @@ export class EditArtisteComponent implements OnInit {
           this.message = 'Image uploaded successfully';
         } else {
           this.message = 'Image not uploaded successfully';
-        }  
+        }
       }
       );
   }
