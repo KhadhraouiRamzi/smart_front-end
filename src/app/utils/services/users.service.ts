@@ -53,6 +53,10 @@ export class UsersService {
     return this.backend.put(this.baseUrl + "/uploadIn/", uploadImageData);
   }
 
+  getImage(id: any){
+    return this.backend.get<any>(this.baseUrl + "/get/"+id);
+  }
+
   editUser2(u: users) {
     return this.backend.put(this.baseUrl + "/updateUser", u);
   }
@@ -63,7 +67,7 @@ export class UsersService {
   deleteUser(id) {
     return this.backend.delete(this.baseUrl + "/deleteUser/" + id);
   }
-  
+
   getUserById(id) {
     return this.backend.get<users>(this.baseUrl + "/user/by-id/" + id);
   }
