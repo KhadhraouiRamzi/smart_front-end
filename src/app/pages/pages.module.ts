@@ -8,7 +8,7 @@ import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { DialogModule } from 'primeng/dialog';
-  
+
 @NgModule({
   imports: [
     PagesRoutingModule,

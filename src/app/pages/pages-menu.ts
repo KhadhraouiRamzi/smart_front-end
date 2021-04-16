@@ -17,6 +17,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     group: true,
   },
   {
+    title: 'Profile',
+    icon: 'people',
+    link: '/auth/profile',
+  },
+  {
     title: 'Artiste',
     icon: 'people-outline',
     link: '/pages/layout/list-artiste',
@@ -35,6 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Fournisseur',
     icon: 'shuffle-2-outline',
     link: '/pages/layout/list-fournisseur',
+    data: "ROLE_ADMIN",
     },
   {
     title: 'Paramétre',
@@ -51,10 +57,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'FTP',
         link: '/pages/layout/list-ftp',
+        data: "ROLE_ADMIN",
       }
     ],
   },
-  { 
+  {
     title: 'Layout',
     icon: 'layout-outline',
     children: [
