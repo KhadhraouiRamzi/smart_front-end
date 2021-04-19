@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
-import { fournisseur } from '../../../../models/fournisseur';
-import { FournisseurService } from '../../../../utils/services/fournisseur.service';
+import { marketing } from '../../../../models/marketing';
+import { users } from '../../../../models/users';
+import { MarketingService } from '../../../../utils/services/marketing.service';
+  import { UsersService } from '../../../../utils/services/users.service';
 
 @Component({
   selector: 'ngx-form-fournisseur',
@@ -13,32 +15,37 @@ import { FournisseurService } from '../../../../utils/services/fournisseur.servi
 export class FormFournisseurComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-  u: fournisseur = new fournisseur();
-   
-  fournisseur: fournisseur[] = [];
+  u: users = new users();
+  marketing: marketing[] = [];
+
   statuses: NbComponentStatus[] = [ 'primary' ];
   statuses2: NbComponentStatus[] = [ 'warning' ];  
   statuses3: NbComponentStatus[] = ['danger'];
   statuses4: NbComponentStatus[] = ['info'];
 
-  constructor(private formBuilder: FormBuilder ,private fournisseurService : FournisseurService,private r: Router) { }
+  constructor(private marketingService : MarketingService, private formBuilder: FormBuilder ,private fournisseurService : UsersService,private r: Router) { }
 
   ngOnInit(): void {
-    
-    this.fournisseurService.getlistFournisseur().subscribe(res => {
-      this.fournisseur = res;
+     
+    this.marketingService.getlistMarketing().subscribe(res => {
+      this.marketing = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.fournisseur);
+      console.log(this.marketing);
       console.log(res);
 
     });
     
     this.registerForm = this.formBuilder.group({
       nom: ['', Validators.required],
-      datef: ['', Validators.required],
+      date: ['', Validators.required],
       montant: ['', Validators.required],
       part: ['', Validators.required],
-        
+      phone: ['', Validators.required],
+      email: ['', Validators.required,Validators.email],
+      nationnalite: ['', Validators.required],
+      marketing: ['', Validators.required],
+
+      
       acceptTerms: [false, Validators.requiredTrue]
     })
   }
@@ -54,10 +61,10 @@ export class FormFournisseurComponent implements OnInit {
     }
     this.submitted = true;
     
-    this.fournisseurService.addFournisseur(this.u).subscribe(res => {
+    this.fournisseurService.test(this.u).subscribe(res => {
       alert("ajout avec succès !");
       console.log(this.u);
-      this.u = new fournisseur();
+      this.u = new users();
     });
   }
   onReset() {

@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   message: string;
   retrieveResonse: any;
   base64Data: any;
+  role: any;
 
   constructor(private userService: UsersService,
               private token: TokenStorageService,
@@ -54,10 +55,19 @@ export class ProfileComponent implements OnInit {
 
     console.log(this.selectedFile);
 
+    this.role = this.token.getUser()['roles'];
+    console.log(this.role[0]);
+
+
 
     this.userService.editUser(u).subscribe(res => {
-      alert("Edit du profile " + this.user.nom + " " + this.user.prenom + " !");
-      /*this.router.navigate(['/pages/layout/list-artiste']);*/
+      if (this.role[0] == 'ROLE_ADMIN') {
+       alert("Edit du profile " + this.user.nom +  " !");
+      }
+      else {
+        alert("Edit du profile " + this.user.nom + " " + this.user.prenom + " !");
+      }
+     this.router.navigate(['/pages/dashboard']); 
       /*console.log('aa' || this.u);*/
       //alert("Edit avec succès du produit "+this.u.nom+" !");
       this.user = new users();

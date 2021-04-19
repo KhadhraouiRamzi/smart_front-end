@@ -10,8 +10,7 @@ import { chanson } from '../../../../models/chanson';
 import { users } from '../../../../models/users';
 import { ChansonService } from '../../../../utils/services/chanson.service';
 import { UsersService } from '../../../../utils/services/users.service';
-/*import {TableModule} from 'primeng/table';
-*/
+/*import {TableModule} from 'primeng/table';*/
 @Component({
   selector: 'ngx-list-chanson',
   templateUrl: './list-chanson.component.html',
@@ -89,11 +88,9 @@ export class ListChansonComponent implements OnInit {
   }
 
   modifier(u: chanson) {
-
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-chanson/' + u.id]);
     console.log(u);
-
     // }
   }
   ajouter() {
@@ -114,13 +111,8 @@ export class ListChansonComponent implements OnInit {
             // Call the dtTrigger to rerender again
             this.dtTrigger.next();
           });
-
         });
-
-
       })
-
     }
   }
-
 }
