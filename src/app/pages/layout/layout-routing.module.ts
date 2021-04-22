@@ -41,12 +41,47 @@ import { ListPlateformeComponent } from './palteforme-mgmnt/list-plateforme/list
 import { FormPlateformeComponent } from './palteforme-mgmnt/form-plateforme/form-plateforme.component';
 import { DetailPlateformeComponent } from './palteforme-mgmnt/detail-plateforme/detail-plateforme.component';
 import { EditPlateformeComponent } from './palteforme-mgmnt/edit-plateforme/edit-plateforme.component';
+import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-operateur.component';
+import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
+import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
+import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
+    /*{
+      path: 'list-distribiteur',
+      component: ListDistribiteurComponent,
+    },
     {
+      path: 'edit-distribiteur/:id',
+      component: EditDistribiteurComponent,
+    },
+    {
+      path: 'detail-distribiteur',
+      component: DetailDistribiteurComponent,
+    },
+    {
+      path: 'form-distribiteur',
+      component: FormDistribiteurComponent,
+    },*/
+    {
+      path: 'list-operateur',
+      component: ListOperateurComponent,
+    },
+    {
+      path: 'edit-operateur/:id',
+      component: EditOperateurComponent,
+    },
+    {
+      path: 'detail-operateur',
+      component: DetailOperateurComponent,
+    },
+    {
+      path: 'form-operateur',
+      component: FormOperateurComponent,
+    }, {
       path: 'list-plateforme',
       component: ListPlateformeComponent,
     },

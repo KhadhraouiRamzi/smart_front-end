@@ -49,6 +49,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'keypad-outline',
     children: [
       {
+        title: 'Opérateur',
+        link: '/pages/layout/list-operateur',
+      },
+      {
+        title: 'Distribiteur',
+        link: '/pages/layout/list-distribiteur',
+      },
+      {
         title: 'Marketing',
         link: '/pages/layout/list-marketing',
       },
@@ -59,9 +67,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'FTP',
         link: '/pages/layout/list-ftp',
-        data: ["ROLE_ADMIN","ROLE_ARTISTE"]
       }
     ],
+    data: "ROLE_ADMIN",
   },
  /* {
     title: 'Layout',

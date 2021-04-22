@@ -33,7 +33,6 @@
                         <br>
                         <br>
 
-
                         <div class="form-group col-5">
                             <label>Nom Artiste / Fournisseur</label>
                             <select formControlName="nArtiste" class="form-control"
@@ -42,15 +41,10 @@
                                     {{ d.nom }} {{ d.prenom }}
                                 </option>
                             </select>
-
-
                             <div *ngIf="submitted && f.nArtiste.errors" class="invalid-feedback">
                                 <div *ngIf="f.nArtiste.errors.required">Nom Artiste/Fournisseur is required</div>
                             </div>
                         </div>
-
-
-
                         <div class="form-group col-5">
                             <label>Date création chanson</label>
                             <input type="date" formControlName="datec" class="form-control"
@@ -63,7 +57,9 @@
                             <label>Featuring</label>
                             <input type="text" formControlName="featuring" class="form-control"
                                 [(ngModel)]="u.featuring" />
-
+                            <div *ngIf="submitted && f.featuring.errors" class="invalid-feedback">
+                                <div *ngIf="f.featuring.errors.required"> </div>
+                            </div>
                         </div>
                         <div class="form-group col-5">
                             <label>Genre</label>
@@ -73,41 +69,40 @@
                                 <div *ngIf="f.genre.errors.required">genre is required</div>
                             </div>
                         </div>
-                        <div class="form-group col-5">
-                            <label>Rbt/Src</label>
-                            <input type="text" formControlName="rbt_src" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.rbt_src.errors }" [(ngModel)]="u.rbt_src" />
-                            <div *ngIf="submitted && f.rbt_src.errors" class="invalid-feedback">
-                                <div *ngIf="f.rbt_src.errors.required">rbt_src is required</div>
-                            </div>
-                        </div>
 
                         <div class="form-group col-5">
-                            <label>Type</label>
+                            <label>Plateforme </label>
+                            <nb-select multiple placeholder="Multiple Select" size="large" style="width: 100%"
+                                formControlName="plateforme" [(ngModel)]="u.plateforme">
+                                <nb-option *ngFor="let c of plateforme" [value]="c">
+                                    {{ c.nom }}
+                                </nb-option>
+                            </nb-select>
+                            <div *ngIf="submitted && f.plateforme.errors" class="invalid-feedback">
+                                <div *ngIf="f.plateforme.errors.required">Nom plateforme is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>RBT </label>
+                            <nb-select multiple placeholder="Multiple Select" size="large" style="width: 100%"
+                                formControlName="operateur" [(ngModel)]="u.operateur">
+                                <nb-option *ngFor="let d of operateur" [value]="d">
+                                    {{ d.nom }}
+                                </nb-option>
+                            </nb-select>
+                            <div *ngIf="submitted && f.operateur.errors" class="invalid-feedback">
+                                <div *ngIf="f.operateur.errors.required">Nom operateur is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>ISRC</label>
                             <input type="text" formControlName="type" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.type.errors }" [(ngModel)]="u.type" />
                             <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
                                 <div *ngIf="f.type.errors.required">type is required</div>
                             </div>
                         </div>
-
-                        <div class="form-group col-5">
-                            <label>Plateforme </label>
-                            <select formControlName="plateforme" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.plateforme.errors }"
-                                [(ngModel)]="u.plateforme">
-                                <option *ngFor="let c of plateforme" [ngValue]="c">
-                                    {{ c.nom }}
-                                </option>
-                            </select>
-
-                            <div *ngIf="submitted && f.Plateforme.errors" class="invalid-feedback">
-                                <div *ngIf="f.Plateforme.errors.required">Nom plateforme is required</div>
-                            </div>
-                        </div>
                     </div>
-
-
                     <div class="form-group form-check">
                         <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
                             [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
@@ -116,9 +111,6 @@
                             required
                         </div>
                     </div>
-
-
-
                     <table>
                         <tr>
                             <td></td>
@@ -147,7 +139,6 @@
                             </td>
                         </tr>
                     </table>
-
                 </nb-card-body>
             </nb-card>
         </form>

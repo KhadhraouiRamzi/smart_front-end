@@ -4,22 +4,23 @@ import { NbComponentStatus } from '@nebular/theme';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs';
 import { SmartTableData } from '../../../../@core/data/smart-table';
- import { users } from '../../../../models/users';
- import { UsersService } from '../../../../utils/services/users.service';
+import { operateur } from '../../../../models/operateur';
+import { OperateurService } from '../../../../utils/services/operateur.service';
 
 @Component({
-  selector: 'ngx-list-fournisseur',
-  templateUrl: './list-fournisseur.component.html',
-  styleUrls: ['./list-fournisseur.component.scss']
+  selector: 'ngx-list-operateur',
+  templateUrl: './list-operateur.component.html',
+  styleUrls: ['./list-operateur.component.scss']
 })
-export class ListFournisseurComponent implements OnInit {
+export class ListOperateurComponent implements OnInit {
 
-  fournisseurs: users;
+  operateurs: operateur;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger']; 
   statuses4: NbComponentStatus[] = ['info'];
 
+  
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -28,7 +29,8 @@ export class ListFournisseurComponent implements OnInit {
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private service: SmartTableData, private fournisseurService: UsersService, private r: Router, private ar: ActivatedRoute) { }
+  constructor(private service: SmartTableData, private operateurService: OperateurService, 
+    private r: Router, private ar: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -36,46 +38,45 @@ export class ListFournisseurComponent implements OnInit {
       pageLength: 5
     };
 
-    this.fournisseurService.getFours().subscribe(
+    this.operateurService.getlistOperateur().subscribe(
       res => {
         // Swal.fire('This is a simple and sweet alert')
         console.log(res);
-        this.fournisseurs = res;
+        this.operateurs = res;
         console.log(res);
         this.dtTrigger.next();
       });
   }
-
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
   displayBasic: boolean;
-  currentfournisseur: users;
-
-  details(u: users) {
-    this.currentfournisseur = u;
+  currentoperateur: operateur;
+ 
+  details(u: operateur) {
+    this.currentoperateur = u;
     this.displayBasic = true;
   }
 
   ajouter() {
-    this.r.navigate(['/pages/layout/form-fournisseur/']);
+    this.r.navigate(['/pages/layout/form-operateur/']);
   }
-  modifier(u: users) {
+  modifier(u: operateur) {
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
-    this.r.navigate(['/pages/layout/edit-fournisseur/' + u.id]);
+    this.r.navigate(['/pages/layout/edit-operateur/' + u.id]);
     console.log(u);
     // }
   }
 
-  delete(p: users) {
-    if (window.confirm("êtes-vous sûr suprrimer le fournisseur " +  p.nom +" ?")) {
-      this.fournisseurService.deleteUser(p.id).subscribe(res => {
+  delete(p: operateur) {
+    if (window.confirm("êtes-vous sûr suprrimer le operateur " +  p.nom +" ?")) {
+      this.operateurService.deleteOperateur(p.id).subscribe(res => {
         //alert('Produit deleted !');
 
-        this.fournisseurService.getFournisseurs().subscribe(res => {
-          this.fournisseurs = res;
+        this.operateurService.getlistOperateur().subscribe(res => {
+          this.operateurs = res;
 
           // rerender datatable
           this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {

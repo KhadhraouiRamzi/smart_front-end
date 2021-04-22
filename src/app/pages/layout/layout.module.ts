@@ -71,6 +71,10 @@ import { FormCommunicationComponent } from './communication-mgmnt/form-communica
 import { EditCommunicationComponent } from './communication-mgmnt/edit-communication/edit-communication.component';
 import { DetailCommunicationComponent } from './communication-mgmnt/detail-communication/detail-communication.component';
 import { ListMarketingComponent } from './marketing-mgmnt/list-marketing/list-marketing.component';
+import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-operateur.component';
+import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
+import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
+import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
   
 
 @NgModule({
@@ -154,6 +158,10 @@ import { ListMarketingComponent } from './marketing-mgmnt/list-marketing/list-ma
     FormCommunicationComponent,
     EditCommunicationComponent,
     DetailCommunicationComponent,
+    ListOperateurComponent,
+    FormOperateurComponent,
+    EditOperateurComponent,
+    DetailOperateurComponent,
   ],
   providers: [
     NewsService,

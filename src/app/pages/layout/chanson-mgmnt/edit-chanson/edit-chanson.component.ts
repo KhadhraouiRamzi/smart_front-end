@@ -4,11 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
 import { album } from '../../../../models/album';
 import { chanson } from '../../../../models/chanson';
+import { operateur } from '../../../../models/operateur';
 import { plateforme } from '../../../../models/plateforme';
 import { users } from '../../../../models/users';
 import { AlbumService } from '../../../../utils/services/album.service';
 import { ChansonService } from '../../../../utils/services/chanson.service';
 import { FournisseurService } from '../../../../utils/services/fournisseur.service';
+import { OperateurService } from '../../../../utils/services/operateur.service';
 import { PlateformeService } from '../../../../utils/services/plateforme.service';
 import { UsersService } from '../../../../utils/services/users.service';
 
@@ -31,8 +33,9 @@ export class EditChansonComponent implements OnInit {
   users: users[] = [];
   album: album[] = [];
   plateforme : plateforme[] = [];
+  operateur : operateur[] = [];
 
-  constructor(private albumService : AlbumService,private fournisseurService : UsersService,private artisteService :UsersService,
+  constructor(private operateurService : OperateurService, private albumService : AlbumService,private fournisseurService : UsersService,private artisteService :UsersService,
     private chansonService : ChansonService,private router: Router, private ar : ActivatedRoute,private formBuilder: FormBuilder,
     private plateformeService : PlateformeService) { }
 
@@ -62,6 +65,13 @@ export class EditChansonComponent implements OnInit {
       this.plateforme = res;
       // Calling the DT trigger to manually render the table
       console.log(this.plateforme);
+      console.log(res);
+    });
+
+    this.operateurService.getlistOperateur().subscribe(res => {
+      this.operateur = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.operateur);
       console.log(res);
     });
 

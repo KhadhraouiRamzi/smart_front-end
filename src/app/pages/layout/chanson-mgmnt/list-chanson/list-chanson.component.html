@@ -16,14 +16,14 @@
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                         <thead>
                             <tr>
-                                <th> Actions</th>
+                                <th>Actions</th>
                                 <th>Nom Chanson</th>
                                 <th>Artiste/Fournisseur</th>
-                                <th>Featuring</th>
+                                <th>Album</th>
                                 <th>Date chanson</th>
                                 <th>Catégorie</th>
                                 <th>Plateforme</th>
-                                <th>Album</th>
+                                <th>RBT</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                                 </td>
                                 <td>{{ p.nom }}</td>
                                 <td>{{ p.user.nom }} {{ p.user.prenom }}</td>
-                                <td>{{ p.featuring }}</td>
+                                <td>{{ p.album.titre }}</td>
                                 <td>{{ p.datec }}</td>
                                 <td>{{ p.genre }}</td>
                                 <!--    
@@ -63,7 +63,7 @@
                                     <td *ngIf="p.plateforme.nom!=='Null'" >{{ p.plateforme.nom }}</td>
                                 -->
                                 <td>{{ p.plateforme.nom }}</td>
-                                <td>{{ p.album.titre }}</td>
+                                <td>{{ p.operateur.nom }}</td>
                             </tr>
                         </tbody>
                     </table>
