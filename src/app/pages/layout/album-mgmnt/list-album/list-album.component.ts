@@ -5,6 +5,7 @@ import { AlbumService } from '../../../../utils/services/album.service';
 import { DataTableDirective } from 'angular-datatables';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import {TokenStorageService} from "../../../../auth/services/token-storage.service";
 
 @Component({
   selector: 'ngx-list-album',
@@ -20,27 +21,39 @@ export class ListAlbumComponent implements OnInit {
 
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
- 
+
  dtOptions: DataTables.Settings = {};
    // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
-  album : album[] = [];
-  Album : album;
-  constructor(private albumService : AlbumService,private r: Router, private ar: ActivatedRoute) { }
+  album : any;
+
+  constructor(private albumService : AlbumService,private r: Router, private ar: ActivatedRoute,private token: TokenStorageService) { }
 
   ngOnInit(): void {
    this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5
     };
-    
+
     this.albumService.getlistAlbum().subscribe(
       res => {
-       // Swal.fire('This is a simple and sweet alert')
-        console.log(res);
-        this.album = res;
-        console.log(res);
+
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+
+        if(role=="ROLE_ARTISTE"){
+          this.albumService.getAlbumsByUserId(idUser).subscribe(data=>{
+            this.album=data;
+          })
+        }
+
+        else {
+          console.log(res);
+          this.album = res;
+          console.log(res);
+        }
+
         this.dtTrigger.next();
 
         //  this.produit.categorie.nomC;
@@ -48,12 +61,12 @@ export class ListAlbumComponent implements OnInit {
         //this.dtTrigger.next();
         /*this.setcategorie(2);
         if (this.produits) {
-          
+
           alert("Edit avec succès du produit ");
         }*/
       });
   }
-  
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
@@ -66,7 +79,7 @@ export class ListAlbumComponent implements OnInit {
     this.displayBasic = true;
   }
 
-  
+
   ajouter() {
     this.r.navigate(['/pages/layout/form-album/']);
   }
@@ -103,6 +116,6 @@ export class ListAlbumComponent implements OnInit {
 
     }
   }
-   
+
 
 }

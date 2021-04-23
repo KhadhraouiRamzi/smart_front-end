@@ -54,4 +54,9 @@ export class ChansonService {
   getChansonById(id) {
     return this.backend.get<chanson>(this.baseUrl + "/chanson/by-id/" + id);
   }
+
+  getChansonsByUserId(id) {
+    return this.backend.get<chanson>(this.baseUrl + "/chansons/by-userId/" + id);
+  }
+
 }

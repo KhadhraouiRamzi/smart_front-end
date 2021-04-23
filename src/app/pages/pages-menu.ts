@@ -40,7 +40,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Fournisseur',
     icon: 'shuffle-2-outline',
     link: '/pages/layout/list-fournisseur',
-    data: "ROLE_ADMIN",
+    data: ["ROLE_ADMIN","ROLE_GESTIONNAIRE"],
     },
   {
     title: 'Paramétre',
@@ -57,7 +57,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'FTP',
         link: '/pages/layout/list-ftp',
-        data: "ROLE_ADMIN",
+        data: ["ROLE_ADMIN","ROLE_GESTIONNAIRE"],
       }
     ],
   },
@@ -271,13 +271,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Auth',
     icon: 'lock-outline',
     children: [
-      {
+/*      {
         title: 'Login',
         link: '/auth/login',
-      },
+      },*/
       {
         title: 'Register',
         link: '/auth/register',
+        data: "ROLE_ADMIN",
       },
       {
         title: 'Request Password',

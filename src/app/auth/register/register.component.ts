@@ -10,7 +10,11 @@ import { role } from '../../models/role';
 })
 export class NgxRegisterComponent extends NbRegisterComponent {
   form: any = {
-    username: null,
+    nom: null,
+    prenom: null,
+    cin: null,
+    dateCin: null,
+    phone: null,
     email: null,
     password: null,
     role:null
@@ -33,9 +37,9 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   }
 
   onSubmit(): void {
-    const { email, password,role} = this.form;
+    const { nom,prenom,cin,dateCin,phone,email, password,role} = this.form;
 
-    this.authService.register(email, password,role).subscribe(
+    this.authService.register(nom,prenom,cin,dateCin,phone,email, password,role).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

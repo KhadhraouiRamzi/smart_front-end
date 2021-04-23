@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { album } from '../../models/album';
+import {chanson} from "../../models/chanson";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
- 
+
   baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient) { }
@@ -22,11 +23,11 @@ export class AlbumService {
     return this.backend.get<any>(this.baseUrl + "/listAlbum");
   }
 
-  
+
   getAlbum(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/listAlbum");
   }
-   
+
   getlistAlbum(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/albums");
   }
@@ -55,5 +56,9 @@ export class AlbumService {
     return this.backend.get<album>(this.baseUrl + "/album/by-id/" + id);
   }
 
-  
+  getAlbumsByUserId(id) {
+    return this.backend.get<chanson>(this.baseUrl + "/album/by-userId/" + id);
+  }
+
+
 }

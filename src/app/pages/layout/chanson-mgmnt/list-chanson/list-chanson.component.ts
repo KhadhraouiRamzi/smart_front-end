@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { chanson } from '../../../../models/chanson';
  import { ChansonService } from '../../../../utils/services/chanson.service';
+import {TokenStorageService} from "../../../../auth/services/token-storage.service";
 /*import {TableModule} from 'primeng/table';
 */
 @Component({
@@ -16,7 +17,7 @@ import { chanson } from '../../../../models/chanson';
 })
 export class ListChansonComponent implements OnInit {
 
-  chansons: chanson[] = [];
+  chansons: chanson;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -30,8 +31,8 @@ export class ListChansonComponent implements OnInit {
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private service: SmartTableData, private chansonService: ChansonService, 
-    private r: Router, private ar: ActivatedRoute) {
+  constructor(private service: SmartTableData, private chansonService: ChansonService,
+    private r: Router, private ar: ActivatedRoute,private token: TokenStorageService) {
   }
   ngOnInit(): void {
     this.dtOptions = {
@@ -40,10 +41,20 @@ export class ListChansonComponent implements OnInit {
     };
     this.chansonService.getlistChanson().subscribe(
       res => {
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        if (role=="ROLE_ARTISTE"){
+          this.chansonService.getChansonsByUserId(idUser).subscribe(data=>{
+            this.chansons=data;
+          })
+        }
         // Swal.fire('This is a simple and sweet alert')
-        console.log(res);
-        this.chansons = res;
-        console.log(res);
+        else {
+          console.log(res);
+          this.chansons = res;
+          console.log(res);
+        }
+
         this.dtTrigger.next();
       });
   }
@@ -70,7 +81,7 @@ export class ListChansonComponent implements OnInit {
 
   }
 
-  
+
   ajouter() {
     this.r.navigate(['/pages/layout/form-chanson/']);
   }
