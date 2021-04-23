@@ -32,9 +32,9 @@ export class PagesComponent implements OnInit{
 
       if(item.data){
 
-        for(let i = 0; i < item.data.length-1; i++ ){
 
-            if (this.role==item.data[i]) {
+
+            if (this.role==item.data) {
 
               item.hidden=false;
               console.log("hide failed !!");
@@ -46,25 +46,24 @@ export class PagesComponent implements OnInit{
               console.log("hide success !!");
             }
           }
-      }
+
       else if(!item.hidden && item.children!=null){
 
         item.children.forEach(childrenItem=>{
 
           if(childrenItem.data){
 
-            for(let i = 0; i < childrenItem.data.length-1; i++ ){
-              if (this.role==childrenItem.data[i]) {
+              if (this.role==childrenItem.data) {
 
                 childrenItem.hidden=false;
                 console.log("hide failed !!");
-                console.log("hide failed !!"+childrenItem.data[i]);
+                console.log("hide failed !!"+childrenItem.data);
               } else {
 
                 childrenItem.hidden=true;
                 console.log("hide success !!");
               }
-            }
+
 
           }
           else childrenItem.hidden=false;

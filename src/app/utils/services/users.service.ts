@@ -15,6 +15,9 @@ export class UsersService {
   getUser(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/listUser");
   }
+  getlistArtFour(): Observable<any> { 
+    return this.backend.get<any>(this.baseUrl + "/ArtFour");
+  }
 
   getlistUser(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/users");

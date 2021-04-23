@@ -53,9 +53,7 @@ export class FormArtisteComponent implements OnInit {
       retenu: ['', Validators.required],
       marketing: ['', Validators.required],
       image: ['', Validators.required],
-      password: ['', Validators.required],
-      role: ['', Validators.required],
-
+  
       acceptTerms: [false, Validators.requiredTrue]
     })
 
@@ -86,9 +84,7 @@ export class FormArtisteComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
@@ -99,10 +95,9 @@ export class FormArtisteComponent implements OnInit {
 
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
    
-    this.artiseService.test( this.u).subscribe(res => {
+    this.artiseService.test(this.u).subscribe(res => {
       alert("ajout avec succès !");
-      console.log(this.u);
-      console.log(this.u.id);
+      this.u = new users();
     });
     const uploadImageData = new FormData();
 
@@ -110,7 +105,6 @@ export class FormArtisteComponent implements OnInit {
 
     //Make a call to the Spring Boot Application to save the image
     // this.HttpClient.post(this.baseUrl + "/new-user", u);
-
     // this.httpClient.put('http://localhost:8081/upload', uploadImageData, { observe: 'response' }).subscribe((response) => {
       console.log(this.u.id);
       this.artiseService.imageIn(uploadImageData).subscribe(response => {
@@ -123,12 +117,9 @@ export class FormArtisteComponent implements OnInit {
       }
       );
     //  this.u.name = this.selectedFile.name;
-    //this.u.type = 'imageFile';
-    // this.u.files =this.selectedFile;
-
- 
-    
-  }
+    //  this.u.type = 'imageFile';
+    //  this.u.files =this.selectedFile;
+ }
 
   onReset() {
     this.submitted = false;

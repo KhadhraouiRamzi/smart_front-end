@@ -24,6 +24,13 @@
                 </tr>
                 <tr>
 
+                    <td>Titre album</td>
+                    <td>:</td>
+                    <td>{{ chanson.album.titre }}</td>
+                </tr>
+    
+                <tr>
+
                     <td>Date Chanson</td>
                     <td>:</td>
                     <td>{{ chanson.datec }}</td>
@@ -35,13 +42,13 @@
                     <td>{{ chanson.genre }}</td>
                 </tr>
                 <tr>
-                    <td>Rbt/Src</td>
+                    <td>RBT</td>
                     <td>:</td>
-                    <td>{{ chanson.rbt_src }}</td>
+                    <td>{{ chanson.operateur.nom }}</td>
                 </tr>
                 <tr>
 
-                    <td>Type</td>
+                    <td>ISRC</td>
                     <td>:</td>
                     <td>{{ chanson.type }}</td>
                 </tr>
@@ -51,13 +58,7 @@
                     <td>:</td>
                     <td>{{ chanson.plateforme.nom }}</td>
                 </tr>
-                <tr>
 
-                    <td>Titre album</td>
-                    <td>:</td>
-                    <td>{{ chanson.album.titre }}</td>
-                </tr>
-    
             </table>
 
         </div>

@@ -6,6 +6,8 @@ import { DataTableDirective } from 'angular-datatables';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
 import {TokenStorageService} from "../../../../auth/services/token-storage.service";
+import {Browser} from "leaflet";
+import win = Browser.win;
 
 @Component({
   selector: 'ngx-list-album',
@@ -28,7 +30,7 @@ export class ListAlbumComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
   album : any;
 
-  constructor(private albumService : AlbumService,private r: Router, private ar: ActivatedRoute,private token: TokenStorageService) { }
+  constructor(private albumService : AlbumService,private r: Router, private ar: ActivatedRoute,protected token: TokenStorageService) { }
 
   ngOnInit(): void {
    this.dtOptions = {
@@ -81,40 +83,48 @@ export class ListAlbumComponent implements OnInit {
 
 
   ajouter() {
-    this.r.navigate(['/pages/layout/form-album/']);
+    if (this.token.getUser()['roles']=="ROLE_ADMIN") {
+      this.r.navigate(['/pages/layout/form-album/']);
+    }
+    else window.alert("Sorry you are not authorised !!");
   }
   modifier(u: album) {
 
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
-    this.r.navigate(['/pages/layout/edit-album/' + u.id]);
-    console.log(u);
-
+    if (this.token.getUser()['roles']=="ROLE_ADMIN") {
+      this.r.navigate(['/pages/layout/edit-album/' + u.id]);
+      console.log(u);
+    }
+    else window.alert("Sorry you are not authorised !!");
     // }
 
   }
 
   delete(p: album) {
-    if (window.confirm("êtes-vous sûr suprrimer le produit " + p.titre + " ?")) {
-      this.albumService.deleteAlbum(p.id).subscribe(res => {
-        //alert('Produit deleted !');
+    if (this.token.getUser()['roles']=="ROLE_ADMIN") {
+      if (window.confirm("êtes-vous sûr suprrimer le produit " + p.titre + " ?")) {
+        this.albumService.deleteAlbum(p.id).subscribe(res => {
+          //alert('Produit deleted !');
 
-        this.albumService.getlistAlbum().subscribe(res => {
-          this.album = res;
+          this.albumService.getlistAlbum().subscribe(res => {
+            this.album = res;
 
-          // rerender datatable
-          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-            // Destroy the table first
-            dtInstance.destroy();
-            // Call the dtTrigger to rerender again
-            this.dtTrigger.next();
+            // rerender datatable
+            this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+              // Destroy the table first
+              dtInstance.destroy();
+              // Call the dtTrigger to rerender again
+              this.dtTrigger.next();
+            });
+
           });
 
-        });
 
+        })
 
-      })
-
+      }
     }
+    else window.alert("Sorry you are not authorised !!");
   }
 
 

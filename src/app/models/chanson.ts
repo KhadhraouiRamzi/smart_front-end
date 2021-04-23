@@ -1,5 +1,6 @@
 import { DetailPlateformeComponent } from '../pages/layout/palteforme-mgmnt/detail-plateforme/detail-plateforme.component';
 import { album } from './album';
+import { operateur } from './operateur';
  import { plateforme } from './plateforme';
 import { users } from './users';
 
@@ -14,4 +15,5 @@ export class chanson {
     user : users;
     plateforme : plateforme;
     album : album;
+    operateur : operateur;
    }

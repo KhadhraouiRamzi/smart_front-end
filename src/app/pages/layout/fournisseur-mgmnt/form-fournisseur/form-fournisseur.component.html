@@ -14,19 +14,46 @@
                     </div>
                 </div>
  
+
                 <div class="form-group col-5">
-                    <label>Date fournisseur</label>
-                    <input type="date" formControlName="datef" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.datef.errors }" [(ngModel)]="u.dateF" />
-                    <div *ngIf="submitted && f.datef.errors" class="invalid-feedback">
-                        <div *ngIf="f.datef.errors.required"> date fournisseur is required</div>
+                    <label>Phone</label>
+                    <input type="number" formControlName="phone" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" [(ngModel)]="u.phone" />
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">phone is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>E-mail</label>
+                    <input type="email" formControlName="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="u.email" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Date de contrat</label>
+                    <input type="date" formControlName="date" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.date.errors }" [(ngModel)]="u.date" />
+                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                        <div *ngIf="f.date.errors.required">date is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Nationnalite</label>
+                    <input type="text" formControlName="nationnalite" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nationnalite.errors }" [(ngModel)]="u.nationnalite" />
+                    <div *ngIf="submitted && f.nationnalite.errors" class="invalid-feedback">
+                        <div *ngIf="f.nationnalite.errors.required">nationnalite is required</div>
                     </div>
                 </div>
 
                 <div class="form-group col-5">
                     <label>Montant</label>
                     <input type="number" formControlName="montant" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.montant.errors }" [(ngModel)]="u.montant" />
+                        [ngClass]="{ 'is-invalid': submitted && f.montant.errors }" [(ngModel)]="u.retenu" />
                     <div *ngIf="submitted && f.montant.errors" class="invalid-feedback">
                         <div *ngIf="f.montant.errors.required">montant is required</div>
                     </div>
@@ -39,7 +66,21 @@
                         <div *ngIf="f.part.errors.required">part is required</div>
                     </div>
                 </div>
-       
+                
+                <div class="form-group col-5">
+                    <label>Marketing</label>
+                    <select formControlName="marketing" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.marketing.errors }" [(ngModel)]="u.marketing">
+                        <option *ngFor="let d of marketing" [ngValue]="d">
+                            {{ d.nom }}
+                        </option>
+                    </select>
+
+                    <div *ngIf="submitted && f.marketing.errors" class="invalid-feedback">
+                        <div *ngIf="f.marketing.errors.required">Marketing is required</div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-group form-check">

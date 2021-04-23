@@ -37,11 +37,66 @@ import { ListFtpComponent } from './ftp-mgmnt/list-ftp/list-ftp.component';
 import { EditFtpComponent } from './ftp-mgmnt/edit-ftp/edit-ftp.component';
 import { DetailFtpComponent } from './ftp-mgmnt/detail-ftp/detail-ftp.component';
 import { FormFtpComponent } from './ftp-mgmnt/form-ftp/form-ftp.component';
+import { ListPlateformeComponent } from './palteforme-mgmnt/list-plateforme/list-plateforme.component';
+import { FormPlateformeComponent } from './palteforme-mgmnt/form-plateforme/form-plateforme.component';
+import { DetailPlateformeComponent } from './palteforme-mgmnt/detail-plateforme/detail-plateforme.component';
+import { EditPlateformeComponent } from './palteforme-mgmnt/edit-plateforme/edit-plateforme.component';
+import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-operateur.component';
+import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
+import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
+import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
+    /*{
+      path: 'list-distribiteur',
+      component: ListDistribiteurComponent,
+    },
+    {
+      path: 'edit-distribiteur/:id',
+      component: EditDistribiteurComponent,
+    },
+    {
+      path: 'detail-distribiteur',
+      component: DetailDistribiteurComponent,
+    },
+    {
+      path: 'form-distribiteur',
+      component: FormDistribiteurComponent,
+    },*/
+    {
+      path: 'list-operateur',
+      component: ListOperateurComponent,
+    },
+    {
+      path: 'edit-operateur/:id',
+      component: EditOperateurComponent,
+    },
+    {
+      path: 'detail-operateur',
+      component: DetailOperateurComponent,
+    },
+    {
+      path: 'form-operateur',
+      component: FormOperateurComponent,
+    }, {
+      path: 'list-plateforme',
+      component: ListPlateformeComponent,
+    },
+    {
+      path: 'edit-plateforme/:id',
+      component: EditPlateformeComponent,
+    },
+    {
+      path: 'detail-plateforme',
+      component: DetailPlateformeComponent,
+    },
+    {
+      path: 'form-plateforme',
+      component: FormPlateformeComponent,
+    },
     {
       path: 'list-ftp',
       component: ListFtpComponent,

@@ -74,8 +74,12 @@ export class ListChansonComponent implements OnInit {
   modifier(u: chanson) {
 
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
-    this.r.navigate(['/pages/layout/edit-chanson/' + u.id]);
-    console.log(u);
+    if (this.token.getUser()['roles']=="ROLE_ADMIN"){
+      this.r.navigate(['/pages/layout/edit-chanson/' + u.id]);
+      console.log(u);
+    }
+    else window.alert("Sorry you are not authorized !!");
+
 
     // }
 
@@ -83,30 +87,36 @@ export class ListChansonComponent implements OnInit {
 
 
   ajouter() {
-    this.r.navigate(['/pages/layout/form-chanson/']);
+    if (this.token.getUser()['roles']=="ROLE_ADMIN") {
+      this.r.navigate(['/pages/layout/form-chanson/']);
+    }
+    else window.alert("Sorry you are not authorised !!");
   }
   delete(p: chanson) {
-    if (window.confirm("êtes-vous sûr suprrimer le produit " + p.nom + " ?")) {
-      this.chansonService.deleteChanson(p.id).subscribe(res => {
-        //alert('Produit deleted !');
+    if (this.token.getUser()['roles']=="ROLE_ADMIN") {
+      if (window.confirm("êtes-vous sûr suprrimer le produit " + p.nom + " ?")) {
+        this.chansonService.deleteChanson(p.id).subscribe(res => {
+          //alert('Produit deleted !');
 
-        this.chansonService.getlistChanson().subscribe(res => {
-          this.chansons = res;
+          this.chansonService.getlistChanson().subscribe(res => {
+            this.chansons = res;
 
-          // rerender datatable
-          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-            // Destroy the table first
-            dtInstance.destroy();
-            // Call the dtTrigger to rerender again
-            this.dtTrigger.next();
+            // rerender datatable
+            this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+              // Destroy the table first
+              dtInstance.destroy();
+              // Call the dtTrigger to rerender again
+              this.dtTrigger.next();
+            });
+
           });
 
-        });
 
+        })
 
-      })
-
+      }
     }
+    else window.alert("Sorry you are not authorised !!");
   }
 
 }

@@ -37,7 +37,9 @@ statuses3: NbComponentStatus[] = ['danger'];
 
     this.registerForm = this.formBuilder.group({
       titre: ['', Validators.required],
-      dateA: ['', Validators.required],
+      dateA: ['', Validators.required], 
+      nbrTrack: ['', Validators.required],
+      ISRC: ['', Validators.required],
        
       acceptTerms: [false, Validators.requiredTrue]
     })

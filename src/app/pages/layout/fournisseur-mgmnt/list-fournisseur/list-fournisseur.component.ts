@@ -43,7 +43,6 @@ export class ListFournisseurComponent implements OnInit {
         this.fournisseurs = res;
         console.log(res);
         this.dtTrigger.next();
-
       });
   }
 
@@ -64,13 +63,10 @@ export class ListFournisseurComponent implements OnInit {
     this.r.navigate(['/pages/layout/form-fournisseur/']);
   }
   modifier(u: users) {
-
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-fournisseur/' + u.id]);
     console.log(u);
-
     // }
-
   }
 
   delete(p: users) {
@@ -88,13 +84,8 @@ export class ListFournisseurComponent implements OnInit {
             // Call the dtTrigger to rerender again
             this.dtTrigger.next();
           });
-
         });
-
-
       })
-
     }
   }
-   
 }

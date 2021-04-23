@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { plateforme } from '../../../../models/plateforme';
 
 @Component({
   selector: 'ngx-detail-plateforme',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DetailPlateformeComponent implements OnInit {
 
   constructor() { }
+  @Input() plateforme : plateforme; 
 
   ngOnInit(): void {
   }

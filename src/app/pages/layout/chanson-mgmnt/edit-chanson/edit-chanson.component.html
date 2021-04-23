@@ -69,16 +69,19 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="firstName">Code:</label>
-                                            <input type="text" class="form-control" [(ngModel)]="u.rbt_src" />
-                                        </div>
-                                    </td>
+                                            <label for="firstName">RBT :</label>
+                                                    <select class="form-control" name="profil" [(ngModel)]="u.operateur.id">
+                                                        <option *ngFor="let p of operateur" [ngValue]="p.id">{{ p.nom }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </td>
 
                                 </tr>
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="lastName">Type:</label>
+                                            <label for="lastName">ISRC:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.type" />
                                         </div>
                                     </td>

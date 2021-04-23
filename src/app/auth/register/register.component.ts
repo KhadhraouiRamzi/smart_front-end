@@ -3,6 +3,7 @@ import { NbRegisterComponent } from '@nebular/auth';
 import {AuthService} from "../services/auth.service";
 import {RoleService} from "../../utils/services/role.service";
 import { role } from '../../models/role';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-register',
@@ -25,7 +26,7 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   roles:any [];
 
 
-  constructor(private authService: AuthService,private roleService : RoleService) {
+  constructor( private r: Router,private authService: AuthService,private roleService : RoleService) {
     super(undefined, {}, undefined, undefined);
   }
 
@@ -44,6 +45,7 @@ export class NgxRegisterComponent extends NbRegisterComponent {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.r.navigate(['/pages/dashboard']);
       },
       err => {
         this.errorMessage = err.error.message;

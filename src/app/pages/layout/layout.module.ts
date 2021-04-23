@@ -71,41 +71,45 @@ import { FormCommunicationComponent } from './communication-mgmnt/form-communica
 import { EditCommunicationComponent } from './communication-mgmnt/edit-communication/edit-communication.component';
 import { DetailCommunicationComponent } from './communication-mgmnt/detail-communication/detail-communication.component';
 import { ListMarketingComponent } from './marketing-mgmnt/list-marketing/list-marketing.component';
+import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-operateur.component';
+import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
+import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
+import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
 import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
-    imports: [
-        DataTablesModule,
-        DialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ThemeModule,
-        NbTabsetModule,
-        NbRouteTabsetModule,
-        NbStepperModule,
-        NbCardModule,
-        NbButtonModule,
-        NbListModule,
-        NbAccordionModule,
-        NbUserModule,
-        LayoutRoutingModule,
-        Ng2SmartTableModule,
-        ThemeModule,
-        NbInputModule,
-        NbCardModule,
-        NbButtonModule,
-        NbActionsModule,
-        NbUserModule,
-        NbCheckboxModule,
-        NbRadioModule,
-        NbDatepickerModule,
-        FormsRoutingModule,
-        NbSelectModule,
-        NbIconModule,
-        FormsModule,
-        ButtonModule,
-    ],
+  imports: [
+    DataTablesModule,
+    DialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ThemeModule,
+    NbTabsetModule,
+    NbRouteTabsetModule,
+    NbStepperModule,
+    NbCardModule,
+    NbButtonModule,
+    NbListModule,
+    NbAccordionModule,
+    NbUserModule,
+    LayoutRoutingModule,
+    Ng2SmartTableModule,
+    ThemeModule,
+    NbInputModule,
+    NbCardModule,
+    NbButtonModule,
+    NbActionsModule,
+    NbUserModule,
+    NbCheckboxModule,
+    NbRadioModule,
+    NbDatepickerModule,
+    FormsRoutingModule,
+    NbSelectModule,
+    NbIconModule,
+    FormsModule,
+    ButtonModule,
+  ],
   declarations: [
     LayoutComponent,
     TabsComponent,
@@ -156,6 +160,10 @@ import {ButtonModule} from "primeng/button";
     FormCommunicationComponent,
     EditCommunicationComponent,
     DetailCommunicationComponent,
+    ListOperateurComponent,
+    FormOperateurComponent,
+    EditOperateurComponent,
+    DetailOperateurComponent,
   ],
   providers: [
     NewsService,
