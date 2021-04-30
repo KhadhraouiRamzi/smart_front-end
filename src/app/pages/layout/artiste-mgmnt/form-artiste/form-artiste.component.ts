@@ -36,6 +36,7 @@ export class FormArtisteComponent implements OnInit {
   imageName: any;
   marketing: marketing[] = [];
   role: role[] = [];
+  myVar = "";
 
   ngOnInit(): void {
 

@@ -1,9 +1,7 @@
 <nb-card>
     <nb-card-header>
         Liste des plateformes
-
     </nb-card-header>
-
     <nb-card-body>
         <div style="margin-left: 20px;margin-right: 20px;">
             <nb-card>
@@ -12,16 +10,15 @@
                         <a (click)="ajouter()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
                             Ajout platefrome</a>
                     </td>
-                    <br>
+                    <br>    
                     <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                         <thead>
                             <tr>
-                                <!--<th>ID</th>-->
-                                <th> Actions</th>
+                                <th>Actions</th>
                                 <th>Nom platefrome</th>
-                                 <th>Date de Contrat</th>
-                                 <th>Part</th>
-                             </tr>
+                                <th>Date de Contrat</th>
+                                <th>Part</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let p of plateformes">
@@ -34,13 +31,11 @@
                                                         [status]="status" outline>
                                                         <img [src]="'assets/images/detail.png'" /></a>
                                                 </td>
-
                                                 <td>
                                                     <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
                                                         [status]="status" outline>
                                                         <img [src]="'assets/images/edit.png'" /></a>
                                                 </td>
-
                                                 <td>
                                                     <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
                                                         [status]="status" outline><img
@@ -49,15 +44,15 @@
                                             </div>
                                         </tr>
                                     </table>
-                                    <td>{{ p.nom }}</td>
-                                     <td>{{ p.datep }}</td>
-                                    <td>{{ p.part }}</td>
-                             </tr>
+                                <td>{{ p.nom }}</td>
+                                <td>{{ p.datep }}</td>
+                                <td>{{ p.part }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </nb-card-body>
             </nb-card>
-        </div> 
+        </div>
         <p-dialog [modal]="true" header="Fiche plateforme" [(visible)]="displayBasic" [style]="{width: '50vw'}"
             [baseZIndex]="10000">
             <ngx-detail-plateforme [plateforme]="currentplateforme"></ngx-detail-plateforme>
@@ -66,7 +61,5 @@
                 </p-button>
             </ng-template>
         </p-dialog>
-
-
     </nb-card-body>
 </nb-card>

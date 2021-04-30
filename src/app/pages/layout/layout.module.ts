@@ -75,6 +75,9 @@ import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-op
 import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
 import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
 import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
+ import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
+import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
+import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
   
 
 @NgModule({
@@ -162,6 +165,9 @@ import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/det
     FormOperateurComponent,
     EditOperateurComponent,
     DetailOperateurComponent,
+     OrangeDetailsComponent,
+    DeezerDetailsComponent,
+    BeleiveDetailsComponent,
   ],
   providers: [
     NewsService,

@@ -16,7 +16,6 @@
                             </div>
                         </div>
 
-
                         <div class="form-group col-5">
                             <label>Date de sortie</label>
                             <input type="date" formControlName="dateA" class="form-control"
@@ -26,23 +25,21 @@
                             </div>
                         </div>
 
-  
                         <div class="form-group col-5">
                             <label> Nombre de Track</label>
-                            <input type="date" formControlName="nbrTrack" class="form-control"
+                            <input type="number" formControlName="nbrTrack" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.nbrTrack.errors }" [(ngModel)]="u.nbrTrack" />
                             <div *ngIf="submitted && f.nbrTrack.errors" class="invalid-feedback">
-                                <div *ngIf="f.nbrTrack.errors.required">    Nbr of Track is required</div>
+                                <div *ngIf="f.nbrTrack.errors.required"> Nbr of Track is required</div>
                             </div>
                         </div>
 
-  
                         <div class="form-group col-5">
                             <label>ISRC</label>
                             <input type="text" formControlName="ISRC" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.ISRC.errors }" [(ngModel)]="u.isrc" />
                             <div *ngIf="submitted && f.ISRC.errors" class="invalid-feedback">
-                                <div *ngIf="f.ISRC.errors.required"> ISRC   is required</div>
+                                <div *ngIf="f.ISRC.errors.required"> ISRC is required</div>
                             </div>
                         </div>
 
@@ -62,7 +59,6 @@
                             <div class="text-center">
                                 <div class="buttons-row">
                                     <td>
-
                                         <button type="submit" *ngFor="let status of statuses" nbButton [status]="status"
                                             outline>
                                             Register

@@ -45,27 +45,27 @@ import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-op
 import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
 import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
 import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
+import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
+import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
+import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
-    /*{
-      path: 'list-distribiteur',
-      component: ListDistribiteurComponent,
+    {
+      path: 'orange',
+      component: OrangeDetailsComponent,
     },
     {
-      path: 'edit-distribiteur/:id',
-      component: EditDistribiteurComponent,
+      path: 'deezer',
+      component: DeezerDetailsComponent,
     },
     {
-      path: 'detail-distribiteur',
-      component: DetailDistribiteurComponent,
+      path: 'beleive',
+      component: BeleiveDetailsComponent,
     },
-    {
-      path: 'form-distribiteur',
-      component: FormDistribiteurComponent,
-    },*/
+     
     {
       path: 'list-operateur',
       component: ListOperateurComponent,

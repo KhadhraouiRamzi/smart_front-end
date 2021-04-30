@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListArtisteComponent implements OnInit {
   artistes: users;
-  art : users;
+  art: users;
 
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
@@ -52,32 +52,23 @@ export class ListArtisteComponent implements OnInit {
         res[1].name = res[1].name
         console.log(res);
 
-
         let array = res;
         for (let i = 0; i < array.length; i++) {
-         console.log(array[i].name);
-        let arr = array[i].picByte;
-         //let img = this.artistes.prenom; this.artistes.name
+          console.log(array[i].name);
+          let arr = array[i].picByte;
+          //let img = this.artistes.prenom; this.artistes.name
 
-         this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
-          response => {
-            console.log(this.imageName);
-            this.retrieveResonse = response;
-            console.log(this.retrieveResonse);
-            this.base64Data = this.retrieveResonse.picByte;
-            console.log(this.base64Data);
-            array[i].picByte =this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-            console.log( this.retrievedImage);
-            console.log(array[i].picByte);
-            console.log( res.picByte);
-            res[i].picByte = array[i].picByte;
-            this.artistes = res;
-            console.log(res);
-          }
-        );
-        console.log(arr);
-        console.log(res.picByte);
-      }
+          this.httpClient.get('http://localhost:8081/get/' + array[i].id).subscribe(
+            response => {
+               this.retrieveResonse = response;
+               this.base64Data = this.retrieveResonse.picByte;
+               array[i].picByte = this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+ 
+              res[i].picByte = array[i].picByte;
+              this.artistes = res;
+             }
+          ); 
+        }
         this.dtTrigger.next();
       });
   }
@@ -108,20 +99,29 @@ export class ListArtisteComponent implements OnInit {
   delete(p: users) {
     console.log(p);
     if (window.confirm("êtes-vous sûr suprrimer l'artiste " + p.nom + " " + p.prenom + " ?")) {
-      this.usersService.deleteUser(p[0]).subscribe(res => {
+      this.usersService.deleteUser(p.id).subscribe(res => {
         //alert('Produit deleted !');
 
-        this.usersService.getArtistes().subscribe(res => {
-          this.artistes = res;
+        this.usersService.getArts().subscribe(res => {
+          // Swal.fire('This is a simple and sweet alert')
+          res[1].name = res[1].name
 
-          // rerender datatable
-          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-            // Destroy the table first
-            dtInstance.destroy();
-            // Call the dtTrigger to rerender again
-            this.dtTrigger.next();
-           });
 
+          let array = res;
+          for (let i = 0; i < array.length; i++) {
+            let arr = array[i].picByte;
+            //let img = this.artistes.prenom; this.artistes.name
+
+            this.httpClient.get('http://localhost:8081/get/' + array[i].id).subscribe(
+              response => {
+                this.retrieveResonse = response;
+                this.base64Data = this.retrieveResonse.picByte;
+                array[i].picByte = this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+                res[i].picByte = array[i].picByte;
+                this.artistes = res;
+              }
+            );
+          }
         });
 
 
@@ -129,25 +129,4 @@ export class ListArtisteComponent implements OnInit {
 
     }
   }
-  /*
-  getImage() {
-
-    //Make a call to Sprinf Boot to get the Image Bytes.
-
-    this.httpClient.get('http://localhost:8081/get/' + this.imageName).subscribe(
-
-      res => {
-        console.log(this.imageName);
-
-        this.retrieveResonse = res;
-
-        this.base64Data = this.retrieveResonse.picByte;
-
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        console.log(res);
-      }
-
-    );
-
-  }*/
 }

@@ -79,7 +79,7 @@ export class FormChansonComponent implements OnInit {
       nArtiste: ['', Validators.required],
       datec: ['', Validators.required],
       genre: ['', Validators.required],
-       type: ['', Validators.required],
+      type: ['', Validators.required],
       plateforme: ['', Validators.required],
       featuring: ['', Validators.required],
       operateur: ['', Validators.required],
@@ -91,6 +91,7 @@ export class FormChansonComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
+    
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -99,6 +100,7 @@ export class FormChansonComponent implements OnInit {
     this.submitted = true;
 
     this.chansonService.addChanson(this.u).subscribe(res => {
+      console.log(this.u);
       alert("ajout avec succès !");
       console.log(this.u);
      // this.u = new chanson();

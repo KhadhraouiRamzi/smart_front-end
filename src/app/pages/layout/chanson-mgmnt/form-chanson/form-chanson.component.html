@@ -47,6 +47,7 @@
                         </div>
                         <div class="form-group col-5">
                             <label>Date création chanson</label>
+
                             <input type="date" formControlName="datec" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.datec.errors }" [(ngModel)]="u.datec" />
                             <div *ngIf="submitted && f.datec.errors" class="invalid-feedback">
@@ -72,6 +73,32 @@
 
                         <div class="form-group col-5">
                             <label>Plateforme </label>
+                            <select formControlName="plateforme" class="form-control" 
+                                 [(ngModel)]="u.plateforme">
+                                <option *ngFor="let c of plateforme" [ngValue]="c">
+                                    {{ c.nom }}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.plateforme.errors" class="invalid-feedback">
+                                <div *ngIf="f.plateforme.errors.required">Nom plateforme is required</div>
+                            </div>
+                        </div>
+ 
+                        <div class="form-group col-5">
+                            <label>RBT chanson </label>
+                            <select class="form-control" 
+                                formControlName="operateur" [(ngModel)]="u.operateur">
+                                <option *ngFor="let d of operateur" [ngValue]="d">
+                                    {{ d.nom }}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.operateur.errors" class="invalid-feedback">
+                                <div *ngIf="f.operateur.errors.required">Nom operateur is required</div>
+                            </div>
+                        </div>
+<!--
+                        <div class="form-group col-5">
+                            <label>Plateforme </label>
                             <nb-select multiple placeholder="Multiple Select" size="large" style="width: 100%"
                                 formControlName="plateforme" [(ngModel)]="u.plateforme">
                                 <nb-option *ngFor="let c of plateforme" [value]="c">
@@ -82,8 +109,9 @@
                                 <div *ngIf="f.plateforme.errors.required">Nom plateforme is required</div>
                             </div>
                         </div>
+ 
                         <div class="form-group col-5">
-                            <label>RBT </label>
+                            <label>RBT chanson </label>
                             <nb-select multiple placeholder="Multiple Select" size="large" style="width: 100%"
                                 formControlName="operateur" [(ngModel)]="u.operateur">
                                 <nb-option *ngFor="let d of operateur" [value]="d">
@@ -94,6 +122,8 @@
                                 <div *ngIf="f.operateur.errors.required">Nom operateur is required</div>
                             </div>
                         </div>
+
+                        -->
                         <div class="form-group col-5">
                             <label>ISRC</label>
                             <input type="text" formControlName="type" class="form-control"
