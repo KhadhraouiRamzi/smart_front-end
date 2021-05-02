@@ -3,7 +3,6 @@
         Edit Chanson
     </nb-card-header>
     <nb-card-body>
-
         <nb-card>
             <nb-card-header>
                 <!--    <nb-card>
@@ -24,7 +23,6 @@
                                                 </nb-option>-->
                 <div class="buttons-row">
                     <div class="form-row">
-
                         <div class="col-md-6" *ngIf="u">
                             <table width=180%>
                                 <tr>
@@ -43,7 +41,6 @@
                                             </select>
                                         </div>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td>
@@ -58,7 +55,6 @@
                                             <input type="date" class="form-control" [(ngModel)]="u.datec" />
                                         </div>
                                     </td>
-
                                 </tr>
                                 <tr>
                                     <td>
@@ -70,13 +66,12 @@
                                     <td>
                                         <div>
                                             <label for="firstName">RBT :</label>
-                                                    <select class="form-control" name="profil" [(ngModel)]="u.operateur.id">
-                                                        <option *ngFor="let p of operateur" [ngValue]="p.id">{{ p.nom }}
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </td>
-
+                                            <select class="form-control" name="profil" [(ngModel)]="u.operateur.id">
+                                                <option *ngFor="let p of operateur" [ngValue]="p.id">{{ p.nom }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -85,7 +80,6 @@
                                             <input type="text" class="form-control" [(ngModel)]="u.type" />
                                         </div>
                                     </td>
-
                                     <td>
                                         <div>
                                             <label for="Plateforme">Plateforme:</label>
@@ -97,7 +91,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-
                                     <td>
                                         <div>
                                             <label for="nArtiste">Album:</label>
@@ -142,8 +135,7 @@
                         </td>
                     </tr>
                 </table>
-
             </nb-card-body>
         </nb-card>
     </nb-card-body>
-</nb-card>
+</nb-card>      

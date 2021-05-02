@@ -69,9 +69,7 @@ export class ListPlateformeComponent implements OnInit {
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-plateforme/' + u.id]);
     console.log(u);
-
     // }
-
   }
 
   delete(p: plateforme) {
@@ -79,17 +77,13 @@ export class ListPlateformeComponent implements OnInit {
       this.plateformeService.deletePlateforme(p.id).subscribe(res => {
         //alert('Produit deleted !');
         console.log(p);
-        this.plateformeService.getPlateforme().subscribe(res => {
-          this.plateformes = res;
-
-          // rerender datatable
-          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-            // Destroy the table first
-            dtInstance.destroy();
-            // Call the dtTrigger to rerender again
-            this.dtTrigger.next();
-          });
-
+        this.plateformeService.getlistPlateforme().subscribe(
+          res => {
+            // Swal.fire('This is a simple and sweet alert')
+            console.log(res);
+            this.plateformes = res;
+            console.log(res);
+ 
         });
 
 

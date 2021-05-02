@@ -26,7 +26,6 @@ export class ListArtisteComponent implements OnInit {
 
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
-
   dtOptions: DataTables.Settings = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
@@ -74,14 +73,10 @@ export class ListArtisteComponent implements OnInit {
             res[i].picByte = array[i].picByte;
             this.artistes = res;
             console.log(res);
-
           }
         );
-
         console.log(arr);
         console.log(res.picByte);
-
-
       }
         this.dtTrigger.next();
       });
@@ -97,19 +92,14 @@ export class ListArtisteComponent implements OnInit {
     this.currentartiste = u;
     this.displayBasic = true;
     //this.r.navigate(['/pages/layout/detail-artiste/' + u.id]);
-
   }
 
   modifier(u: users) {
-
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-artiste/' + u.id]);
     console.log(u);
-
     // }
-
   }
-
 
   ajouter() {
     this.r.navigate(['/pages/layout/form-artiste/']);
@@ -118,7 +108,7 @@ export class ListArtisteComponent implements OnInit {
   delete(p: users) {
     console.log(p);
     if (window.confirm("êtes-vous sûr suprrimer l'artiste " + p.nom + " " + p.prenom + " ?")) {
-      this.usersService.deleteUser(p[0]).subscribe(res => {
+      this.usersService.deleteUser(p.id).subscribe(res => {
         //alert('Produit deleted !');
 
         this.usersService.getArtistes().subscribe(res => {
@@ -130,7 +120,7 @@ export class ListArtisteComponent implements OnInit {
             dtInstance.destroy();
             // Call the dtTrigger to rerender again
             this.dtTrigger.next();
-          });
+           });
 
         });
 

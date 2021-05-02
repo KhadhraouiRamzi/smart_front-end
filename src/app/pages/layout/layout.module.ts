@@ -77,6 +77,10 @@ import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-op
 import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
 import {ButtonModule} from "primeng/button";
 
+ import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
+import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
+import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
+
 
 @NgModule({
   imports: [
@@ -164,6 +168,9 @@ import {ButtonModule} from "primeng/button";
     FormOperateurComponent,
     EditOperateurComponent,
     DetailOperateurComponent,
+     OrangeDetailsComponent,
+    DeezerDetailsComponent,
+    BeleiveDetailsComponent,
   ],
   providers: [
     NewsService,

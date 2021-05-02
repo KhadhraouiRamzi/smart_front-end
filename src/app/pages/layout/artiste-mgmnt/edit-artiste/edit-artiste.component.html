@@ -1,6 +1,6 @@
 <nb-card>
     <nb-card-header>
-    Edit Artise
+        Edit Artise
     </nb-card-header>
     <nb-card-body>
         <nb-card>
@@ -94,19 +94,40 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr *ngIf="u.marketing ===null">
                                     <td>
                                         <div>
                                             <label for="firstName">Marketing:</label>
-                                            <select class="form-control" [(ngModel)]="u.marketing.id">
-                                                <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
+                                            <select class="form-control" [(ngModel)]="u.marketing">
+
+                                                <option *ngFor="let d of mark" [ngValue]="d">{{ d.nom }} </option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div type="file">
+                                            <img style="width: 100px;height: 100px;border-radius: 100%;"
+                                                [src]="retrievedImage">
+                                            <input type="file" (change)="onFileChanged($event)">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="u.marketing !=null">
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Marketing:</label>
+                                            <select class="form-control" [(ngModel)]="u.marketing.id">
+
+                                                <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div type="file"  >
+                                           <div *ngIf="retrievedImage.picByte !=null">
                                             <img style="width: 100px;height: 100px;border-radius: 100%;" [src]="retrievedImage">
-                                             <input type="file" (change)="onFileChanged($event)">
+                                           </div> 
+                                            <input type="file" (change)="onFileChanged($event)">
                                         </div>
                                     </td>
                                 </tr>

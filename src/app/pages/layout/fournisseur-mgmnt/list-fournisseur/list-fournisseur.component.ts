@@ -74,7 +74,7 @@ export class ListFournisseurComponent implements OnInit {
       this.fournisseurService.deleteUser(p.id).subscribe(res => {
         //alert('Produit deleted !');
 
-        this.fournisseurService.getFournisseurs().subscribe(res => {
+        this.fournisseurService.getFours().subscribe(res => {
           this.fournisseurs = res;
 
           // rerender datatable
