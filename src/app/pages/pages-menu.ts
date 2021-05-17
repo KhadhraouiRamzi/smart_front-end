@@ -318,5 +318,6 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
+    data: "ROLE_ADMIN",
   },
 ];

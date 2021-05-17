@@ -24,7 +24,7 @@ export class FormChansonComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   u: chanson = new chanson();
-  user: users[] = [];
+  users: users[] = [];
   plateforme: plateforme[] = [];
   operateur : operateur [] = [];
   album: album[] = [];
@@ -35,44 +35,10 @@ export class FormChansonComponent implements OnInit {
   statuses4: NbComponentStatus[] = ['info'];
 
 
-
   constructor(private formBuilder: FormBuilder, private albumService :AlbumService ,private plateformeService: PlateformeService,
     private userService: UsersService, private chansonService: ChansonService,private r: Router, private operateurService : OperateurService) { }
 
   ngOnInit(): void {
-    
-    this.operateurService.getlistOperateur().subscribe(res => {
-      this.operateur = res;
-      // Calling the DT trigger to manually render the table
-      console.log(this.operateur);
-      console.log(res);
-
-    });
- 
-    
-    this.plateformeService.getlistPlateforme().subscribe(res => {
-      this.plateforme = res;
-      // Calling the DT trigger to manually render the table
-      console.log(this.plateforme);
-      console.log(res);
-
-    });
-
-    this.albumService.getlistAlbum().subscribe(res => {
-      this.album = res;
-      // Calling the DT trigger to manually render the table
-      console.log(this.album);
-      console.log(res);
-
-    });
-    this.userService.getlistArtFour().subscribe(res => {
-      this.user = res;
-      // Calling the DT trigger to manually render the table
-      console.log(this.user);
-      console.log(res);
-
-    });
-
     this.registerForm = this.formBuilder.group({
       nom: ['', Validators.required],
       nAlbum: ['', Validators.required],
@@ -86,6 +52,30 @@ export class FormChansonComponent implements OnInit {
   
       acceptTerms: [false, Validators.requiredTrue]
     })
+    
+    this.operateurService.getlistOperateur().subscribe(res => {
+      this.operateur = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.operateur);
+    });
+     
+    this.plateformeService.getlistPlateforme().subscribe(res => {
+      this.plateforme = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.plateforme);
+    });
+
+    this.albumService.getlistAlbum().subscribe(res => {
+      this.album = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.album);
+    });
+
+    this.userService.getlistArtFour().subscribe(res => {
+      this.users = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.users);  
+    });
   }
 
   get f() { return this.registerForm.controls; }

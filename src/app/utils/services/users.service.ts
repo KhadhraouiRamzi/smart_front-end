@@ -15,10 +15,14 @@ export class UsersService {
   getUser(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/listUser");
   }
-  getlistArtFour(): Observable<any> { 
+  getlistArtFour(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/ArtFour");
   }
 
+  getFours(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/fours");
+  }
+    
   getlistUser(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/users");
   }
@@ -30,9 +34,7 @@ export class UsersService {
   getArtistes(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/artistes");
   }
-  getFours(): Observable<any> {
-    return this.backend.get<any>(this.baseUrl + "/fours");
-  }
+
 
   getFournisseurs(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/fournisseurs");
