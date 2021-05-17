@@ -58,21 +58,18 @@ export class EditChansonComponent implements OnInit {
       this.user = res;
       // Calling the DT trigger to manually render the table
       console.log(this.user);
-      console.log(res);
     });
 
     this.plateformeService.getlistPlateforme().subscribe(res => {
       this.plateforme = res;
       // Calling the DT trigger to manually render the table
       console.log(this.plateforme);
-      console.log(res);
     });
 
     this.operateurService.getlistOperateur().subscribe(res => {
       this.operateur = res;
       // Calling the DT trigger to manually render the table
       console.log(this.operateur);
-      console.log(res);
     });
 
     let routeId = this.ar.snapshot.paramMap.get('id');

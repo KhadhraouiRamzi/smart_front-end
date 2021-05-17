@@ -21,7 +21,6 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   errorMessage = '';
   roles:any [];
 
-
   constructor( private r: Router,private authService: AuthService,private roleService : RoleService) {
     super(undefined, {}, undefined, undefined);
   }
@@ -36,7 +35,9 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   onSubmit(): void {
     const { email, password,role} = this.form;
 
-    this.authService.register(email, password,role).subscribe(
+    console.log(this.form);
+
+    this.authService.register(email,password,role).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 const AUTH_API = 'http://localhost:8081/api/auth/';
 
@@ -23,7 +23,7 @@ export class AuthService {
   }
 
 
-  register(email: string, password: string, role:any): Observable<any> {
+  register(email: string, password: string, role: any): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       email,
       password,
@@ -31,10 +31,9 @@ export class AuthService {
     }, httpOptions);
   }
 
-
   isAuthenticated(): boolean {
 
-    if(sessionStorage.getItem('auth-token') && sessionStorage.getItem('auth-user')){
+    if (sessionStorage.getItem('auth-token') && sessionStorage.getItem('auth-user')) {
       return true;
     }
     else

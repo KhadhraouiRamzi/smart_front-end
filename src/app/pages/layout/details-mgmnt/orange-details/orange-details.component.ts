@@ -11,12 +11,12 @@ export class OrangeDetailsComponent implements OnInit {
   shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
   sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
   file: any;
+  arrayBuffer: string | ArrayBuffer;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-  /*
   getFile(event: any) {
     this.file = event.target.files[0];
     
@@ -29,31 +29,9 @@ export class OrangeDetailsComponent implements OnInit {
     
     this.fileReader(this.file, classe);
   }
-  // ...
-
-  private fileReader(file: any, line: any) {
-    let fileReader = new FileReader();
-
-    fileReader.onload = (e) => {
-      this.arrayBuffer = fileReader.result;
-      const data = new Uint8Array(this.arrayBuffer);
-      const arr = new Array();
-
-      for (let i = 0; i !== data.length; i++) {
-        arr[i] = String.fromCharCode(data[i]);
-      }
-
-      const bstr = arr.join('');
-      const workbook = XLSX.read(bstr, { type: 'binary', cellDates: true });
-      const first_sheet_name = workbook.SheetNames[0];
-
-      const worksheet = workbook.Sheets[first_sheet_name];
-      this.worksheet = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-
-     
-      this.matchingCell(this.worksheet, line);
-    };
-    fileReader.readAsArrayBuffer(file);
+  fileReader(file: any, classe: { libelle: any; ecole: any; date_creation: any; nbre_etudiant: any; }) {
+    throw new Error('Method not implemented.');
   }
-  */
+  // ...
+ 
 }
