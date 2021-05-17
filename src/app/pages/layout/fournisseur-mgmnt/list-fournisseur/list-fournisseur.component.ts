@@ -13,7 +13,7 @@ import { SmartTableData } from '../../../../@core/data/smart-table';
   styleUrls: ['./list-fournisseur.component.scss']
 })
 export class ListFournisseurComponent implements OnInit {
-
+//old
   fournisseurs: users;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
