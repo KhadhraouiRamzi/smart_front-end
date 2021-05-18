@@ -1,9 +1,11 @@
-// excel-export.service.ts
+/* excel-export.service.ts
 
 import { utils as XLSXUtils, writeFile } from 'xlsx';
-import { WorkBook, WorkSheet } from 'xlsx/types';
+import { WorkBook, WorkSheet } from 'xlsx/types';*/
 
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 export interface IExportAsExcelProps {
   readonly data: any[];
@@ -17,7 +19,24 @@ export interface IExportAsExcelProps {
   providedIn: 'root'
 })
 export class ExcelExportService {
-  fileExtension = '.xlsx';
+
+  private baseUrl = 'http://localhost:8081';
+
+  constructor(private http: HttpClient) { }
+
+  uploadExcelToDetail(file: File): Observable<HttpEvent<{}>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const request = new HttpRequest('POST', 'http://localhost:8081/api/uploadExcel', formData, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+    return this.http.request(request);
+  }
+
+
+
+  /*fileExtension = '.xlsx';
 
   public exportAsExcel({
     data,
@@ -37,5 +56,5 @@ export class ExcelExportService {
     }
 
     writeFile(wb, `${fileName}${this.fileExtension}`);
-  }
+  }*/
 }

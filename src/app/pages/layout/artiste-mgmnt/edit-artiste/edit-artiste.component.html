@@ -124,9 +124,9 @@
                                     </td>
                                     <td>
                                         <div type="file"  >
-                                           <div *ngIf="retrievedImage.picByte !=null">
+                                           <div *ngIf="retrievedImage">
                                             <img style="width: 100px;height: 100px;border-radius: 100%;" [src]="retrievedImage">
-                                           </div> 
+                                           </div>
                                             <input type="file" (change)="onFileChanged($event)">
                                         </div>
                                     </td>
