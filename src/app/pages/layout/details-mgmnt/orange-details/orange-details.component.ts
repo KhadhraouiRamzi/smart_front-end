@@ -13,11 +13,11 @@ export class OrangeDetailsComponent implements OnInit {
   statuses: NbComponentStatus[] = [ 'primary', 'success', 'info', 'warning', 'danger' ];
   shapes: NbComponentShape[] = [ 'rectangle', 'semi-round', 'round' ];
   sizes: NbComponentSize[] = [ 'tiny', 'small', 'medium', 'large', 'giant' ];
-  file: any;
+  file: File;
   arrayBuffer: string | ArrayBuffer;
 
   selectedFile: File;
-  currentFile: File;
+  message: string;
 
   constructor(private excelExportService: ExcelExportService, private router: Router) { }
 
@@ -25,14 +25,24 @@ export class OrangeDetailsComponent implements OnInit {
   }
 
   selectFile(event) {
-    this.selectedFile = event.target.files;
+    this.selectedFile = event.target.files[0];
   }
 
-  upload() {
-    console.log("aaaa");
-    this.currentFile=this.selectedFile;
-    console.log("aaaa"+this.currentFile);
-    this.excelExportService.uploadExcelToDetail(this.currentFile);
+  uploadd() {
+    console.log("file to upload: "+this.selectedFile);
+
+    const uploadExcelData = new FormData();
+
+    uploadExcelData.append('file',this.selectedFile);
+
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+      if (response) {
+        console.log(response);
+        this.message = 'Image uploaded successfully';
+      } else {
+        this.message = 'Image not uploaded successfully';
+      }
+    });
   }
 
   back() {

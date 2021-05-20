@@ -3,12 +3,21 @@
     <nb-card-header> Importer fichier Orange </nb-card-header>
     <nb-card-body>
 
-      <form method="post" enctype="multipart/form-data" class="form-inline">
-        <div class="form-inline">
-          <input type="file" (change)="selectFile($event)">
-          <button class="btn btn-primary btn-lg active" (click)="upload()">Upload File</button>
+      <div>
+        <div style="float: left;flex-flow: row wrap">
+               <input type="file" (change)="selectFile($event)">
+        </div>  
+        <div style="float: right;flex-flow: row wrap">
+               <button class="btn btn-primary btn-lg active" (click)="uploadd()" value="upload">Upload</button>
         </div>
-      </form>
+      </div>
+
+         <!-- <div class="form-inline">
+          <input type="file" (change)="selectFile($event)">
+          </div>
+          <br>
+          <button class="btn btn-primary btn-lg active" (click)="upload()">Upload File</button>-->
+
 
      <!-- <form method="post" enctype="multipart/form-data" class="form-inline">
       <div class="buttons-row">

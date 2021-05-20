@@ -22,7 +22,7 @@ export class UsersService {
   getFours(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/fours");
   }
-    
+
   getlistUser(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/users");
   }

@@ -21,40 +21,12 @@ export interface IExportAsExcelProps {
 export class ExcelExportService {
 
   private baseUrl = 'http://localhost:8081';
+  private file: any;
 
   constructor(private http: HttpClient) { }
 
-  uploadExcelToDetail(file: File): Observable<HttpEvent<{}>> {
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-    const request = new HttpRequest('POST', 'http://localhost:8081/api/uploadExcel', formData, {
-      reportProgress: true,
-      responseType: 'text'
-    });
-    return this.http.request(request);
+  uploadExcelToDetail(uploadExcelData : FormData) {
+    return this.http.post(this.baseUrl + "/uploadExcel", uploadExcelData,{ observe: 'response' });
   }
 
-
-
-  /*fileExtension = '.xlsx';
-
-  public exportAsExcel({
-    data,
-    fileName,
-    sheetName = 'Data',
-    header = [],
-    table
-  }: IExportAsExcelProps): void {
-    let wb: WorkBook;
-
-    if (table) {
-      wb = XLSXUtils.table_to_book(table);
-    } else {
-      const ws: WorkSheet = XLSXUtils.json_to_sheet(data, { header });
-      wb = XLSXUtils.book_new();
-      XLSXUtils.book_append_sheet(wb, ws, sheetName);
-    }
-
-    writeFile(wb, `${fileName}${this.fileExtension}`);
-  }*/
 }

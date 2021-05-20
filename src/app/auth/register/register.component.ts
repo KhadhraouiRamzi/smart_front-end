@@ -34,6 +34,7 @@ export class NgxRegisterComponent extends NbRegisterComponent {
     this.roles=[];
     this.roleService.getRoles().subscribe(data=>{
       this.roles=data;
+      console.log(data);
     })
   }
 

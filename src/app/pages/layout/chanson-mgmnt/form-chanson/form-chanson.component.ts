@@ -13,7 +13,7 @@ import { MarketingService } from '../../../../utils/services/marketing.service';
 import { OperateurService } from '../../../../utils/services/operateur.service';
 import { PlateformeService } from '../../../../utils/services/plateforme.service';
 import { UsersService } from '../../../../utils/services/users.service';
- 
+
 @Component({
   selector: 'ngx-form-chanson',
   templateUrl: './form-chanson.component.html',
@@ -24,11 +24,11 @@ export class FormChansonComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   u: chanson = new chanson();
-  users: users[] = [];
+  users: any[];
   plateforme: plateforme[] = [];
   operateur : operateur [] = [];
   album: album[] = [];
-  
+
   statuses: NbComponentStatus[] = [ 'primary' ];
   statuses2: NbComponentStatus[] = [ 'warning' ];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -49,16 +49,16 @@ export class FormChansonComponent implements OnInit {
       plateforme: ['', Validators.required],
       featuring: ['', Validators.required],
       operateur: ['', Validators.required],
-  
+
       acceptTerms: [false, Validators.requiredTrue]
     })
-    
+
     this.operateurService.getlistOperateur().subscribe(res => {
       this.operateur = res;
       // Calling the DT trigger to manually render the table
       console.log(this.operateur);
     });
-     
+
     this.plateformeService.getlistPlateforme().subscribe(res => {
       this.plateforme = res;
       // Calling the DT trigger to manually render the table
@@ -70,18 +70,18 @@ export class FormChansonComponent implements OnInit {
       // Calling the DT trigger to manually render the table
       console.log(this.album);
     });
-
+    this.users=[];
     this.userService.getlistArtFour().subscribe(res => {
       this.users = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.users);  
+      console.log(this.users);
     });
   }
 
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-    
+
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
@@ -100,7 +100,7 @@ export class FormChansonComponent implements OnInit {
     this.submitted = false;
     this.registerForm.reset();
   }
-  
+
   Retour() {
     this.r.navigate(['/pages/layout/list-chanson/']);
   }
