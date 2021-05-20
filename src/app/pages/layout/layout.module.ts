@@ -78,6 +78,7 @@ import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/det
  import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
 import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
 import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
+import { OrangeStatComponent } from './details-mgmnt/orange-details/orange-stat/orange-stat.component';
   
 
 @NgModule({
@@ -168,6 +169,7 @@ import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive
      OrangeDetailsComponent,
     DeezerDetailsComponent,
     BeleiveDetailsComponent,
+    OrangeStatComponent,
   ],
   providers: [
     NewsService,

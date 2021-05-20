@@ -1,9 +1,6 @@
-// excel-export.service.ts
-
-import { utils as XLSXUtils, writeFile } from 'xlsx';
-import { WorkBook, WorkSheet } from 'xlsx/types';
-
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 export interface IExportAsExcelProps {
   readonly data: any[];
@@ -17,25 +14,14 @@ export interface IExportAsExcelProps {
   providedIn: 'root'
 })
 export class ExcelExportService {
-  fileExtension = '.xlsx';
 
-  public exportAsExcel({
-    data,
-    fileName,
-    sheetName = 'Data',
-    header = [],
-    table
-  }: IExportAsExcelProps): void {
-    let wb: WorkBook;
+  private baseUrl = 'http://localhost:8081';
+  private file: any;
 
-    if (table) {
-      wb = XLSXUtils.table_to_book(table);
-    } else {
-      const ws: WorkSheet = XLSXUtils.json_to_sheet(data, { header });
-      wb = XLSXUtils.book_new();
-      XLSXUtils.book_append_sheet(wb, ws, sheetName);
-    }
+  constructor(private http: HttpClient) { }
 
-    writeFile(wb, `${fileName}${this.fileExtension}`);
+  uploadExcelToDetail(uploadExcelData : FormData) {
+    return this.http.post(this.baseUrl + "/uploadExcel", uploadExcelData,{ observe: 'response' });
   }
+
 }
