@@ -35,10 +35,8 @@
                         <div class="form-group col-5">
                             <label>Nom Artiste / Fournisseur</label>
                             <select formControlName="nArtiste" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="u.user">
-                                <option *ngFor="let d of users" [ngValue]="d">
-                                    {{ d.nom }} {{ d.prenom }}
-                                </option>
+                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="u">
+                              <option *ngFor="let d of users" [value]="d">{{d.nom}} {{d.prenom}}</option>
                             </select>
                             <div *ngIf="submitted && f.nArtiste.errors" class="invalid-feedback">
                                 <div *ngIf="f.nArtiste.errors.required">Nom Artiste/Fournisseur is required</div>
@@ -74,7 +72,7 @@
 
                         <div class="form-group col-5">
                             <label>Plateforme </label>
-                            <select formControlName="plateforme" class="form-control" 
+                            <select formControlName="plateforme" class="form-control"
                                  [(ngModel)]="u.plateforme">
                                 <option *ngFor="let c of plateforme" [ngValue]="c">
                                     {{ c.nom }}
@@ -84,10 +82,10 @@
                                 <div *ngIf="f.plateforme.errors.required">Nom plateforme is required</div>
                             </div>
                         </div>
- 
+
                         <div class="form-group col-5">
                             <label>RBT chanson </label>
-                            <select class="form-control" 
+                            <select class="form-control"
                                 formControlName="operateur" [(ngModel)]="u.operateur">
                                 <option *ngFor="let d of operateur" [ngValue]="d">
                                     {{ d.nom }}
@@ -110,7 +108,7 @@
                                 <div *ngIf="f.plateforme.errors.required">Nom plateforme is required</div>
                             </div>
                         </div>
- 
+
                         <div class="form-group col-5">
                             <label>RBT chanson </label>
                             <nb-select multiple placeholder="Multiple Select" size="large" style="width: 100%"
