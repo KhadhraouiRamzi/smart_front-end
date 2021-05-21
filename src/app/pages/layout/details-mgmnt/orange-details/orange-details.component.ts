@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import {NbComponentShape, NbComponentSize, NbComponentStatus, NbDialogService} from '@nebular/theme';
 import {ExcelExportService} from "../../../../utils/services/excel-export.service";
 import {HttpEventType} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {getErrorMessage} from "codelyzer/templateAccessibilityElementsContentRule";
+import {messages} from "../../../extra-components/chat/messages";
 
 @Component({
   selector: 'ngx-orange-details',
@@ -18,6 +20,8 @@ export class OrangeDetailsComponent implements OnInit {
 
   selectedFile: File;
   message: string;
+  statut:any;
+  hide:any;
 
   constructor(private excelExportService: ExcelExportService, private router: Router) { }
 
@@ -34,24 +38,19 @@ export class OrangeDetailsComponent implements OnInit {
     const uploadExcelData = new FormData();
 
     uploadExcelData.append('file',this.selectedFile);
-
     this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
-      if (response) {
-        console.log(response);
-        this.message = 'Image uploaded successfully';
-      } else {
-        this.message = 'Image not uploaded successfully';
-      }
-    });
-  }
+/*      if (response) {*/
+        this.statut=response.status;
+        this.message = response.body.valueOf()['message'];
+/*      } if(!response) {
+        !this.hide;
+        console.log(this.hide);
+        this.statut=response.status;
+        console.log(this.statut);
+        this.message = response.body.valueOf()['message'];
+        console.log(this.message);
+      }*/
+    },error => this.message=error.message);}
 
-  back() {
-    this.router.navigate(['/pages/layout/list-chanson/']);
-  }
-
-  /*fileReader(file: any, classe: { libelle: any; ecole: any; date_creation: any; nbre_etudiant: any; }) {
-    throw new Error('Method not implemented.');
-  }
-  // ...*/
 
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NbAccordionModule,
-  NbActionsModule,
+  NbActionsModule, NbAlertModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
@@ -113,6 +113,7 @@ import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive
     NbIconModule,
     FormsModule,
     ButtonModule,
+    NbAlertModule,
   ],
   declarations: [
     LayoutComponent,

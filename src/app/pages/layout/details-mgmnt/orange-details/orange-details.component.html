@@ -1,3 +1,6 @@
+
+        <nb-alert status="success"*ngIf="this.statut==200">{{this.message}}</nb-alert>
+
 <div class="col-md-12 col-lg-12 col-xxxl-11" center>
   <nb-card>
     <nb-card-header> Importer fichier Orange </nb-card-header>
@@ -5,7 +8,7 @@
 
       <div>
         <div style="float: left;flex-flow: row wrap">
-               <input type="file" (change)="selectFile($event)">
+               <input type="file" (change)="selectFile($event)"> NB: Le fichier il doit etre de type "Classeur Excel" (.xlsx) !
         </div>  
         <div style="float: right;flex-flow: row wrap">
                <button class="btn btn-primary btn-lg active" (click)="uploadd()" value="upload">Upload</button>
