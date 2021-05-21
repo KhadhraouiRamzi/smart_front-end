@@ -75,10 +75,15 @@ import { ListOperateurComponent } from './operateur-mgmnt/list-operateur/list-op
 import { FormOperateurComponent } from './operateur-mgmnt/form-operateur/form-operateur.component';
 import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-operateur.component';
 import { DetailOperateurComponent } from './operateur-mgmnt/detail-operateur/detail-operateur.component';
- import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
+import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
 import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
 import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
 import { OrangeStatComponent } from './details-mgmnt/orange-details/orange-stat/orange-stat.component';
+import { OrangeStatChansonComponent } from './details-mgmnt/orange-details/orange-stat-chanson/orange-stat-chanson.component';
+import { OrangeStatCategoryComponent } from './details-mgmnt/orange-details/orange-stat-category/orange-stat-category.component';
+import { OrangeStatDateComponent } from './details-mgmnt/orange-details/orange-stat-date/orange-stat-date.component';
+import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange-stat-count-a/orange-stat-count-a.component';
+import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
   
 
 @NgModule({
@@ -166,10 +171,15 @@ import { OrangeStatComponent } from './details-mgmnt/orange-details/orange-stat/
     FormOperateurComponent,
     EditOperateurComponent,
     DetailOperateurComponent,
-     OrangeDetailsComponent,
+    OrangeDetailsComponent,
     DeezerDetailsComponent,
     BeleiveDetailsComponent,
     OrangeStatComponent,
+    OrangeStatChansonComponent,
+    OrangeStatCategoryComponent,
+    OrangeStatDateComponent,
+    OrangeStatCountCComponent,
+    OrangeStatCountAComponent,
   ],
   providers: [
     NewsService,

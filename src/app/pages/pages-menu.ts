@@ -49,7 +49,19 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Orange',
-        link: '/pages/layout/orange',
+        icon: 'keypad-outline',
+        children: [
+          {
+            title: 'Import fichier Orange',
+            link: '/pages/layout/orange',
+          },
+          {
+            title: 'Tendances quotidiennes',
+            link: '/pages/layout/orange-stat',
+          },
+          
+        ],
+        data: "ROLE_ADMIN",
       },
       {
         title: 'Deezer',
@@ -90,7 +102,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
     data: "ROLE_ADMIN",
   },
-  /* {
+ {
      title: 'Layout',
      icon: 'layout-outline',
      children: [
@@ -295,7 +307,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
          link: '/pages/miscellaneous/404',
        },
      ],
-   },*/
+   },
   {
     title: 'Auth',
     icon: 'lock-outline',

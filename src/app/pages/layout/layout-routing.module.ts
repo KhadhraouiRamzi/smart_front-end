@@ -48,14 +48,44 @@ import { EditOperateurComponent } from './operateur-mgmnt/edit-operateur/edit-op
 import { OrangeDetailsComponent } from './details-mgmnt/orange-details/orange-details.component';
 import { DeezerDetailsComponent } from './details-mgmnt/deezer-details/deezer-details.component';
 import { BeleiveDetailsComponent } from './details-mgmnt/beleive-details/beleive-details.component';
+import { OrangeStatComponent } from './details-mgmnt/orange-details/orange-stat/orange-stat.component';
+import { OrangeStatCategoryComponent } from './details-mgmnt/orange-details/orange-stat-category/orange-stat-category.component';
+import { OrangeStatChansonComponent } from './details-mgmnt/orange-details/orange-stat-chanson/orange-stat-chanson.component';
+import { OrangeStatDateComponent } from './details-mgmnt/orange-details/orange-stat-date/orange-stat-date.component';
+import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange-stat-count-a/orange-stat-count-a.component';
+import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
     {
+      path: 'orange-stat',  
+      component: OrangeStatComponent,
+    },
+    {
+      path: 'orange-stat-category',
+      component: OrangeStatCategoryComponent,
+    },
+    {
+      path: 'orange-stat-chanson',
+      component: OrangeStatChansonComponent,
+    },
+    {
+      path: 'orange-stat-date',
+      component: OrangeStatDateComponent,
+    },
+    {
+      path: 'orange-stat-count-artsite',
+      component: OrangeStatCountAComponent,
+    },
+    {
+      path: 'orange-stat-count-chanson',
+      component: OrangeStatCountCComponent,
+    },
+    {
       path: 'orange',
-      component: OrangeDetailsComponent,
+      component: OrangeDetailsComponent,  
     },
     {
       path: 'deezer',
@@ -63,7 +93,7 @@ const routes: Routes = [{
     },
     {
       path: 'beleive',
-      component: BeleiveDetailsComponent,
+      component: BeleiveDetailsComponent,  
     },
      
     {
