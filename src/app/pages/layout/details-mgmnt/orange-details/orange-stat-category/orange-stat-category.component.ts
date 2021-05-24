@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import { NbComponentStatus } from '@nebular/theme';
 import { DataTableDirective } from 'angular-datatables';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'ngx-orange-stat-category',
@@ -14,40 +15,39 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./orange-stat-category.component.scss']
 })
 export class OrangeStatCategoryComponent implements OnInit {
- 
-  categorie: details[] = [];
-  fileName = 'Liste Artistes.xlsx';  
-
-  statuses: NbComponentStatus[] = ['success'];
-  statuses2: NbComponentStatus[] = ['primary'];
-  statuses3: NbComponentStatus[] = ['danger'];
-  statuses4: NbComponentStatus[] = ['info'];
-
-
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger = new Subject();
+  fileName = 'Liste top chansons.xlsx';
+  details: details[];
+  statuses: NbComponentStatus[] = ['success'];
+  statuses2: NbComponentStatus[] = ['primary'];
+  statuses3: NbComponentStatus[] = ['danger'];
+  statuses4: NbComponentStatus[] = ['basic'];
+  statuses5: NbComponentStatus[] = ['warning'];
+  statuses6: NbComponentStatus[] = ['info'];
+  statuses7: NbComponentStatus[] = ['control'];
 
-  constructor(private detailsService: DetailsService, private r: Router) { }
-
+  constructor(private detaisSerivce: DetailsService, private r: Router) { }
+ 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 10,
+      language:{url:"/assets/datatable-French.json"},
     };
 
-    this.detailsService.getStatCategory().subscribe(
+    this.detaisSerivce.getStatCategory().subscribe(
       res => {
         console.log(res);
-        this.categorie = res;
+        this.details = res;
         console.log(res);
         this.dtTrigger.next();
-
       });
-
   }
+
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('excel-table');
@@ -62,7 +62,24 @@ export class OrangeStatCategoryComponent implements OnInit {
   }
 
 
-  header = [['Nom', 'Prenom', 'Phone', 'Email', 'CIN', 'Part']]
+  header = [['Nom Artiste', 'Net Revenu', 'Nombre d écoute']]
+
+  public openPDF():void {
+    let DATA = document.getElementById('excel-table');
+      
+    html2canvas(DATA).then(canvas => {
+        
+        let fileWidth = 208;
+        let fileHeight = canvas.height * fileWidth / canvas.width;
+        
+        const FILEURI = canvas.toDataURL('image/png')
+        let PDF = new jsPDF('p', 'mm', 'a4');
+        let position = 0;
+        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+        
+        PDF.save('Liste top chansons.pdf');
+    });     
+  }
 
   generatePdf() {
     var pdf = new jsPDF();
@@ -72,10 +89,9 @@ export class OrangeStatCategoryComponent implements OnInit {
     pdf.setFontSize(12);
     pdf.setTextColor(99);
 
-
     (pdf as any).autoTable({
       head: this.header,
-      body: this.categorie,
+      body: this.details,
       theme: 'plain',
       didDrawCell: data => {
         console.log(data.column.index)
@@ -86,6 +102,25 @@ export class OrangeStatCategoryComponent implements OnInit {
     pdf.output('dataurlnewwindow')
 
     // Download PDF doc  
-    pdf.save('Artiste.pdf');
+    pdf.save('Chanson.pdf');
+  }
+  
+  Artiste(){    
+    this.r.navigate(['/pages/layout/orange-stat/']);
+  }
+  Chanson(){    
+    this.r.navigate(['/pages/layout/orange-stat-chanson/']);
+  }
+  Categorie(){    
+    this.r.navigate(['/pages/layout/orange-stat-category/']);
+  }
+  Mois(){    
+    this.r.navigate(['/pages/layout/orange-stat-date/']);
+  }
+  CountA(){    
+    this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
+  }
+  CountD(){    
+    this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
 }

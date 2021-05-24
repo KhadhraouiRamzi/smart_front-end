@@ -11,7 +11,7 @@
             <nb-card>
                 <nb-card-body>
                     <td>
-                        <a (click)="Artiste" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                        <a (click)="Artiste" *ngFor="let status of statuses4" nbButton [status]="status" hero>
                             Tendances Artiste</a>
                         <a class="card-header" (click)="Chanson()" *ngFor="let status of statuses" nbButton
                             [status]="status" outline>
