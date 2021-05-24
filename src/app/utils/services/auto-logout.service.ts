@@ -38,9 +38,9 @@ export class AutoLogoutService {
 
   reset() {
 
-    console.log('date got by using events',Date.now());
+    //console.log('date got by using events',Date.now());
     this.setLastAction(Date.now());
-    console.log('store key',localStorage.getItem(STORE_KEY));
+    //console.log('store key',localStorage.getItem(STORE_KEY));
 
   }
 
@@ -52,11 +52,11 @@ export class AutoLogoutService {
 
   check() {
     const now = Date.now();
-    console.log(now);
+    //console.log(now);
     const timeleft = this.getLastAction() + MINUTES_UNITL_AUTO_LOGOUT * 60 * 1000;
-    console.log(timeleft);
+    //console.log(timeleft);
     const diff = timeleft - now;
-    console.log('difference',diff)
+    //console.log('difference',diff)
     const isTimeout = diff < 0;
 
     if (isTimeout)  {
@@ -66,7 +66,7 @@ export class AutoLogoutService {
     }
   }
   storageEvt(){
-    console.log("storage");
+    //console.log("storage");
     this.val = localStorage.getItem(STORE_KEY);
   }
 
