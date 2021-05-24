@@ -1,3 +1,36 @@
+<nb-card>
+  <nb-card-header>
+    Tendances quotidiennes
+  </nb-card-header>
+  <nb-card-body>
+    <div style="margin-left: 20px;margin-right: 20px;">
+      <nb-card>
+        <nb-card-body>
+          <div class="card-header">
+            <table id="excel-table" class="table table-striped table-bordered table-sm row-border hover">
+              <thead>
+              <tr>
+                <th>Nom Chanson</th>
+                <th>Net revenu</th>
+                <th>Nombre d'écoute</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of details">
+                <td>{{ p[0] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+
 <div class="row">
   <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
     <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">

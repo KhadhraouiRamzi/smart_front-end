@@ -2,16 +2,16 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
+    title: 'Dashboard',
+    icon: 'home-outline',
+    link: '/pages/iot-dashboard',
+    home: true,
+  },
+/*  {
     title: 'E-commerce',
     icon: 'shopping-cart-outline',
     link: '/pages/dashboard',
-    home: true,
-  },
-  {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
-  },
+  },*/
   {
     title: 'FEATURES',
     group: true,
@@ -59,7 +59,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
             title: 'Tendances quotidiennes',
             link: '/pages/layout/orange-stat',
           },
-          
+
         ],
         data: "ROLE_ADMIN",
       },

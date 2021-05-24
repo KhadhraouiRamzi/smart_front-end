@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { details } from '../../../../../models/details';
 import { DetailsService } from '../../../../../utils/services/details.service';
-import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
 import { NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
+import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
 
 @Component({
   selector: 'ngx-orange-stat',
@@ -15,7 +15,7 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./orange-stat.component.scss']
 })
 export class OrangeStatComponent implements OnInit {
-  
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -32,7 +32,7 @@ export class OrangeStatComponent implements OnInit {
   statuses7: NbComponentStatus[] = ['control'];
 
   constructor(private detaisSerivce: DetailsService, private r: Router) { }
- 
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -52,14 +52,14 @@ export class OrangeStatComponent implements OnInit {
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('excel-table');
-    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    const ws: WorkSheet = utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    const wb: WorkBook = utils.book_new();
+    utils.book_append_sheet(wb, ws, 'Sheet1');
 
     /* save to file */
-    XLSX.writeFile(wb, this.fileName);
+    writeFile(wb, this.fileName);
   }
 
 
@@ -67,19 +67,19 @@ export class OrangeStatComponent implements OnInit {
 
   public openPDF():void {
     let DATA = document.getElementById('excel-table');
-      
+
     html2canvas(DATA).then(canvas => {
-        
+
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
+
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-        
+
         PDF.save('Liste top chansons.pdf');
-    });     
+    });
   }
 
   generatePdf() {
@@ -102,26 +102,26 @@ export class OrangeStatComponent implements OnInit {
     // Open PDF document in browser's new tab
     pdf.output('dataurlnewwindow')
 
-    // Download PDF doc  
+    // Download PDF doc
     pdf.save('Chanson.pdf');
   }
-  
-  Artiste(){    
+
+  Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
   }
-  Chanson(){    
+  Chanson(){
     this.r.navigate(['/pages/layout/orange-stat-chanson/']);
   }
-  Categorie(){    
+  Categorie(){
     this.r.navigate(['/pages/layout/orange-stat-category/']);
   }
-  Mois(){    
+  Mois(){
     this.r.navigate(['/pages/layout/orange-stat-date/']);
   }
-  CountA(){    
+  CountA(){
     this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
   }
-  CountD(){    
+  CountD(){
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
 }
