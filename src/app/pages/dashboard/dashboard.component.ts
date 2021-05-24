@@ -106,7 +106,7 @@ export class DashboardComponent implements OnDestroy,OnInit{
 
   ngOnInit(): void {
 
-    this.detaisSerivce.getStatChanson().subscribe(
+    this.detaisSerivce.getTopChanson().subscribe(
       res => {
         console.log(res);
         this.details = res;
