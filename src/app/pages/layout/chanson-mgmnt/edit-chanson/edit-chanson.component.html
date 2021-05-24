@@ -1,0 +1,141 @@
+<nb-card>
+    <nb-card-header>
+        Edit Chanson
+    </nb-card-header>
+    <nb-card-body>
+        <nb-card>
+            <nb-card-header>
+                <!--    <nb-card>
+                    <nb-card-header>Select</nb-card-header>
+                    <nb-card-body>
+                        <nb-select selected="1">
+                            <nb-option value="1">Option 1</nb-option>
+                            <nb-option value="2">Option 2</nb-option>
+                        </nb-select>
+                    </nb-card-body>
+                </nb-card>
+            <nb-select cl type="text" class="form-control"   [(ngModel)]="u.artiste.nom"
+                                                selected="3">
+                                                <nb-option value="1">Option 1</nb-option>
+                                                <nb-option value="2">Option 2</nb-option>
+                                                <nb-option *ngFor="let d of artiste" [ngValue]="d.nom" value="3">
+                                                    {{ d.nom }} {{ d.prenom }}
+                                                </nb-option>-->
+                <div class="buttons-row">
+                    <div class="form-row">
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180%>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Nom chanson:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nom" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="nArtiste">Nom artiste:</label>
+                                            <select class="form-control" name="profil" [(ngModel)]="u.user.id">
+                                                <option *ngFor="let d of user" [ngValue]="d.id">{{ d.nom }} {{d.prenom}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Featuring:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.featuring" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Date de chanson:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="u.datec" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Genre:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.genre" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">RBT :</label>
+                                            <select class="form-control" name="profil" [(ngModel)]="u.operateur.id">
+                                                <option *ngFor="let p of operateur" [ngValue]="p.id">{{ p.nom }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">ISRC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.type" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="Plateforme">Plateforme:</label>
+                                            <select class="form-control" name="profil" [(ngModel)]="u.plateforme.id">
+                                                <option *ngFor="let p of plateforme" [ngValue]="p.id">{{ p.nom }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="nArtiste">Album:</label>
+                                            <select class="form-control" name="profil" [(ngModel)]="u.album.id">
+                                                <option *ngFor="let p of album" [ngValue]="p.id">{{ p.titre }}</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="fournisseur">Nom Fournisseur:</label>
+                                            <select class="form-control" name="fournisseur" [(ngModel)]="u.user.id">
+                                                <option *ngFor="let c of users" [ngValue]="c.id">{{ c.nom }}</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>      
