@@ -21,7 +21,7 @@ export class OrangeStatComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
-  fileName = 'Liste top chansons.xlsx';
+  fileName = 'Liste top artiste.xlsx';
   details: details[];
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
@@ -78,7 +78,7 @@ export class OrangeStatComponent implements OnInit {
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
 
-        PDF.save('Liste top chansons.pdf');
+        PDF.save('Liste top artistes.pdf');
     });
   }
 
@@ -103,7 +103,7 @@ export class OrangeStatComponent implements OnInit {
     pdf.output('dataurlnewwindow')
 
     // Download PDF doc
-    pdf.save('Chanson.pdf');
+    pdf.save('Artiste.pdf');
   }
 
   Artiste(){

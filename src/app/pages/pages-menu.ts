@@ -18,7 +18,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Profile',
-    icon: 'people',
+    icon: 'person-outline',
     link: '/auth/profile',
   },
   {
@@ -29,7 +29,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Fournisseur',
-    icon: 'shuffle-2-outline',
+    icon: 'grid-outline',
     link: '/pages/layout/list-fournisseur',
     data: "ROLE_ADMIN",
   },
@@ -40,16 +40,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Album',
-    icon: 'grid-outline',
+    icon: 'shuffle-2-outline',
     link: '/pages/layout/list-album',
   },
   {
     title: 'Statéstique',
-    icon: 'keypad-outline',
+    icon: 'trending-up-outline',
     children: [
       {
         title: 'Orange',
-        icon: 'keypad-outline',
+        icon: 'fas fa-analytics',
         children: [
           {
             title: 'Import fichier Orange',
@@ -76,7 +76,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Paramétre',
-    icon: 'keypad-outline',
+    icon: 'settings-2-outline',
     children: [
       {
         title: 'Plateforme',
