@@ -35,7 +35,7 @@
                         <div class="form-group col-5">
                             <label>Nom Artiste / Fournisseur</label>
                             <select formControlName="nArtiste" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="u">
+                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="users">
                               <option *ngFor="let d of users" [value]="d">{{d.nom}} {{d.prenom}}</option>
                             </select>
                             <div *ngIf="submitted && f.nArtiste.errors" class="invalid-feedback">

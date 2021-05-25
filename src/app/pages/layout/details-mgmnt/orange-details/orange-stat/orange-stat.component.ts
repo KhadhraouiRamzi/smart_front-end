@@ -4,10 +4,11 @@ import { Subject } from 'rxjs';
 import { details } from '../../../../../models/details';
 import { DetailsService } from '../../../../../utils/services/details.service';
 import jsPDF from 'jspdf';
-import { NbComponentStatus } from '@nebular/theme';
+import { NbComponentShape, NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
+import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
 
 @Component({
   selector: 'ngx-orange-stat',
@@ -19,6 +20,10 @@ export class OrangeStatComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
+  selectedFile: File;
+  message: string;
+  statut:any;
+  hide:any;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
@@ -30,8 +35,10 @@ export class OrangeStatComponent implements OnInit {
   statuses5: NbComponentStatus[] = ['warning'];
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
-
-  constructor(private detaisSerivce: DetailsService, private r: Router) { }
+  shapes: NbComponentShape[] = [ 'round' ];
+ 
+  constructor(private excelExportService: ExcelExportService, 
+  private detaisSerivce: DetailsService, private r: Router) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -127,4 +134,26 @@ export class OrangeStatComponent implements OnInit {
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
+  
+  ajouter(){
+    this.r.navigate(['/pages/layout/orange/']);
+  }
+
+  
+  selectFile(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadd() {
+    console.log("file to upload: "+this.selectedFile);
+
+    const uploadExcelData = new FormData();
+
+    uploadExcelData.append('file',this.selectedFile);
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+        this.statut=response.status;
+        this.message = response.body.valueOf()['message'];
+    },error => this.message=error.message);}
+
+
 }

@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/dashboard',
   },*/
   {
-    title: 'FEATURES',
+    title: 'FONCTIONNALITÉS',
     group: true,
   },
   {
@@ -46,10 +46,13 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Statéstique',
     icon: 'trending-up-outline',
+    
     children: [
       {
         title: 'Orange',
-        icon: 'fas fa-analytics',
+        /*icon: 'fas fa-analytics',*/
+        link: '/pages/layout/orange-stat',
+/*
         children: [
           {
             title: 'Import fichier Orange',
@@ -59,9 +62,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
             title: 'Tendances quotidiennes',
             link: '/pages/layout/orange-stat',
           },
-
-        ],
         data: "ROLE_ADMIN",
+
+        ],*/
       },
       {
         title: 'Deezer',
