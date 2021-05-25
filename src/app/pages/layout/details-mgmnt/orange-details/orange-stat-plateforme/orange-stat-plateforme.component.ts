@@ -8,13 +8,12 @@ import jsPDF from 'jspdf';
 import { NbComponentStatus } from '@nebular/theme';
 import { DataTableDirective } from 'angular-datatables';
 import html2canvas from 'html2canvas';
-
 @Component({
-  selector: 'ngx-orange-stat-category',
-  templateUrl: './orange-stat-category.component.html',
-  styleUrls: ['./orange-stat-category.component.scss']
+  selector: 'ngx-orange-stat-plateforme',
+  templateUrl: './orange-stat-plateforme.component.html',
+  styleUrls: ['./orange-stat-plateforme.component.scss']
 })
-export class OrangeStatCategoryComponent implements OnInit {
+export class OrangeStatPlateformeComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -39,7 +38,7 @@ export class OrangeStatCategoryComponent implements OnInit {
       language:{url:"/assets/datatable-French.json"},
     };
 
-    this.detaisSerivce.getStatCategory().subscribe(
+    this.detaisSerivce.getStatPlateforme().subscribe(
       res => {
         console.log(res);
         this.details = res;

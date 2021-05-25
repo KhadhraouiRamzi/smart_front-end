@@ -11,19 +11,21 @@
             <nb-card>
                 <nb-card-body>
                     <td>
-                        <a (click)="Artiste" *ngFor="let status of statuses4" nbButton [status]="status" outline>
-                            Tendances Artiste</a>
+                        <a (click)="Artiste()" *ngFor="let status of statuses6" nbButton [status]="status" outline>
+                            Par Artiste</a>
                         <a class="card-header" (click)="Chanson()" *ngFor="let status of statuses" nbButton
                             [status]="status" outline>
-                            Tendances Chanson</a>
-                        <a (click)="Categorie()" *ngFor="let status of statuses6" nbButton [status]="status" hero>
-                            Tendances Categorie</a>
-                        <a (click)="Mois()" *ngFor="let status of statuses5" nbButton [status]="status" outline>
-                            Tendances Mois</a>
-                        <a (click)="CountA()" *ngFor="let status of statuses3" nbButton [status]="status" outline>
-                            Tendances Count Artiste</a>
-                        <a (click)="CountD()" *ngFor="let status of statuses2" nbButton [status]="status" outline>
-                            Tendances Count Chanson</a>
+                            Par Chanson</a>
+                        <a (click)="Categorie()" *ngFor="let status of statuses3" nbButton [status]="status" hero>
+                            Par Categorie</a>
+                        <a (click)="Plateforme()" *ngFor="let status of statuses5" nbButton [status]="status" outline>
+                            Par Plateforme</a>
+                        <a (click)="CountD()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                            Nombre d'écoute Chanson </a>
+                        <a (click)="CountA()" *ngFor="let status of statuses2" nbButton [status]="status" outline>
+                            Nombre d'écoute Artiste</a>
+                        <a (click)="Mois()" nbButton >
+                            Date d'écoute</a>
                     </td>
                     <br>
                     <div class="card-header">
@@ -42,8 +44,13 @@
                             <thead>
                                 <tr>
                                     <th>Nom Categorie</th>
-                                    <th>Net revenu</th>
+                                    <th>TTC</th>
                                     <th>Nombre d'écoute</th>
+                                    <th>Part smart</th>
+                                    <th>Tax telecom</th>
+                                    <th>Part TTC</th>
+                                    <th>HTVA</th>
+                                    <th>Part artiste</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +58,11 @@
                                     <td>{{ p[0] }}</td>
                                     <td>{{ p[1] }}</td>
                                     <td>{{ p[2] }}</td>
+                                    <td>{{ p[3] }}</td>
+                                    <td>{{ p[4] }}</td>
+                                    <td>{{ p[5] }}</td>
+                                    <td>{{ p[6] }}</td>
+                                    <td>{{ p[7] }}</td>
                                 </tr>
                             </tbody>
                         </table>

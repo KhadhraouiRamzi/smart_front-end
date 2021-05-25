@@ -13,27 +13,59 @@ export class DetailsService {
   constructor(private backend: HttpClient) { }
 
 
-  getStatChanson(): Observable<any> {
+  getTopChanson(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topChanson");
   }
 
-  getStatArtiste(): Observable<any> {
+  getTopPlateforme(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statPlateforme");
+  }
+  getTopArtiste(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topArtiste");
   }
-  
-  getStatCategory(): Observable<any> {
+
+  getTopCategory(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topCategory");
   }
-  
-  getStatCountC(): Observable<any> {
+
+  getTopCountC(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topCountC");
   }
-  
-  getStatCountA(): Observable<any> {
+
+  getTopCountA(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topCountA");
   }
-   
-  getStatDate(): Observable<any> {
+
+  getTopDate(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topDate");
-  } 
+  }
+
+
+  getStatPlateforme(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statPlateforme");
+  }
+
+  getStatChanson(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statChanson");
+  }
+
+  getStatArtiste(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statArtiste");
+  }
+
+  getStatCategory(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statcategory");
+  }
+
+  getStatCountC(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statCountC");
+  }
+
+  getStatCountA(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statCountA");
+  }
+
+  getStatDate(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statDate");
+  }
 }

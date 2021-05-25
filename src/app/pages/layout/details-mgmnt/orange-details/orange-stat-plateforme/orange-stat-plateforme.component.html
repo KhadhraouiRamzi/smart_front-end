@@ -6,7 +6,7 @@
     <nb-card-body>
         <div style="margin-left: 20px;margin-right: 20px;">
             <nb-card-header>
-                Top Date
+                Liste plateformes
             </nb-card-header>
             <nb-card>
                 <nb-card-body>
@@ -18,7 +18,7 @@
                             Par Chanson</a>
                         <a (click)="Categorie()" *ngFor="let status of statuses3" nbButton [status]="status" outline>
                             Par Categorie</a>
-                        <a (click)="Plateforme()" *ngFor="let status of statuses5" nbButton [status]="status" outline>
+                        <a (click)="Plateforme()" *ngFor="let status of statuses5" nbButton [status]="status" hero>
                             Par Plateforme</a>
                         <a (click)="CountD()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
                             Nombre d'écoute Chanson </a>
@@ -43,8 +43,7 @@
                             class="table table-striped table-bordered table-sm row-border hover">
                             <thead>
                                 <tr>
-                                    <th>Date debut</th>
-                                    <th>Date fin</th>
+                                    <th>Nom plateforme</th>
                                     <th>TTC</th>
                                     <th>Nombre d'écoute</th>
                                     <th>Part smart</th>
@@ -64,7 +63,6 @@
                                     <td>{{ p[5] }}</td>
                                     <td>{{ p[6] }}</td>
                                     <td>{{ p[7] }}</td>
-                                    <td>{{ p[8] }}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -84,6 +84,7 @@ import { OrangeStatCategoryComponent } from './details-mgmnt/orange-details/oran
 import { OrangeStatDateComponent } from './details-mgmnt/orange-details/orange-stat-date/orange-stat-date.component';
 import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange-stat-count-a/orange-stat-count-a.component';
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
+import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
 
 
 @NgModule({
@@ -181,6 +182,7 @@ import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange
     OrangeStatDateComponent,
     OrangeStatCountCComponent,
     OrangeStatCountAComponent,
+    OrangeStatPlateformeComponent,
   ],
   providers: [
     NewsService,

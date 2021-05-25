@@ -20,7 +20,11 @@ interface CardSettings {
 export class DashboardComponent implements OnDestroy,OnInit{
 
   dtTrigger = new Subject();
-  details: details[];
+  detailsTopChanson: details[];
+  detailsTopArtiste: details[];
+  detailsTopCategory: details[];
+  detailsTopPlatform: details[];
+  detailsTopDate: details[];
 
 
   private alive = true;
@@ -106,10 +110,42 @@ export class DashboardComponent implements OnDestroy,OnInit{
 
   ngOnInit(): void {
 
-    this.detaisSerivce.getStatChanson().subscribe(
+    this.detaisSerivce.getTopChanson().subscribe(
       res => {
         console.log(res);
-        this.details = res;
+        this.detailsTopChanson = res;
+        console.log(res);
+        this.dtTrigger.next();
+
+      });
+    this.detaisSerivce.getTopArtiste().subscribe(
+      res => {
+        console.log(res);
+        this.detailsTopArtiste = res;
+        console.log(res);
+        this.dtTrigger.next();
+
+      });
+    this.detaisSerivce.getTopCategory().subscribe(
+      res => {
+        console.log(res);
+        this.detailsTopCategory = res;
+        console.log(res);
+        this.dtTrigger.next();
+
+      });
+    this.detaisSerivce.getTopPlateforme().subscribe(
+      res => {
+        console.log(res);
+        this.detailsTopPlatform = res;
+        console.log(res);
+        this.dtTrigger.next();
+
+      });
+    this.detaisSerivce.getTopDate().subscribe(
+      res => {
+        console.log(res);
+        this.detailsTopDate = res;
         console.log(res);
         this.dtTrigger.next();
 

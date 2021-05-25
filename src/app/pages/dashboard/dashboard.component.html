@@ -1,31 +1,177 @@
 <nb-card>
-  <nb-card-header>
+  <nb-card-header class="h3 location">
     Tendances quotidiennes
   </nb-card-header>
   <nb-card-body>
     <div style="margin-left: 20px;margin-right: 20px;">
-      <nb-card>
-        <nb-card-body>
-          <div class="card-header">
-            <table id="excel-table" class="table table-striped table-bordered table-sm row-border hover">
-              <thead>
-              <tr>
-                <th>Nom Chanson</th>
-                <th>Net revenu</th>
-                <th>Nombre d'écoute</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let p of details">
-                <td>{{ p[0] }}</td>
-                <td>{{ p[1] }}</td>
-                <td>{{ p[2] }}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </nb-card-body>
-      </nb-card>
+      <div class="row">
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Chansons
+              </div>
+              <div class="card-header">
+                <table id="excel-table" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Nom Chanson</th>
+                    <th>TTC</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Part smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopChanson">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-chanson">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Artistes
+              </div>
+              <div class="card-header">
+                <table id="excel-tablee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Nom Artiste</th>
+                    <th>TTC</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Part smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopArtiste">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Catégories
+              </div>
+              <div class="card-header">
+                <table id="excel-tableeee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Catégorie</th>
+                    <th>TTC</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Part smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopCategory">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-category">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Platformes
+              </div>
+              <div class="card-header">
+                <table id="excel-tableeeee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Top Platforme</th>
+                    <th>TTC</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Part smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopPlatform">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-platefrome">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+      </div>
+        <nb-card>
+          <nb-card-body>
+            <div class="title h5" style="margin-left: 20%">
+              Top Date
+            </div>
+            <div class="card-header">
+              <table id="excel-tableeeeee" class="table table-striped table-bordered table-sm row-border hover">
+                <thead>
+                <tr>
+                  <th>Date debut</th>
+                  <th>Date fin</th>
+                  <th>TTC</th>
+                  <th>Nombre d'écoute</th>
+                  <th>Part smart</th>
+                  <th>Part artiste</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let p of detailsTopDate">
+                  <td>{{ p[0] }}</td>
+                  <td>{{ p[1] }}</td>
+                  <td>{{ p[2] }}</td>
+                  <td>{{ p[3] }}</td>
+                  <td>{{ p[4] }}</td>
+                  <td>{{ p[8] }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </nb-card-body>
+          <a href="http://localhost:4200/pages/layout/orange-stat-date">Plus D'info....></a>
+          <br>
+        </nb-card>
+
     </div>
   </nb-card-body>
 </nb-card>

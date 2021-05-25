@@ -126,4 +126,8 @@ export class OrangeStatDateComponent implements OnInit {
   CountD(){    
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
+  
+  Plateforme(){
+    this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
+  }
 }
