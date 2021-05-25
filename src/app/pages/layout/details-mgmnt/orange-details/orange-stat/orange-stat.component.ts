@@ -28,7 +28,7 @@ export class OrangeStatComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
-  details: details[];
+  details: details;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -40,13 +40,13 @@ export class OrangeStatComponent implements OnInit {
  
   constructor(private excelExportService: ExcelExportService, 
   private detaisSerivce: DetailsService, private r: Router,private token: TokenStorageService) { }
-
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       language:{url:"/assets/datatable-French.json"},
     };
+    let roles =this.token.getUser().roles;
 
     this.detaisSerivce.getStatArtiste().subscribe(
       res => {        
@@ -54,7 +54,8 @@ export class OrangeStatComponent implements OnInit {
         let idUser=this.token.getUser().id;
         if (role=="ROLE_ARTISTE"){
           this.detaisSerivce.getStatArtisteById(idUser).subscribe(data=>{
-            this.details = res;
+            this.details = data;
+            this.dtTrigger.next();
           })
         }
         // Swal.fire('This is a simple and sweet alert')
@@ -62,9 +63,9 @@ export class OrangeStatComponent implements OnInit {
           console.log(res);
           this.details = res;
           console.log(res);
+          this.dtTrigger.next();
         }
 
-        this.dtTrigger.next();
       
        });
   }

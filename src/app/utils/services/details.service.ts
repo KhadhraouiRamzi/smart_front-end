@@ -77,7 +77,15 @@ export class DetailsService {
     return this.backend.get<any>(this.baseUrl + "/statChanson/by-userId/"+id);
   }
  
-  getImage(id: any){
-    return this.backend.get<any>(this.baseUrl + "/get/"+id);
+  getStatCategorieById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statCategorie/by-userId/"+id);
+  }
+ 
+  getStatPlateformeById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statPlateforme/by-userId/"+id);
+  }
+  
+  getStatDateById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statDate/by-userId/"+id);
   }
 }

@@ -9,6 +9,7 @@ import { NbComponentStatus } from '@nebular/theme';
 import { DataTableDirective } from 'angular-datatables';
 import html2canvas from 'html2canvas';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
 
 @Component({
   selector: 'ngx-orange-stat-category',
@@ -26,7 +27,7 @@ export class OrangeStatCategoryComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top chansons.xlsx';
-  details: details[];
+  details: details;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -35,7 +36,8 @@ export class OrangeStatCategoryComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
 
-  constructor(private excelExportService :ExcelExportService, private detaisSerivce: DetailsService, private r: Router) { }
+  constructor(private excelExportService :ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
+    private token: TokenStorageService) { }
  
   ngOnInit(): void {
     this.dtOptions = {
@@ -45,11 +47,23 @@ export class OrangeStatCategoryComponent implements OnInit {
     };
 
     this.detaisSerivce.getStatCategory().subscribe(
-      res => {
-        console.log(res);
-        this.details = res;
-        console.log(res);
-        this.dtTrigger.next();
+      res => { 
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        if (role=="ROLE_ARTISTE"){
+          this.detaisSerivce.getStatCategorieById(idUser).subscribe(data=>{
+            this.details = data;
+            this.dtTrigger.next();
+          })
+        }
+        // Swal.fire('This is a simple and sweet alert')
+        else {
+          console.log(res);
+          this.details = res;
+          console.log(res);
+          this.dtTrigger.next();
+        }
+
       });
   }
 
