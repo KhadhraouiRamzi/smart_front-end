@@ -1,0 +1,72 @@
+<nb-card>
+    <nb-card-header>
+        <p>Chanson est :</p>
+    </nb-card-header>
+    <nb-card-body>
+
+        <div *ngIf="chanson">
+            <table>
+                <tr>
+                    <td>Nom Chanson </td>
+                    <td>:</td>
+                    <td>{{chanson.nom}}</td>
+                </tr>
+                <tr>
+                    <td>Nom Artiste</td>
+                    <td>:</td>
+                    <td>{{chanson.artiste.nom}}</td>
+                </tr>
+ 
+                <tr>
+                    <td>Featuring</td>
+                    <td>:</td>
+                    <td>{{ chanson.featuring }}</td>
+                </tr>
+                <tr>
+
+                    <td>Date Chanson</td>
+                    <td>:</td>
+                    <td>{{ chanson.datec }}</td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+
+                    <td>:</td>
+                    <td>{{ chanson.genre }}</td>
+                </tr>
+                <tr>
+
+                    <td>Rbt/Src</td>
+                    <td>:</td>
+                    <td>{{ chanson.rbt_src }}</td>
+                </tr>
+                <tr>
+
+                    <td>Type</td>
+                    <td>:</td>
+                    <td>{{ chanson.type }}</td>
+                </tr>
+                <tr>
+                    <td>Nom Plateforme</td>
+
+                    <td>:</td>
+                    <td>{{ chanson.plateforme.nom }}</td>
+                </tr>
+                <tr>
+
+                    <td>Titre album</td>
+                    <td>:</td>
+                    <td>{{ chanson.album.titre }}</td>
+                </tr>
+                <tr>
+
+                    <td>Fournisseur</td>
+                    <td>:</td>
+                    <td>{{ chanson.fournisseur.nom }}</td>
+                </tr>
+               
+            </table>
+
+        </div>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,82 @@
+<nb-card>
+    <nb-card-header>
+        <p>L'album est :</p>
+    </nb-card-header>
+    <nb-card-body>
+
+        <div *ngIf="artiste">
+            <table>
+                <tr>
+                    <td>Nom artiste </td>
+                    <td>:</td>
+                    <td>{{artiste.nom}}</td>
+                </tr>
+                <tr>
+                    <td>Prénom artiste</td>
+                    <td>:</td>
+                    <td>{{artiste.prenom}}</td>
+                </tr>
+                <tr>
+                    <td>Nom artéstique</td>
+                    <td>:</td>
+                    <td>{{ artiste.nArtistique }}</td>
+                </tr>
+                <tr>
+                    <td>Telephone</td>
+                    <td>:</td>
+                    <td>{{ artiste.phone }}</td>
+                </tr>
+                <tr>
+
+                    <td>E-mail</td>
+                    <td>:</td>
+                    <td>{{ artiste.email }}</td>
+                </tr>
+                <tr>
+                    <td>Contrat</td>
+
+                    <td>:</td>
+                    <td>{{ artiste.contrat }}</td>
+                </tr>
+                <tr>
+
+                    <td>Date</td>
+                    <td>:</td>
+                    <td>{{ artiste.date }}</td>
+                </tr>
+                <tr>
+
+                    <td>Cin</td>
+                    <td>:</td>
+                    <td>{{ artiste.cin }}</td>
+                </tr>
+                <tr>
+                    <td>Date Cin</td>
+
+                    <td>:</td>
+                    <td>{{ artiste.datecin }}</td>
+                </tr>
+                <tr>
+
+                    <td>Part</td>
+                    <td>:</td>
+                    <td>{{ artiste.part }}</td>
+                </tr>
+                <tr>
+
+                    <td>Nationnalite</td>
+                    <td>:</td>
+                    <td>{{ artiste.nationnalite }}</td>
+                </tr>
+                <tr>
+                    <td>Retenu</td>
+
+                    <td>:</td>
+                    <td>{{ artiste.retenu }}</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </nb-card-body>
+</nb-card>

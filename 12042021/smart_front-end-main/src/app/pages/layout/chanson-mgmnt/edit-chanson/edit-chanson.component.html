@@ -1,0 +1,144 @@
+<nb-card>
+    <nb-card-header>
+        Edit Chanson
+    </nb-card-header>
+    <nb-card-body>
+
+        <nb-card>
+            <nb-card-header>
+                <nb-card>
+                    <nb-card-header>Select</nb-card-header>
+                    <nb-card-body>
+                        <nb-select selected="1">
+                            <nb-option value="1">Option 1</nb-option>
+                            <nb-option value="2">Option 2</nb-option>
+                        </nb-select>
+                    </nb-card-body>
+                </nb-card>
+                <div class="buttons-row">
+                    <div class="form-row">
+
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180%>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Nom chanson:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nom" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="nArtiste">Nom artiste:</label>
+                                            <nb-select cl type="text" class="form-control"   [(ngModel)]="u.artiste.nom"
+                                                selected="3">
+                                                <nb-option value="1">Option 1</nb-option>
+                                                <nb-option value="2">Option 2</nb-option>
+                                                <nb-option *ngFor="let d of artiste" [ngValue]="d.nom" value="3">
+                                                    {{ d.nom }} {{ d.prenom }}
+                                                </nb-option>
+                                            </nb-select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+                                <td>
+                                    <div>
+                                        <label for="firstName">Nom artiste:</label>
+                                        <input type="text" class="form-control" [(ngModel)]="u.artiste.nom" />
+                                    </div>
+                                </td>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Featuring:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.featuring" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Date de chanson:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="u.datec" />
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Genre:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.genre" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Code:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.rbt_src" />
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Type:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.type" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Platefome:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.plateforme.nom" />
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Album:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.album.titre" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Fournisseur:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.fournisseur.nom" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>

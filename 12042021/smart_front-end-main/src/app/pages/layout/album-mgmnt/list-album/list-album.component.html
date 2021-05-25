@@ -1,0 +1,68 @@
+<nb-card>
+    <nb-card-header>
+        Liste des albums
+
+    </nb-card-header>
+
+    <nb-card-body>
+        <div style="margin-left: 20px;margin-right: 20px;">
+            <nb-card>
+                <nb-card-body>
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <!--<th>ID</th>-->
+                                <th> Actions</th>
+                                <th>Nom Album</th>
+                                <th>Date Album</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of album">
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <div class="buttons-row">
+                                                <td>
+                                                    <a (click)="details(p)" *ngFor="let status of statuses" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/detail.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/edit.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
+                                                        [status]="status" outline><img
+                                                            [src]="'assets/images/supprimer.png'" /></a>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>{{ p.titre }}</td>
+                                <td>{{ p.dateA }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <!-- nbButton [status]="info"
+            Dialog for details user with a seperate Component   -->
+        <p-dialog [modal]="true" header="Fiche album" [(visible)]="displayBasic" [style]="{width: '50vw'}"
+            [baseZIndex]="10000">
+            <ngx-detail-album [album]="currentalbum"></ngx-detail-album>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+        </p-dialog>
+
+
+    </nb-card-body>
+</nb-card>

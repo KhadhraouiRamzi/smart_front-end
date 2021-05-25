@@ -1,0 +1,180 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header"> Ajouter un nouveau artiste</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label>Nom Artiste</label>
+                    <input type="text" formControlName="firstName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="u.nom" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required"> Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Prénom Artiste</label>
+                    <input type="text" formControlName="lastName" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" [(ngModel)]="u.prenom" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required"> last Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Nom Artistique</label>
+                    <input type="text" formControlName="nArtistique" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nArtistique.errors }" [(ngModel)]="u.nArtistique" />
+                    <div *ngIf="submitted && f.nArtistique.errors" class="invalid-feedback">
+                        <div *ngIf="f.nArtistique.errors.required">nArtistique is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Phone</label>
+                    <input type="number" formControlName="phone" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" [(ngModel)]="u.phone" />
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">phone is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>E-mail</label>
+                    <input type="email" formControlName="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" [(ngModel)]="u.email" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>CIN</label>
+                    <input type="number" formControlName="cin" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.cin.errors }" [(ngModel)]="u.cin" />
+                    <div *ngIf="submitted && f.cin.errors" class="invalid-feedback">
+                        <div *ngIf="f.cin.errors.required">cin is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Date de délélivrance</label>
+                    <input type="date" formControlName="datecin" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.datecin.errors }" [(ngModel)]="u.datecin" />
+                    <div *ngIf="submitted && f.datecin.errors" class="invalid-feedback">
+                        <div *ngIf="f.datecin.errors.required">datecin is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Date de contrat</label>
+                    <input type="date" formControlName="date" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.date.errors }" [(ngModel)]="u.date" />
+                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                        <div *ngIf="f.date.errors.required">date is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Nationnalite</label>
+                    <input type="text" formControlName="nationnalite" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nationnalite.errors }" [(ngModel)]="u.nationnalite" />
+                    <div *ngIf="submitted && f.nationnalite.errors" class="invalid-feedback">
+                        <div *ngIf="f.nationnalite.errors.required">nationnalite is required</div>
+                    </div>
+                </div>
+                <!-- 
+                <div class="form-group col-5">
+                    <label  for="file">Image</label>
+                    <input type="file" formControlName="image" class="form-control"    (change)="onFileChange($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" [(ngModel)]="u.image" />
+                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                        <div *ngIf="f.image.errors.required">Image is required</div>
+                    </div>
+                </div>
+
+  
+       
+                <div class="form-group col-5">
+                    <label>Image</label>
+                    <input type="image" formControlName="image" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.image.errors }" [(ngModel)]="u.image" />
+                    <div *ngIf="submitted && f.image.errors" class="invalid-feedback">
+                        <div *ngIf="f.image.errors.required">image is required</div>
+                    </div>
+                </div>
+          <div class="form-group">
+                    <label for="file">File</label>
+                    <input 
+                        formControlName="file"
+                        id="file" 
+                        type="file" 
+                        class="form-control"
+                        (change)="onFileChange($event)">
+                    <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                        <div *ngIf="f.file.errors.required">File is required.</div>
+                    </div>
+                </div>
+-->
+                <div class="form-group col-5">
+                    <label for="file">Contrat</label>
+                    <input type="file" formControlName="contrat" class="form-control" (change)="onFileChange($event)"
+                        [ngClass]="{ 'is-invalid': submitted && f.contrat.errors }" [(ngModel)]="u.contrat" />
+                    <div *ngIf="submitted && f.contrat.errors" class="invalid-feedback">
+                        <div *ngIf="f.contrat.errors.required">contrat is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Part</label>
+                    <input type="number" formControlName="part" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.part.errors }" [(ngModel)]="u.part" />
+                    <div *ngIf="submitted && f.part.errors" class="invalid-feedback">
+                        <div *ngIf="f.part.errors.required">part is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Retenu</label>
+                    <input type="number" formControlName="retenu" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.retenu.errors }" [(ngModel)]="u.retenu" />
+                    <div *ngIf="submitted && f.retenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.retenu.errors.required">retenu is required</div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+            </div>
+            <!--
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>-->
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline>
+                                    Register
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="onReset()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+        </form>
+    </div>
+</div>

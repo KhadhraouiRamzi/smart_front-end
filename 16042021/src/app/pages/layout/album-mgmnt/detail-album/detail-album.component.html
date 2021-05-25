@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header>
+        <p>L'album est :</p>
+    </nb-card-header>
+    <nb-card-body>
+        <div *ngIf="album">
+            <table>
+                <tr>
+                    <td>Titre Album </td>
+                    <td>:</td>
+                    <td>{{album.titre}}</td>
+                </tr>
+                <tr>
+                    <td>Date Album </td>
+                    <td>:</td>
+                    <td>{{album.dateA}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </nb-card-body>
+</nb-card>
