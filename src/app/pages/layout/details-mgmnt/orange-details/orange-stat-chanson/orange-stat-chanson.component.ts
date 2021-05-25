@@ -8,6 +8,7 @@ import jsPDF from 'jspdf';
 import { NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
+import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
 @Component({
   selector: 'ngx-orange-stat-chanson',
   templateUrl: './orange-stat-chanson.component.html',
@@ -18,6 +19,10 @@ export class OrangeStatChansonComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
+  selectedFile: File;
+  message: string;
+  statut:any;
+  hide:any;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top chansons.xlsx';
@@ -30,7 +35,7 @@ export class OrangeStatChansonComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
 
-  constructor(private detaisSerivce: DetailsService, private r: Router) { }
+  constructor(private detaisSerivce: DetailsService, private r: Router,private excelExportService: ExcelExportService) { }
  
   ngOnInit(): void {
     this.dtOptions = {
@@ -127,4 +132,20 @@ export class OrangeStatChansonComponent implements OnInit {
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
+  
+  selectFile(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadd() {
+    console.log("file to upload: "+this.selectedFile);
+
+    const uploadExcelData = new FormData();
+
+    uploadExcelData.append('file',this.selectedFile);
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+        this.statut=response.status;
+        this.message = response.body.valueOf()['message'];
+    },error => this.message=error.message);}
+
 }

@@ -7,6 +7,7 @@ export class users
      cdate: Date;
      nom: String;
      prenom: String;
+     pro : Boolean;
      cin: Number;
      contrat: String;
      date: Date;

@@ -6,7 +6,41 @@
     <nb-card-body>
         <div style="margin-left: 20px;margin-right: 20px;">
             <nb-card-header>
-                Top artistes
+                <nb-accordion>
+                    <nb-accordion-item #item *ngFor="let status of statuses4" [status]="status" outline>
+                        <nb-accordion-item-header>
+                            Importer fichier Orange
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
+                            <nb-alert status="success" *ngIf="this.statut==200">{{this.message}}</nb-alert>
+
+                            <div class="col-md-12 col-lg-12 col-xxxl-11" center>
+                                <nb-card>
+                                    <nb-card-body>
+
+                                        <div>
+                                            <div style="float: left;flex-flow: row wrap">
+                                                       <input type="file" (change)="selectFile($event)"> NB: Le fichier
+                                                il doit etre de type "Classeur Excel" (.xlsx) !
+                                            </div>  
+                                            <div style="float: right;flex-flow: row wrap">
+                                                       <button class="btn btn-primary btn-lg active" (click)="uploadd()"
+                                                    value="upload">Upload</button>
+                                            </div>
+                                        </div>
+
+                                    </nb-card-body>
+                                </nb-card>
+                            </div>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+                <table>
+                    <br>
+                    <tr>
+                        <td width="1100"> liste nombre d'écoute par Artiste</td>
+                    </tr>
+                </table>
             </nb-card-header>
             <nb-card>
                 <nb-card-body>
@@ -24,7 +58,7 @@
                             Nombre d'écoute Chanson </a>
                         <a (click)="CountA()" *ngFor="let status of statuses2" nbButton [status]="status" hero>
                             Nombre d'écoute Artiste</a>
-                        <a (click)="Mois()" nbButton >
+                        <a (click)="Mois()" nbButton>
                             Date d'écoute</a>
                     </td>
                     <br>

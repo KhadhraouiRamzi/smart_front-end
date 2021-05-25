@@ -75,16 +75,19 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="firstName">Contrat:</label>
-                                            <input type="text" class="form-control" [(ngModel)]="u.contrat" />
+                                            <label for="lastName">Part:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.part" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
+                                    <td *ngIf="u.marketing !=null">
                                         <div>
-                                            <label for="lastName">Part:</label>
-                                            <input type="text" class="form-control" [(ngModel)]="u.part" />
+                                            <label for="firstName">Marketing:</label>
+                                            <select class="form-control" [(ngModel)]="u.marketing.id">
+
+                                                <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
+                                            </select>
                                         </div>
                                     </td>
                                     <td>
@@ -112,14 +115,11 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr *ngIf="u.marketing !=null">
+                                <tr>                                    
                                     <td>
                                         <div>
-                                            <label for="firstName">Marketing:</label>
-                                            <select class="form-control" [(ngModel)]="u.marketing.id">
-
-                                                <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
-                                            </select>
+                                            <label for="firstName">Carte Pro:</label>
+                                            <input type="checkbox" class="form-control" [(ngModel)]="u.pro" />
                                         </div>
                                     </td>
                                     <td>

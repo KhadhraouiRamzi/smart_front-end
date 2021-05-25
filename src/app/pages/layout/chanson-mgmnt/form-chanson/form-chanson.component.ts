@@ -24,7 +24,7 @@ export class FormChansonComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   u: chanson = new chanson();
-  users: any[];
+  users: users[]=[];
   plateforme: plateforme[] = [];
   operateur : operateur [] = [];
   album: album[] = [];

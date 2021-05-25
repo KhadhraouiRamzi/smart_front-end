@@ -54,7 +54,8 @@ export class FormArtisteComponent implements OnInit {
       retenu: ['', Validators.required],
       marketing: ['', Validators.required],
       image: ['', Validators.required],
-  
+      pro: ['', Validators.required],
+      
       acceptTerms: [false, Validators.requiredTrue]
     })
 

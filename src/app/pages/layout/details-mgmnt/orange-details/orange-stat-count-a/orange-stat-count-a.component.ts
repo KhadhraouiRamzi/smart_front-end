@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { details } from '../../../../../models/details';
 import { DetailsService } from '../../../../../utils/services/details.service';
 import { Router } from '@angular/router';
+import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
 
 @Component({
   selector: 'ngx-orange-stat-count-a',
@@ -19,6 +20,10 @@ export class OrangeStatCountAComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
+  selectedFile: File;
+  message: string;
+  statut:any;
+  hide:any;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
@@ -31,7 +36,7 @@ export class OrangeStatCountAComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
 
-  constructor(private detaisSerivce: DetailsService, private r: Router) { }
+  constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router) { }
  
   ngOnInit(): void {
     this.dtOptions = {
@@ -128,4 +133,21 @@ export class OrangeStatCountAComponent implements OnInit {
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
+  
+  
+  selectFile(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadd() {
+    console.log("file to upload: "+this.selectedFile);
+
+    const uploadExcelData = new FormData();
+
+    uploadExcelData.append('file',this.selectedFile);
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+        this.statut=response.status;
+        this.message = response.body.valueOf()['message'];
+    },error => this.message=error.message);}
+
 }
