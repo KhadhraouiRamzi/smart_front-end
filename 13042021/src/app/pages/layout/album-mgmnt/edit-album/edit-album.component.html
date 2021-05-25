@@ -1,0 +1,50 @@
+<nb-card>
+  <nb-card-header>
+    Edit Album
+  </nb-card-header>
+  <nb-card-body>
+
+    <nb-card>
+      <nb-card-header>
+        <div class="buttons-row">
+
+          <div class="col-md-6" *ngIf="u">
+            <div>
+              <label for="firstName">Titre album:</label>
+              <input type="text" class="form-control" [(ngModel)]="u.titre" />
+            </div>
+
+            <div>
+              <label for="lastName">Date création d'album:</label>
+              <input type="date" class="form-control" [(ngModel)]="u.dateA" />
+            </div>
+            <br>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <table>
+          <tr>
+            <td></td>
+            <td>
+              <div class="buttons-row">
+                <button *ngFor="let status of statuses" nbButton [status]="status" outline (click)="update(u)">
+                  Update
+                </button>
+              </div>
+            </td>
+            <td>
+              <div class="buttons-row">
+                <button *ngFor="let status of statuses2" nbButton [status]="status" outline (click)="annuler()">
+                  Annuler
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+      </nb-card-body>
+    </nb-card>
+
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,144 @@
+<nb-card>
+    <nb-card-header>
+        Edit Album
+    </nb-card-header>
+    <nb-card-body>
+
+        <nb-card>
+            <nb-card-header>
+                <div class="buttons-row">
+                    <div class="form-row">
+
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180% >
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Nom artiste:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nom" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Prénom artiste:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.prenom" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Nom artistique:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nArtistique" />
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Telephone:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.phone" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <div>
+                                            <label for="firstName">E-mail:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.email" />
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Cin:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.cin" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <div>
+                                            <label for="firstName">Date Cin:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="u.datecin" />
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Date contrat:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="u.date" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Nationnalite:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nationnalite" />
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div>
+                                            <label for="firstName">Contrat:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.contrat" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Part:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.part" />
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div>
+                                            <label for="lastName">Retenu:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.retenu" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+        </nb-card>
+
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,80 @@
+<nb-card>
+    <nb-card-header>
+        Edit FTP
+    </nb-card-header>
+    <nb-card-body>
+        <nb-card>
+            <nb-card-header>
+                <div class="buttons-row">
+                    <div class="form-row">
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180%>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">User:</label>
+                                            <select class="form-control" name="profil" [(ngModel)]="u.user.id">
+                                              <option *ngFor="let d of user" [ngValue]="d.id">{{ d.nom }} {{ d.prenom }} </option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Haut:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.haut" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Identifiant:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.identifiant" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Mot de passe:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.mp" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="lastName">Port:</label>
+                                            <input type="number" class="form-control" [(ngModel)]="u.port" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>

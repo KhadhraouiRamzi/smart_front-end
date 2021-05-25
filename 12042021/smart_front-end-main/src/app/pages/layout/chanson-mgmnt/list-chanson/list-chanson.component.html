@@ -1,0 +1,88 @@
+<nb-card>
+    <nb-card-header>
+        Liste des chansons
+
+    </nb-card-header>
+
+    <nb-card-body>
+        <div style="margin-left: 20px;margin-right: 20px;">
+            <nb-card>
+                <nb-card-body>
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <!--<th>ID</th>-->
+                                <th> Actions</th>
+                                <th>Nom Chanson</th>
+                                <th>Artiste</th>
+                                <th>Featuring</th>
+                                <th>Date chanson</th>
+                                <th>Genre</th>
+                                <th>Rbt/Src</th>
+                                <th>type</th>
+                                <th>Plateforme</th>
+                                <th>Album</th>
+                                <th>Fournisseur</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of chansons">
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <div class="buttons-row">
+                                                <td>
+                                                    <a (click)="details(p)" *ngFor="let status of statuses" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/detail.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/edit.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
+                                                        [status]="status" outline><img
+                                                            [src]="'assets/images/supprimer.png'" /></a>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>{{ p.nom }}</td>
+                                <td>{{ p.artiste.nom }} {{ p.artiste.prenom }}</td>
+                                <td>{{ p.featuring }}</td>
+                                <td>{{ p.datec }}</td>
+                                <td>{{ p.genre }}</td>
+                                <td>{{ p.rbt_src }}</td>
+                                <td>{{ p.type }}</td>
+                                <!--    
+                                    <td *ngIf="p.plateforme.nom==='Null'" >nulle</td>
+                                    <td *ngIf="p.plateforme.nom!=='Null'" >{{ p.plateforme.nom }}</td>
+                                -->
+                                <td>{{ p.plateforme.nom }}</td>
+                                <td>{{ p.album.titre }}</td>
+                                <td>{{ p.fournisseur.nom }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <!-- nbButton [status]="info"
+          Dialog for details user with a seperate Component   -->
+        <p-dialog [modal]="true" header="Fiche chanson" [(visible)]="displayBasic" [style]="{width: '50vw'}"
+            [baseZIndex]="10000">
+            <ngx-detail-chanson [chanson]="currentchanson"></ngx-detail-chanson>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+        </p-dialog>
+
+
+    </nb-card-body>
+</nb-card>
