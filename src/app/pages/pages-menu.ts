@@ -75,7 +75,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/beleive',
       },
     ],
-    data: "ROLE_ADMIN",
+
   },
   {
     title: 'Paramétre',

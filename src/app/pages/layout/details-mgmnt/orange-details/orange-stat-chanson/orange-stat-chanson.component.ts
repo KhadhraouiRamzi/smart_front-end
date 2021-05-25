@@ -9,6 +9,7 @@ import { NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
 @Component({
   selector: 'ngx-orange-stat-chanson',
   templateUrl: './orange-stat-chanson.component.html',
@@ -26,7 +27,8 @@ export class OrangeStatChansonComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top chansons.xlsx';
-  details: details[];
+  details: details[]=[];
+  detail: details;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -35,22 +37,35 @@ export class OrangeStatChansonComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
 
-  constructor(private detaisSerivce: DetailsService, private r: Router,private excelExportService: ExcelExportService) { }
+  constructor(private detaisSerivce: DetailsService, private r: Router,private excelExportService: ExcelExportService,
+    private token: TokenStorageService) { }
  
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      language:{url:"/assets/datatable-French.json"},
     };
 
     this.detaisSerivce.getStatChanson().subscribe(
-      res => {
-        console.log(res);
-        this.details = res;
-        console.log(res);
-        this.dtTrigger.next();
-      });
+      res => {    
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        console.log(idUser);
+        if (role=="ROLE_ARTISTE"){
+          this.detaisSerivce.getStatChansonById(idUser).subscribe(data=>{
+            this.detail = data;
+            console.log(data);
+            this.dtTrigger.next();              
+          })
+        }
+        // Swal.fire('This is a simple and sweet alert')
+        else {
+          console.log(res);
+          this.detail = res;
+          console.log(res);
+          this.dtTrigger.next();              
+        }
+       });
   }
 
   exportexcel(): void {

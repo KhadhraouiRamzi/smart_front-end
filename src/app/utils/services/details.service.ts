@@ -68,4 +68,16 @@ export class DetailsService {
   getStatDate(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/statDate");
   } 
+
+  getStatArtisteById(id){
+    return this.backend.get<any>(this.baseUrl + "/statArtiste/by-userId/" + id);
+  }  
+  
+  getStatChansonById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statChanson/by-userId/"+id);
+  }
+ 
+  getImage(id: any){
+    return this.backend.get<any>(this.baseUrl + "/get/"+id);
+  }
 }

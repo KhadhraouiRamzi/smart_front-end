@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
 
 @Component({
   selector: 'ngx-orange-stat',
@@ -38,7 +39,7 @@ export class OrangeStatComponent implements OnInit {
   shapes: NbComponentShape[] = [ 'round' ];
  
   constructor(private excelExportService: ExcelExportService, 
-  private detaisSerivce: DetailsService, private r: Router) { }
+  private detaisSerivce: DetailsService, private r: Router,private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -48,12 +49,24 @@ export class OrangeStatComponent implements OnInit {
     };
 
     this.detaisSerivce.getStatArtiste().subscribe(
-      res => {
-        console.log(res);
-        this.details = res;
-        console.log(res);
+      res => {        
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        if (role=="ROLE_ARTISTE"){
+          this.detaisSerivce.getStatArtisteById(idUser).subscribe(data=>{
+            this.details = res;
+          })
+        }
+        // Swal.fire('This is a simple and sweet alert')
+        else {
+          console.log(res);
+          this.details = res;
+          console.log(res);
+        }
+
         this.dtTrigger.next();
-      });
+      
+       });
   }
 
   exportexcel(): void {
