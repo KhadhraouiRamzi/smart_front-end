@@ -9,6 +9,7 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
 
 @Component({
   selector: 'ngx-orange-stat-date',
@@ -27,7 +28,7 @@ export class OrangeStatDateComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top date.xlsx';
-  details: details[];
+  details: details;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -38,7 +39,8 @@ export class OrangeStatDateComponent implements OnInit {
   sizes: NbComponentSize[] = [ 'giant' ];
   shapes: NbComponentShape[] = [  'round' ];
 
-  constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router) { }
+  constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
+    private token: TokenStorageService) { }
  
   ngOnInit(): void {
     this.dtOptions = {
@@ -49,10 +51,23 @@ export class OrangeStatDateComponent implements OnInit {
 
     this.detaisSerivce.getStatDate().subscribe(
       res => {
-        console.log(res);
-        this.details = res;
-        console.log(res);
-        this.dtTrigger.next();
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        if (role=="ROLE_ARTISTE"){
+          this.detaisSerivce.getStatDateById(idUser).subscribe(data=>{
+            this.details = data;
+            this.dtTrigger.next();
+          })
+        }
+        // Swal.fire('This is a simple and sweet alert')
+        else {
+          console.log(res);
+          this.details = res;
+          console.log(res);
+          this.dtTrigger.next();
+        }
+
+      
       });
   }
 

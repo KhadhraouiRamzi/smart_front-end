@@ -68,4 +68,24 @@ export class DetailsService {
   getStatDate(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/statDate");
   }
+
+  getStatArtisteById(id){
+    return this.backend.get<any>(this.baseUrl + "/statArtiste/by-userId/" + id);
+  }
+
+  getStatChansonById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statChanson/by-userId/"+id);
+  }
+
+  getStatCategorieById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statCategorie/by-userId/"+id);
+  }
+
+  getStatPlateformeById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statPlateforme/by-userId/"+id);
+  }
+
+  getStatDateById(id: any){
+    return this.backend.get<any>(this.baseUrl + "/statDate/by-userId/"+id);
+  }
 }

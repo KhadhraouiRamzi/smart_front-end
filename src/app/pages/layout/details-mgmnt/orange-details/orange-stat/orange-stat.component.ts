@@ -9,6 +9,7 @@ import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
 
 @Component({
   selector: 'ngx-orange-stat',
@@ -27,7 +28,7 @@ export class OrangeStatComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
-  details: details[];
+  details: details;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -38,22 +39,35 @@ export class OrangeStatComponent implements OnInit {
   shapes: NbComponentShape[] = [ 'round' ];
  
   constructor(private excelExportService: ExcelExportService, 
-  private detaisSerivce: DetailsService, private r: Router) { }
-
+  private detaisSerivce: DetailsService, private r: Router,private token: TokenStorageService) { }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       language:{url:"/assets/datatable-French.json"},
     };
+    let roles =this.token.getUser().roles;
 
     this.detaisSerivce.getStatArtiste().subscribe(
-      res => {
-        console.log(res);
-        this.details = res;
-        console.log(res);
-        this.dtTrigger.next();
-      });
+      res => {        
+        let role=this.token.getUser()['roles'];
+        let idUser=this.token.getUser().id;
+        if (role=="ROLE_ARTISTE"){
+          this.detaisSerivce.getStatArtisteById(idUser).subscribe(data=>{
+            this.details = data;
+            this.dtTrigger.next();
+          })
+        }
+        // Swal.fire('This is a simple and sweet alert')
+        else {
+          console.log(res);
+          this.details = res;
+          console.log(res);
+          this.dtTrigger.next();
+        }
+
+      
+       });
   }
 
   exportexcel(): void {
