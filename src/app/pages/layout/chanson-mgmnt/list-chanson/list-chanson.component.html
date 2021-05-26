@@ -22,11 +22,11 @@
                                 <th>Album</th>
                                 <th>Date chanson</th>
                                 <th>Catégorie</th>
-                                <th>Plateforme</th>
+                                <th scope="col">Plateforme</th>
                                 <th>RBT</th>
                             </tr>
                         </thead>
-                        <tbody>
+                      <tbody>
                             <tr *ngFor="let p of chansons">
                                 <td>
                                     <table>
@@ -54,18 +54,15 @@
                                     </table>
                                 </td>
                                 <td>{{ p.nom }}</td>
-                                <td>{{ p.user.nom }} {{ p.user.prenom }}</td>
+                                <td>{{ p.user.nom }} {{ p.user.prenom}}</td>
                                 <td>{{ p.album.titre }}</td>
                                 <td>{{ p.datec }}</td>
                                 <td>{{ p.genre }}</td>
-                                <!--
-                                    <td *ngIf="p.plateforme.nom==='Null'" >nulle</td>
-                                    <td *ngIf="p.plateforme.nom!=='Null'" >{{ p.plateforme.nom }}</td>
-                                -->
-                                <td>{{ p.plateforme.nom }}</td>
-                                <td>{{ p.operateur.nom }}</td>
+                              <td *ngFor="let pp of p.platformes">{{ pp.nom }}</td>
+
+                                <td *ngFor="let pp of p.operateurs">{{ pp.nom }}</td>
                             </tr>
-                        </tbody>
+                      </tbody>
                     </table>
                 </nb-card-body>
             </nb-card>

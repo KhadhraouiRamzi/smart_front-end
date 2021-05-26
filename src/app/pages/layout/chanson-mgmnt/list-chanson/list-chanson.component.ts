@@ -8,6 +8,7 @@ import { SmartTableData } from '../../../../@core/data/smart-table';
 import { chanson } from '../../../../models/chanson';
  import { ChansonService } from '../../../../utils/services/chanson.service';
 import {TokenStorageService} from "../../../../auth/services/token-storage.service";
+import {plateforme} from "../../../../models/plateforme";
 /*import {TableModule} from 'primeng/table';
 */
 @Component({
@@ -50,7 +51,6 @@ export class ListChansonComponent implements OnInit {
         }
         // Swal.fire('This is a simple and sweet alert')
         else {
-          console.log(res);
           this.chansons = res;
           console.log(res);
         }

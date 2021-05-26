@@ -13,7 +13,7 @@ export class chanson {
     rbt_src: String;
     type: String;
     user : users;
-    plateforme : plateforme;
+  platformes : plateforme;
     album : album;
-    operateur : operateur;
+    operateurs : operateur;
    }

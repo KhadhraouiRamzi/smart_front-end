@@ -64,13 +64,30 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div>
+
+
+                                      <div class="form-group col-5">
+                                        <label>RBT chanson </label><br>
+                                        <nb-select multiple placeholder="Multiple Select" size="medium" style="width: 100%"
+                                                   formControlName="operateur" [(ngModel)]="u.operateur">
+                                          <nb-option *ngFor="let d of operateur" [value]="d">
+                                            {{ d.nom }}
+                                          </nb-option>
+                                        </nb-select>
+                                        <div *ngIf="submitted && f.operateur.errors" class="invalid-feedback">
+<!--                                          <div *ngIf="f.operateur.errors.required">Nom operateur is required</div>-->
+                                        </div>
+                                      </div>
+
+
+<!--                                        <div>
                                             <label for="firstName">RBT :</label>
                                             <select class="form-control" name="profil" [(ngModel)]="u.operateur.id">
                                                 <option *ngFor="let p of operateur" [ngValue]="p.id">{{ p.nom }}
                                                 </option>
                                             </select>
-                                        </div>
+                                        </div>-->
+
                                     </td>
                                 </tr>
                                 <tr>
@@ -138,4 +155,4 @@
             </nb-card-body>
         </nb-card>
     </nb-card-body>
-</nb-card>      
+</nb-card>

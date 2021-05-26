@@ -85,6 +85,7 @@ import { OrangeStatDateComponent } from './details-mgmnt/orange-details/orange-s
 import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange-stat-count-a/orange-stat-count-a.component';
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
+import {ButtonModule} from "primeng/button";
 
 
 @NgModule({
@@ -118,6 +119,7 @@ import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/or
         NbIconModule,
         FormsModule,
         NbAlertModule,
+        ButtonModule,
     ],
   declarations: [
     LayoutComponent,

@@ -70,7 +70,7 @@ export class FormChansonComponent implements OnInit {
       // Calling the DT trigger to manually render the table
       console.log(this.album);
     });
-    this.users=[];
+
     this.userService.getlistArtFour().subscribe(res => {
       this.users = res;
       // Calling the DT trigger to manually render the table
@@ -88,11 +88,12 @@ export class FormChansonComponent implements OnInit {
       return;
     }
     this.submitted = true;
-
+    this.u.user;
+    console.log(this.u.user);
     this.chansonService.addChanson(this.u).subscribe(res => {
       console.log(this.u);
       alert("ajout avec succès !");
-      console.log(this.u);
+      //console.log(this.u);
      // this.u = new chanson();
     });
   }
