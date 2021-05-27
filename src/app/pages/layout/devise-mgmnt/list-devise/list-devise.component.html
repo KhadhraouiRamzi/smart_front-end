@@ -1,0 +1,79 @@
+<nb-card>
+    <nb-card-header>
+        Liste Devise
+
+    </nb-card-header>
+ 
+    <nb-card-body>
+        <div style="margin-left: 20px;margin-right: 20px;">
+            <nb-card>
+                <nb-card-body>
+                    <td>
+                        <a (click)="ajouter()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                            Ajout devise</a>
+                    </td>
+                    <br>
+
+                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th> Actions</th>
+                                <th>Devise</th>
+                                <th>Code</th>
+                                <th>Cours</th>
+                                <th>Date cours</th>
+ 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of devises">
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <div class="buttons-row">
+                                                <td>
+                                                    <a (click)="details(p)" *ngFor="let status of statuses" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/detail.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
+                                                        [status]="status" outline>
+                                                        <img [src]="'assets/images/edit.png'" /></a>
+                                                </td>
+
+                                                <td>
+                                                    <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
+                                                        [status]="status" outline><img
+                                                            [src]="'assets/images/supprimer.png'" /></a>
+                                                </td>
+                                            </div>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>{{ p.nomd }}</td>
+                                <td>{{ p.code }}</td>
+                                <td>{{ p.cours }}</td>
+                                <td>{{ p.datecours }}</td>
+ 
+                            </tr>
+                        </tbody>
+                    </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <!-- nbButton [status]="info"
+          Dialog for details user with a seperate Component   -->
+        <p-dialog [modal]="true" header="Fiche devise" [(visible)]="displayBasic" [style]="{width: '50vw'}"
+            [baseZIndex]="10000">
+            <ngx-detail-devise [devises]="currentdevise"></ngx-detail-devise>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                </p-button>
+            </ng-template>
+        </p-dialog>
+
+
+    </nb-card-body>
+</nb-card>
