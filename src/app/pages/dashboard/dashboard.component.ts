@@ -67,31 +67,31 @@ export class DashboardComponent implements OnDestroy, OnInit {
     corporate: CardSettings[];
     dark: CardSettings[];
   } = {
-      default: this.commonStatusCardsSet,
-      cosmic: this.commonStatusCardsSet,
-      corporate: [
-        {
-          ...this.lightCard,
-          type: 'warning',
-        },
-        {
-          ...this.rollerShadesCard,
-          type: 'primary',
-        },
-        {
-          ...this.wirelessAudioCard,
-          type: 'danger',
-        },
-        {
-          ...this.coffeeMakerCard,
-          type: 'info',
-        },
-      ],
-      dark: this.commonStatusCardsSet,
-    };
+    default: this.commonStatusCardsSet,
+    cosmic: this.commonStatusCardsSet,
+    corporate: [
+      {
+        ...this.lightCard,
+        type: 'warning',
+      },
+      {
+        ...this.rollerShadesCard,
+        type: 'primary',
+      },
+      {
+        ...this.wirelessAudioCard,
+        type: 'danger',
+      },
+      {
+        ...this.coffeeMakerCard,
+        type: 'info',
+      },
+    ],
+    dark: this.commonStatusCardsSet,
+  };
 
   constructor(private themeService: NbThemeService, private token: TokenStorageService,
-    private solarService: SolarData, private detaisSerivce: DetailsService) {
+              private solarService: SolarData, private detaisSerivce: DetailsService) {
     this.themeService.getJsTheme()
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {

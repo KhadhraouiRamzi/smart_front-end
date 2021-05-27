@@ -118,4 +118,8 @@ export class DetailsService {
     return this.backend.get<any>(this.baseUrl + "/topDate/by-userId/"+id);
   }
 
+  getStatTotal(): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statTotal");
+  }
+
 }

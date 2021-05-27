@@ -38,12 +38,7 @@ export class OrangeStatPlateformeComponent implements OnInit {
 
 
   constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
-    private token: TokenStorageService) { }
-
-
-
-  constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
-    private token: TokenStorageService) { }
+    public token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {

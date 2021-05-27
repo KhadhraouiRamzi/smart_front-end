@@ -30,6 +30,7 @@ export class OrangeStatComponent implements OnInit {
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
   details: details;
+  statTotal:any;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -72,6 +73,12 @@ export class OrangeStatComponent implements OnInit {
 
 
       });
+
+      this.detaisSerivce.getStatTotal().subscribe(data=>{
+        console.log("stat Total: "+data);
+        this.statTotal=data;
+      })
+
   }
 
   exportexcel(): void {
