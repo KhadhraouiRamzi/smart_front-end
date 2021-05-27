@@ -20,26 +20,22 @@ import { UsersService } from '../../../../utils/services/users.service';
   styleUrls: ['./edit-chanson.component.scss']
 })
 export class EditChansonComponent implements OnInit {
-   
+
   statuses: NbComponentStatus[] = [ 'primary' ];
   statuses2: NbComponentStatus[] = [ 'warning' ];
-  countryForm: FormGroup;
-  registerForm: FormGroup;
-  myGroup : FormGroup;
-  seletedValue = '';
   u : chanson;
   chanson : chanson[] =[];
-  user: users[] = [];
-  users: users[] = [];
+  f: users[] = [];
+  a: users[] = [];
   album: album[] = [];
-  plateforme : plateforme[] = [];
-  operateur : operateur[] = [];
+  plateformee : plateforme[] = [];
+  operateurr : operateur[] = [];
 
   constructor(private operateurService : OperateurService, private albumService : AlbumService,private fournisseurService : UsersService,private artisteService :UsersService,
     private chansonService : ChansonService,private router: Router, private ar : ActivatedRoute,private formBuilder: FormBuilder,
     private plateformeService : PlateformeService) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
     this.albumService.getlistAlbum().subscribe(res => {
       this.album = res;
       // Calling the DT trigger to manually render the table
@@ -48,28 +44,28 @@ export class EditChansonComponent implements OnInit {
     });
 
     this.fournisseurService.getFours().subscribe(res => {
-      this.users = res;
+      this.f = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.users);
+      console.log('aaaaaaaaaaaa'+this.f);
       console.log('aa');
     });
-    
+
     this.artisteService.getArts().subscribe(res => {
-      this.user = res;
+      this.a = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.user);
+      console.log(this.a);
     });
 
     this.plateformeService.getlistPlateforme().subscribe(res => {
-      this.plateforme = res;
+      this.plateformee = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.plateforme);
+      console.log(this.plateformee);
     });
 
     this.operateurService.getlistOperateur().subscribe(res => {
-      this.operateur = res;
+      this.operateurr = res;
       // Calling the DT trigger to manually render the table
-      console.log(this.operateur);
+      console.log(this.operateurr);
     });
 
     let routeId = this.ar.snapshot.paramMap.get('id');
@@ -95,9 +91,9 @@ export class EditChansonComponent implements OnInit {
         this.u=new chanson();
 
       });
-  } 
+  }
 
- 
+
   annuler() {
     this.router.navigate(['/pages/layout/list-chanson/']);
 

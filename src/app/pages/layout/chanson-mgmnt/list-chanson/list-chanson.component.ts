@@ -30,15 +30,16 @@ export class ListChansonComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
-  dtTrigger: Subject<any> = new Subject<any>();
+  dtTrigger = new Subject();
 
-  constructor(private service: SmartTableData, private chansonService: ChansonService,
+  constructor(private chansonService: ChansonService,
     private r: Router, private ar: ActivatedRoute,private token: TokenStorageService) {
   }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 1,
+      language: {url: "/assets/datatable-French.json"},
     };
     this.chansonService.getlistChanson().subscribe(
       res => {
@@ -47,15 +48,17 @@ export class ListChansonComponent implements OnInit {
         if (role=="ROLE_ARTISTE"){
           this.chansonService.getChansonsByUserId(idUser).subscribe(data=>{
             this.chansons=data;
+            this.dtTrigger.next();
           })
         }
         // Swal.fire('This is a simple and sweet alert')
         else {
           this.chansons = res;
           console.log(res);
+          this.dtTrigger.next();
         }
 
-        this.dtTrigger.next();
+
       });
   }
 

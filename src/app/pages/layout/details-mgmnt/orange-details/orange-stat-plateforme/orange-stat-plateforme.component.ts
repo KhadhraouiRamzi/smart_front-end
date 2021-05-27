@@ -10,6 +10,7 @@ import { DataTableDirective } from 'angular-datatables';
 import html2canvas from 'html2canvas';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
 import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
+import {DatatableLanguage} from "../../../../../../assets/data/DatatableLanguage";
 @Component({
   selector: 'ngx-orange-stat-plateforme',
   templateUrl: './orange-stat-plateforme.component.html',
@@ -34,19 +35,20 @@ export class OrangeStatPlateformeComponent implements OnInit {
   statuses5: NbComponentStatus[] = ['warning'];
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
- 
+
   constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
     private token: TokenStorageService) { }
- 
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      language:{url:"/assets/datatable-French.json"},
+      order: [ 1, 'desc' ],
+      language : DatatableLanguage.datatableFrench
     };
 
     this.detaisSerivce.getStatPlateforme().subscribe(
-      res => { 
+      res => {
         let role=this.token.getUser()['roles'];
         let idUser=this.token.getUser().id;
         if (role=="ROLE_ARTISTE"){
@@ -84,19 +86,19 @@ export class OrangeStatPlateformeComponent implements OnInit {
 
   public openPDF():void {
     let DATA = document.getElementById('excel-table');
-      
+
     html2canvas(DATA).then(canvas => {
-        
+
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
+
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-        
+
         PDF.save('Liste top chansons.pdf');
-    });     
+    });
   }
 
   generatePdf() {
@@ -119,33 +121,33 @@ export class OrangeStatPlateformeComponent implements OnInit {
     // Open PDF document in browser's new tab
     pdf.output('dataurlnewwindow')
 
-    // Download PDF doc  
+    // Download PDF doc
     pdf.save('Chanson.pdf');
   }
-  
-  Artiste(){    
+
+  Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
   }
-  Chanson(){    
+  Chanson(){
     this.r.navigate(['/pages/layout/orange-stat-chanson/']);
   }
-  Categorie(){    
+  Categorie(){
     this.r.navigate(['/pages/layout/orange-stat-category/']);
   }
-  Mois(){    
+  Mois(){
     this.r.navigate(['/pages/layout/orange-stat-date/']);
   }
-  CountA(){    
+  CountA(){
     this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
   }
-  CountD(){    
+  CountD(){
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
-  
+
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
-  
+
   selectFile(event) {
     this.selectedFile = event.target.files[0];
   }

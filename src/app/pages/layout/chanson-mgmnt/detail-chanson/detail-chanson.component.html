@@ -44,7 +44,7 @@
                 <tr>
                     <td>RBT</td>
                     <td>:</td>
-                    <td>{{ chanson.operateur.nom }}</td>
+                    <td *ngFor="let pp of chanson.operateurs">{{ pp.nom }}{{ chanson.operateurs.nom }}</td>
                 </tr>
                 <tr>
 
@@ -56,7 +56,7 @@
                     <td>Nom Plateforme</td>
 
                     <td>:</td>
-                    <td>{{ chanson.plateforme }}</td>
+                    <td *ngFor="let pp of chanson.platformes">{{ pp.nom }}</td>
                 </tr>
 
             </table>

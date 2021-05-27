@@ -10,13 +10,14 @@ import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
 import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
+import {DatatableLanguage} from "../../../../../../assets/data/DatatableLanguage";
 @Component({
   selector: 'ngx-orange-stat-chanson',
   templateUrl: './orange-stat-chanson.component.html',
   styleUrls: ['./orange-stat-chanson.component.scss']
 })
 export class OrangeStatChansonComponent implements OnInit {
-  
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -39,15 +40,18 @@ export class OrangeStatChansonComponent implements OnInit {
 
   constructor(private detaisSerivce: DetailsService, private r: Router,private excelExportService: ExcelExportService,
     private token: TokenStorageService) { }
- 
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
+      order: [ 1, 'desc' ],
+      language : DatatableLanguage.datatableFrench
+
     };
 
     this.detaisSerivce.getStatChanson().subscribe(
-      res => {    
+      res => {
         let role=this.token.getUser()['roles'];
         let idUser=this.token.getUser().id;
         console.log(idUser);
@@ -55,7 +59,7 @@ export class OrangeStatChansonComponent implements OnInit {
           this.detaisSerivce.getStatChansonById(idUser).subscribe(data=>{
             this.detail = data;
             console.log(data);
-            this.dtTrigger.next();              
+            this.dtTrigger.next();
           })
         }
         // Swal.fire('This is a simple and sweet alert')
@@ -63,7 +67,7 @@ export class OrangeStatChansonComponent implements OnInit {
           console.log(res);
           this.detail = res;
           console.log(res);
-          this.dtTrigger.next();              
+          this.dtTrigger.next();
         }
        });
   }
@@ -86,19 +90,19 @@ export class OrangeStatChansonComponent implements OnInit {
 
   public openPDF():void {
     let DATA = document.getElementById('excel-table');
-      
+
     html2canvas(DATA).then(canvas => {
-        
+
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
+
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-        
+
         PDF.save('Liste top chansons.pdf');
-    });     
+    });
   }
 
   generatePdf() {
@@ -121,33 +125,33 @@ export class OrangeStatChansonComponent implements OnInit {
     // Open PDF document in browser's new tab
     pdf.output('dataurlnewwindow')
 
-    // Download PDF doc  
+    // Download PDF doc
     pdf.save('Artiste.pdf');
   }
-  
-  Artiste(){    
+
+  Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
   }
-  Chanson(){    
+  Chanson(){
     this.r.navigate(['/pages/layout/orange-stat-chanson/']);
   }
-  Categorie(){    
+  Categorie(){
     this.r.navigate(['/pages/layout/orange-stat-category/']);
   }
-  Mois(){    
+  Mois(){
     this.r.navigate(['/pages/layout/orange-stat-date/']);
   }
-  CountA(){    
+  CountA(){
     this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
   }
-  CountD(){    
+  CountD(){
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
-  
+
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
-  
+
   selectFile(event) {
     this.selectedFile = event.target.files[0];
   }

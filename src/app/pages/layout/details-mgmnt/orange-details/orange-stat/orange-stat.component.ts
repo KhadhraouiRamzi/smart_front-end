@@ -1,15 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { details } from '../../../../../models/details';
-import { DetailsService } from '../../../../../utils/services/details.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {Subject} from 'rxjs';
+import {details} from '../../../../../models/details';
+import {DetailsService} from '../../../../../utils/services/details.service';
 import jsPDF from 'jspdf';
-import { NbComponentShape, NbComponentStatus } from '@nebular/theme';
+import {NbComponentShape, NbComponentStatus} from '@nebular/theme';
 import html2canvas from 'html2canvas';
-import { DataTableDirective } from 'angular-datatables';
+import {DataTableDirective} from 'angular-datatables';
 import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
-import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
-import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
+import {ExcelExportService} from '../../../../../utils/services/excel-export.service';
+import {TokenStorageService} from '../../../../../auth/services/token-storage.service';
+import {DatatableLanguage} from "../../../../../../assets/data/DatatableLanguage";
 
 @Component({
   selector: 'ngx-orange-stat',
@@ -18,13 +19,13 @@ import { TokenStorageService } from '../../../../../auth/services/token-storage.
 })
 export class OrangeStatComponent implements OnInit {
 
-  @ViewChild(DataTableDirective, { static: false })
+  @ViewChild(DataTableDirective, {static: false})
   dtElement: DataTableDirective;
 
   selectedFile: File;
   message: string;
-  statut:any;
-  hide:any;
+  statut: any;
+  hide: any;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
@@ -36,24 +37,27 @@ export class OrangeStatComponent implements OnInit {
   statuses5: NbComponentStatus[] = ['warning'];
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
-  shapes: NbComponentShape[] = [ 'round' ];
- 
-  constructor(private excelExportService: ExcelExportService, 
-  private detaisSerivce: DetailsService, private r: Router,private token: TokenStorageService) { }
+  shapes: NbComponentShape[] = ['round'];
+
+  constructor(private excelExportService: ExcelExportService,
+              private detaisSerivce: DetailsService, private r: Router, public token: TokenStorageService) {
+  }
+
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
-      language:{url:"/assets/datatable-French.json"},
+      order: [ 1, 'desc' ],
+      language : DatatableLanguage.datatableFrench
     };
-    let roles =this.token.getUser().roles;
 
     this.detaisSerivce.getStatArtiste().subscribe(
-      res => {        
-        let role=this.token.getUser()['roles'];
-        let idUser=this.token.getUser().id;
-        if (role=="ROLE_ARTISTE"){
-          this.detaisSerivce.getStatArtisteById(idUser).subscribe(data=>{
+      res => {
+        let role = this.token.getUser()['roles'];
+        let idUser = this.token.getUser().id;
+        if (role == "ROLE_ARTISTE") {
+          this.detaisSerivce.getStatArtisteById(idUser).subscribe(data => {
             this.details = data;
             this.dtTrigger.next();
           })
@@ -66,8 +70,8 @@ export class OrangeStatComponent implements OnInit {
           this.dtTrigger.next();
         }
 
-      
-       });
+
+      });
   }
 
   exportexcel(): void {
@@ -86,20 +90,20 @@ export class OrangeStatComponent implements OnInit {
 
   header = [['Nom Artiste', 'Net Revenu', 'Nombre d écoute']]
 
-  public openPDF():void {
+  public openPDF(): void {
     let DATA = document.getElementById('excel-table');
 
     html2canvas(DATA).then(canvas => {
 
-        let fileWidth = 208;
-        let fileHeight = canvas.height * fileWidth / canvas.width;
+      let fileWidth = 208;
+      let fileHeight = canvas.height * fileWidth / canvas.width;
 
-        const FILEURI = canvas.toDataURL('image/png')
-        let PDF = new jsPDF('p', 'mm', 'a4');
-        let position = 0;
-        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+      const FILEURI = canvas.toDataURL('image/png')
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
 
-        PDF.save('Liste top artistes.pdf');
+      PDF.save('Liste top artistes.pdf');
     });
   }
 
@@ -127,47 +131,54 @@ export class OrangeStatComponent implements OnInit {
     pdf.save('Artiste.pdf');
   }
 
-  Artiste(){
+  Artiste() {
     this.r.navigate(['/pages/layout/orange-stat/']);
   }
-  Chanson(){
+
+  Chanson() {
     this.r.navigate(['/pages/layout/orange-stat-chanson/']);
   }
-  Categorie(){
+
+  Categorie() {
     this.r.navigate(['/pages/layout/orange-stat-category/']);
   }
-  Mois(){
+
+  Mois() {
     this.r.navigate(['/pages/layout/orange-stat-date/']);
   }
-  CountA(){
+
+  CountA() {
     this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
   }
-  CountD(){
+
+  CountD() {
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
-  Plateforme(){
+
+  Plateforme() {
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
-  
-  ajouter(){
+
+  ajouter() {
     this.r.navigate(['/pages/layout/orange/']);
   }
 
-  
+
   selectFile(event) {
     this.selectedFile = event.target.files[0];
   }
 
   uploadd() {
-    console.log("file to upload: "+this.selectedFile);
+    console.log("file to upload: " + this.selectedFile);
 
     const uploadExcelData = new FormData();
 
-    uploadExcelData.append('file',this.selectedFile);
-    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
-        this.statut=response.status;
-        this.message = response.body.valueOf()['message'];
-    },error => this.message=error.message);}
+    uploadExcelData.append('file', this.selectedFile);
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response => {
+      this.statut = response.status;
+      this.message = response.body.valueOf()['message'];
+    }, error => this.message = error.message);
+  }
 
 
 }
