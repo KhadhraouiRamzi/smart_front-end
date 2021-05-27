@@ -88,4 +88,34 @@ export class DetailsService {
   getStatDateById(id: any){
     return this.backend.get<any>(this.baseUrl + "/statDate/by-userId/"+id);
   }
+
+
+
+  getTopChansonById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topChanson/by-userId/"+id);
+  }
+
+  getTopPlateformeById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/statPlateforme/by-userId/"+id);
+  }
+  getTopArtisteById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topArtiste/by-userId/"+id);
+  }
+
+  getTopCategoryById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topCategory/by-userId/"+id);
+  }
+
+  getTopCountCById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topCountC/by-userId/"+id);
+  }
+
+  getTopCountAById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topCountA/by-userId/"+id);
+  }
+
+  getTopDateById(id: any): Observable<any> {
+    return this.backend.get<any>(this.baseUrl + "/topDate/by-userId/"+id);
+  }
+
 }

@@ -88,6 +88,7 @@ export class OrangeStatCategoryComponent implements OnInit {
   public openPDF():void {
     let DATA = document.getElementById('excel-table');
 
+
     html2canvas(DATA).then(canvas => {
 
         let fileWidth = 208;

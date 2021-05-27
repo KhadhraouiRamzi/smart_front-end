@@ -105,7 +105,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
     data: "ROLE_ADMIN",
   },
- {
+ /*{
      title: 'Layout',
      icon: 'layout-outline',
      children: [
@@ -310,7 +310,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
          link: '/pages/miscellaneous/404',
        },
      ],
-   },
+   },*/
   {
     title: 'Auth',
     icon: 'lock-outline',

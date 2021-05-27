@@ -36,6 +36,12 @@ export class OrangeStatPlateformeComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
 
+
+  constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
+    private token: TokenStorageService) { }
+
+
+
   constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
     private token: TokenStorageService) { }
 

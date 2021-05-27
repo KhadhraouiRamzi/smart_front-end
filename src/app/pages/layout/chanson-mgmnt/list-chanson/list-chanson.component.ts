@@ -38,7 +38,7 @@ export class ListChansonComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 1,
+      pageLength: 10,
       language: {url: "/assets/datatable-French.json"},
     };
     this.chansonService.getlistChanson().subscribe(

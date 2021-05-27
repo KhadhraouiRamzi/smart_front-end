@@ -55,12 +55,12 @@
                             Par Categorie</a>
                         <a (click)="Plateforme()" *ngFor="let status of statuses5" nbButton [status]="status" outline>
                             Par Plateforme</a>
-                        <a (click)="CountD()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
+                        <!--<a (click)="CountD()" *ngFor="let status of statuses4" nbButton [status]="status" outline>
                             Nombre d'écoute Chanson </a>
                         <a (click)="CountA()" *ngFor="let status of statuses2" nbButton [status]="status" outline>
-                            Nombre d'écoute Artiste</a>
-                        <a (click)="Mois()" nbButton>
-                            Date d'écoute</a>
+                            Nombre d'écoute Artiste</a>-->
+                            <a (click)="Mois()" *ngFor="let status of statuses2" nbButton [status]="status" hero>
+                                Date d'écoute</a>
                     </td>
                     <br>
                     <div class="card-header">
