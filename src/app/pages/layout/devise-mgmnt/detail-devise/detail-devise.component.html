@@ -1,0 +1,37 @@
+<nb-card>
+    <nb-card-header>
+        <p>Devise est :</p>
+    </nb-card-header>
+    <nb-card-body>
+
+        <div *ngIf="devises">
+            <table>
+                <tr>
+                    <td>Nom Marketing </td>
+                    <td>:</td>
+                    <td>{{devises.nomd}}</td>
+                </tr>
+                <tr>
+                    <td>Cours</td>
+                    <td>:</td>
+                    <td>{{devises.cours}}</td>
+                </tr>
+
+                <tr>
+                    <td>Code</td>
+                    <td>:</td>
+                    <td>{{ devises.code }}</td>
+                </tr>
+                <tr>
+
+                    <td>Date Cours</td>
+                    <td>:</td>
+                    <td>{{ devises.datecours }}</td>
+                </tr>
+                 
+
+            </table>
+
+        </div>
+    </nb-card-body>
+</nb-card>

@@ -1,0 +1,78 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header"> Ajouter un nouveau Devise</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label>Nom Devise</label>
+                    <input type="text" formControlName="nomd" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nomd.errors }" [(ngModel)]="u.nomd" />
+                    <div *ngIf="submitted && f.nomd.errors" class="invalid-feedback">
+                        <div *ngIf="f.nomd.errors.required"> nom devise is required</div>
+                    </div>
+                </div>
+ 
+                <div class="form-group col-5">
+                    <label>Code Devise</label>
+                    <input type="text" formControlName="code" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.code.errors }" [(ngModel)]="u.code" />
+                    <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                        <div *ngIf="f.code.errors.required">   code is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Cours Devise</label>
+                    <input type="number" formControlName="cours" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.cours.errors }" [(ngModel)]="u.cours" />
+                    <div *ngIf="submitted && f.cours.errors" class="invalid-feedback">
+                        <div *ngIf="f.cours.errors.required">cours is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Date cours</label>
+                    <input type="date" formControlName="datecours" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.datecours.errors }" [(ngModel)]="u.datecours" />
+                    <div *ngIf="submitted && f.datecours.errors" class="invalid-feedback">
+                        <div *ngIf="f.datecours.errors.required">datecours is required</div>
+                    </div>
+                </div>
+                < 
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required
+                </div>
+            </div>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline>
+                                    Register
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="onReset()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+
+        </form>
+    </div>
+</div>
