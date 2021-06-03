@@ -8,7 +8,7 @@ import { artiste } from '../../models/artiste';
 })
 export class ArtisteService {
   
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
 

@@ -6,7 +6,7 @@ import { distributeur } from '../../models/distributeur';
   providedIn: 'root'
 })
 export class DistributeurService {
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
 

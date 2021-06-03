@@ -42,7 +42,7 @@ export class ImageUploadComponent implements OnInit {
 
     //Make a call to the Spring Boot Application to save the image
 
-    this.httpClient.post('http://localhost:8081/image/upload', uploadImageData, { observe: 'response' })
+    this.httpClient.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
 
       .subscribe((response) => {
 
@@ -70,7 +70,7 @@ export class ImageUploadComponent implements OnInit {
 
     //Make a call to Sprinf Boot to get the Image Bytes.
 
-    this.httpClient.get('http://localhost:8081/image/get/' + this.imageName)
+    this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
 
       .subscribe(
 

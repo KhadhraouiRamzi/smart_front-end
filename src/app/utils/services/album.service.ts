@@ -9,7 +9,7 @@ import {chanson} from "../../models/chanson";
 })
 export class AlbumService {
 
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
 

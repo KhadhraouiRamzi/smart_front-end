@@ -8,7 +8,7 @@ export class users
      nom: String;
      prenom: String;
      pro : Boolean;
-     cin: Number;
+     cin: String;
      contrat: String;
      date: Date;
      datecin: Date;
@@ -18,7 +18,7 @@ export class users
      nArtistique: String;
      nationnalite: String;
      part: Number;
-     phone: Number;
+     phone: String;
      proposition: String;
      retenu: Number;
      udate : Date;

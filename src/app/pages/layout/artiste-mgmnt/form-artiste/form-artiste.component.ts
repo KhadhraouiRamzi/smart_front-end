@@ -107,7 +107,7 @@ export class FormArtisteComponent implements OnInit {
 
     //Make a call to the Spring Boot Application to save the image
     // this.HttpClient.post(this.baseUrl + "/new-user", u);
-    // this.httpClient.put('http://localhost:8081/upload', uploadImageData, { observe: 'response' }).subscribe((response) => {
+    // this.httpClient.put('http://localhost:8080/upload', uploadImageData, { observe: 'response' }).subscribe((response) => {
       console.log(this.u.id);
       this.artiseService.imageIn(uploadImageData).subscribe(response => {
         if (response) {

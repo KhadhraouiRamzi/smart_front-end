@@ -13,9 +13,6 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   form: any = {
     nom: null,
     prenom: null,
-    cin: null,
-    dateCin: null,
-    phone: null,
     email: null,
     password: null,
     role:null
@@ -25,7 +22,6 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   errorMessage = '';
   roles:any [];
 
-
   constructor( private r: Router,private authService: AuthService,private roleService : RoleService) {
     super(undefined, {}, undefined, undefined);
   }
@@ -34,14 +30,15 @@ export class NgxRegisterComponent extends NbRegisterComponent {
     this.roles=[];
     this.roleService.getRoles().subscribe(data=>{
       this.roles=data;
-      console.log(data);
     })
   }
 
   onSubmit(): void {
-    const { nom,prenom,cin,dateCin,phone,email, password,role} = this.form;
+    const { nom,prenom, email, password,role} = this.form;
 
-    this.authService.register(nom,prenom,cin,dateCin,phone,email, password,role).subscribe(
+    console.log(this.form);
+
+    this.authService.register( nom,prenom,email,password,role).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
@@ -52,6 +49,7 @@ export class NgxRegisterComponent extends NbRegisterComponent {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
+
     );
   }
 }

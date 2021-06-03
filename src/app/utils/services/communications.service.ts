@@ -7,7 +7,7 @@ import { communication } from '../../models/communication';
   providedIn: 'root'
 })
 export class CommunicationsService {
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
  

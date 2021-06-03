@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class DetailsService {
 
 
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
 

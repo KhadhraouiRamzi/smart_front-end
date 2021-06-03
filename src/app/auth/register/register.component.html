@@ -15,6 +15,7 @@
 </nb-alert>-->
 
 <form (ngSubmit)="onSubmit()" name="form" aria-labelledby="title">
+ 
 
   <div class="form-control-group">
     <label class="label" for="input-Firstname">First Name:</label>
@@ -72,96 +73,6 @@
       characters
     </p>
   </ng-container>
-  </div>
-
-  <div class="form-control-group">
-    <label class="label" for="input-name">CIN</label>
-    <input type="tel"
-           nbInput
-           [(ngModel)]="form.cin"
-           #cin="ngModel"
-           id="input-cin"
-           name="cin"
-           placeholder="CIN"
-           autofocus
-           fullWidth
-           fieldSize="large"
-           [status]="cin.dirty ? (cin.invalid  ? 'danger' : 'success') : ''"
-           [required]="getConfigValue('forms.validation.cin.required')"
-           [minlength]="getConfigValue('forms.validation.cin.minLength')"
-           [maxlength]="getConfigValue('forms.validation.cin.maxLength')"
-           [attr.aria-invalid]="cin.invalid && cin.touched ? true : null">
-    <ng-container *ngIf="cin.invalid && cin.touched">
-      <p class="caption status-danger" *ngIf="cin.errors?.required">
-        Full name is required!
-      </p>
-      <p class="caption status-danger" *ngIf="cin.errors?.minlength || cin.errors?.maxlength">
-        CIN should contains
-        from {{getConfigValue('forms.validation.cin.minLength')}}
-        to {{getConfigValue('forms.validation.cin.maxLength')}}
-        characters
-      </p>
-    </ng-container>
-  </div>
-
-  <div class="form-control-group">
-    <label class="label" for="input-dateCin">date CIN</label>
-    <input type="date"
-           nbInput
-           [(ngModel)]="form.dateCin"
-           #dateCin="ngModel"
-           id="input-dateCin"
-           name="dateCin"
-           placeholder="date CIN"
-           autofocus
-           fullWidth
-           fieldSize="large"
-           [status]="dateCin.dirty ? (dateCin.invalid  ? 'danger' : 'success') : ''"
-           [required]="getConfigValue('forms.validation.dateCin.required')"
-           [minlength]="getConfigValue('forms.validation.dateCin.minLength')"
-           [maxlength]="getConfigValue('forms.validation.dateCin.maxLength')"
-           [attr.aria-invalid]="dateCin.invalid && dateCin.touched ? true : null">
-    <ng-container *ngIf="dateCin.invalid && dateCin.touched">
-      <p class="caption status-danger" *ngIf="dateCin.errors?.required">
-        Full name is required!
-      </p>
-      <p class="caption status-danger" *ngIf="dateCin.errors?.minlength || dateCin.errors?.maxlength">
-        CIN should contains
-        from {{getConfigValue('forms.validation.dateCin.minLength')}}
-        to {{getConfigValue('forms.validation.dateCin.maxLength')}}
-        characters
-      </p>
-    </ng-container>
-  </div>
-
-  <div class="form-control-group">
-    <label class="label" for="input-phone">PHONE</label>
-    <input type="tel"
-           nbInput
-           [(ngModel)]="form.phone"
-           #phone="ngModel"
-           id="input-phone"
-           name="phone"
-           placeholder="PHONE"
-           autofocus
-           fullWidth
-           fieldSize="large"
-           [status]="phone.dirty ? (phone.invalid  ? 'danger' : 'success') : ''"
-           [required]="getConfigValue('forms.validation.phone.required')"
-           [minlength]="getConfigValue('forms.validation.phone.minLength')"
-           [maxlength]="getConfigValue('forms.validation.phone.maxLength')"
-           [attr.aria-invalid]="phone.invalid && phone.touched ? true : null">
-    <ng-container *ngIf="phone.invalid && phone.touched">
-      <p class="caption status-danger" *ngIf="phone.errors?.required">
-        PHONE is required!
-      </p>
-      <p class="caption status-danger" *ngIf="phone.errors?.minlength || phone.errors?.maxlength">
-        PHONE should contains
-        from {{getConfigValue('forms.validation.phone.minLength')}}
-        to {{getConfigValue('forms.validation.phone.maxLength')}}
-        characters
-      </p>
-    </ng-container>
   </div>
 
   <div class="form-control-group">

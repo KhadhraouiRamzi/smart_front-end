@@ -8,7 +8,7 @@ import { fournisseur } from '../../models/fournisseur';
 })
 export class FournisseurService {
 
-  baseUrl: string = "http://localhost:8081";
+  baseUrl: string = "http://localhost:8080";
 
   constructor(private backend: HttpClient) { }
 

@@ -59,7 +59,7 @@ export class ListArtisteComponent implements OnInit {
         let arr = array[i].picByte;
          //let img = this.artistes.prenom; this.artistes.name
 
-         this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
+         this.httpClient.get('http://localhost:8080/get/' +array[i].id ).subscribe(
           response => {
             console.log(this.imageName);
             this.retrieveResonse = response;
@@ -134,7 +134,7 @@ export class ListArtisteComponent implements OnInit {
 
     //Make a call to Sprinf Boot to get the Image Bytes.
 
-    this.httpClient.get('http://localhost:8081/get/' + this.imageName).subscribe(
+    this.httpClient.get('http://localhost:8080/get/' + this.imageName).subscribe(
 
       res => {
         console.log(this.imageName);

@@ -85,7 +85,7 @@
 
                       <div class="form-group col-5">
                         <label>RBT chanson </label><br>
-                        <nb-select multiple class="form-control"
+                        <nb-select multiple placeholder="Multiple Select" size="medium" style="width: 100%"
                                    formControlName="operateur" [(ngModel)]="u.operateurs">
                           <nb-option *ngFor="let d of operateur" [value]="d">
                             {{ d.nom }}
