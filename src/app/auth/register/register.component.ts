@@ -4,6 +4,7 @@ import {AuthService} from "../services/auth.service";
 import {RoleService} from "../../utils/services/role.service";
 import { role } from '../../models/role';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'ngx-register',
@@ -13,12 +14,10 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   form: any = {
     nom: null,
     prenom: null,
-    cin: null,
-    dateCin: null,
     phone: null,
     email: null,
     password: null,
-    role:null
+    role:null,
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -26,7 +25,7 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   roles:any [];
 
 
-  constructor( private r: Router,private authService: AuthService,private roleService : RoleService) {
+  constructor( private r: Router,private authService: AuthService,private roleService : RoleService,public datepipe: DatePipe) {
     super(undefined, {}, undefined, undefined);
   }
 
@@ -39,9 +38,11 @@ export class NgxRegisterComponent extends NbRegisterComponent {
   }
 
   onSubmit(): void {
-    const { nom,prenom,cin,dateCin,phone,email, password,role} = this.form;
-
-    this.authService.register(nom,prenom,cin,dateCin,phone,email, password,role).subscribe(
+    const { nom,prenom,phone,email, password,role} = this.form;
+/*
+    const formatDate = this.datepipe.transform(this.date, 'yyyy-MM-dd');
+*/
+    this.authService.register(nom,prenom,phone,email, password,role).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;
