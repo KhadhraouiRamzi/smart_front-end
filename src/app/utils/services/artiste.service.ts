@@ -2,12 +2,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { artiste } from '../../models/artiste';
-  
+
 @Injectable({
   providedIn: 'root'
 })
 export class ArtisteService {
-  
+
   baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient) { }
@@ -22,11 +22,11 @@ export class ArtisteService {
     return this.backend.get<any>(this.baseUrl + "/listDetail");
   }
 
-  
+
   getChanson(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/listChanson");
   }
-   
+
   getlistArtiste(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/artistes");
   }
@@ -54,6 +54,6 @@ export class ArtisteService {
   getArtisteById(id) {
     return this.backend.get<artiste>(this.baseUrl + "/artiste/by-id/" + id);
   }
-  
+
  }
 */

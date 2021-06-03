@@ -43,7 +43,7 @@ export class EditArtisteComponent implements OnInit {
         response => {
           this.u = response;
           console.log(response);
-          
+
           this.httpClient.get('http://localhost:8081/get/' + this.u.id).subscribe(
 
             res => {

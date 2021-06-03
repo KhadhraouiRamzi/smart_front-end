@@ -43,5 +43,5 @@ export class PlateformeService {
     return this.backend.delete(this.baseUrl + "/deletePlateforme/" + id);
   }
 
-  
+
 }

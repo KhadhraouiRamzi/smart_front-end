@@ -50,7 +50,7 @@ export class FournisseurService {
   deleteFournisseur(id) {
     return this.backend.delete(this.baseUrl + "/deleteFournisseur/" + id);
   }
-  
+
   getFournisseurById(id) {
     return this.backend.get<fournisseur>(this.baseUrl + "/fournisseur/by-id/" + id);
   }

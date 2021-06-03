@@ -42,5 +42,5 @@ export class OperateurService {
   deleteOperateur(id) {
     return this.backend.delete(this.baseUrl + "/deleteOperateur/" + id);
   }
- 
+
 }

@@ -10,7 +10,7 @@ export class DeviseService {
   baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient) { }
-  
+
 
   getDevise(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/listDevise");

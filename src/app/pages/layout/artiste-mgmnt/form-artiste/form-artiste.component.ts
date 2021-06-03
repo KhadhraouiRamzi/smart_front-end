@@ -26,7 +26,7 @@ export class FormArtisteComponent implements OnInit {
   statuses4: NbComponentStatus[] = ['info'];
 
 
-  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private artiseService: UsersService, 
+  constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private artiseService: UsersService,
     private marketingService : MarketingService,private roleService : RoleService,private r: Router) { }
   selectedFile: File;
   retrievedImage: any;
@@ -55,7 +55,7 @@ export class FormArtisteComponent implements OnInit {
       marketing: ['', Validators.required],
       image: ['', Validators.required],
       pro: ['', Validators.required],
-      
+
       acceptTerms: [false, Validators.requiredTrue]
     })
 
@@ -96,7 +96,7 @@ export class FormArtisteComponent implements OnInit {
     console.log(this.selectedFile);
 
     //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-   
+
     this.artiseService.test(this.u).subscribe(res => {
       alert("ajout avec succès !");
       this.u = new users();
@@ -115,7 +115,7 @@ export class FormArtisteComponent implements OnInit {
           this.message = 'Image uploaded successfully';
         } else {
           this.message = 'Image not uploaded successfully';
-        }  
+        }
       }
       );
     //  this.u.name = this.selectedFile.name;
@@ -127,7 +127,7 @@ export class FormArtisteComponent implements OnInit {
     this.submitted = false;
     this.registerForm.reset();
   }
-  
+
   Retour() {
     this.r.navigate(['/pages/layout/list-artiste/']);
   }

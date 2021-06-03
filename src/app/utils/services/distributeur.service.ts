@@ -41,5 +41,5 @@ export class DistributeurService {
   deleteDistributeur(id) {
     return this.backend.delete(this.baseUrl + "/deleteDistributeur/" + id);
   }
- 
+
 }

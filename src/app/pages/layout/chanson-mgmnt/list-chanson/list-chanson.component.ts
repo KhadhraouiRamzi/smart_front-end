@@ -40,6 +40,7 @@ export class ListChansonComponent implements OnInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       language: {url: "/assets/datatable-French.json"},
+
     };
     this.chansonService.getlistChanson().subscribe(
       res => {

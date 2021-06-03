@@ -10,7 +10,7 @@ export class CommunicationsService {
   baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient) { }
- 
+
 
 
   getCom(): Observable<any> {
