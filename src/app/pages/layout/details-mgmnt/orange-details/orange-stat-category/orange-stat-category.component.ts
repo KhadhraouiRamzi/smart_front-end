@@ -38,7 +38,7 @@ export class OrangeStatCategoryComponent implements OnInit {
   statuses7: NbComponentStatus[] = ['control'];
 
   constructor(private excelExportService :ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
-    private token: TokenStorageService) { }
+    public token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -67,7 +67,7 @@ export class OrangeStatCategoryComponent implements OnInit {
                     // converting to interger to find total
                     var intVal = function ( i ) {
                       return typeof i === 'string' ?
-                        i.replace(/[,]/g, '')*1 :
+                        parseFloat(i.replace(/[,]/g, ''))*1 :
                         typeof i === 'number' ?
                           i : 0;
                     };
@@ -224,7 +224,7 @@ export class OrangeStatCategoryComponent implements OnInit {
                   // converting to interger to find total
                   var intVal = function ( i ) {
                     return typeof i === 'string' ?
-                      i.replace(/[,]/g, '')*1 :
+                      parseFloat(i.replace(/[,]/g, ''))*1 :
                       typeof i === 'number' ?
                         i : 0;
                   };

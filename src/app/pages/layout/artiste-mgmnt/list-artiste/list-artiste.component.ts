@@ -35,6 +35,7 @@ export class ListArtisteComponent implements OnInit {
   retrieveResonse: any;
   imageName: any;
   //img: String;
+  private pic: string;
 
   constructor(private httpClient: HttpClient, private service: SmartTableData, private usersService: UsersService,
     private r: Router, private ar: ActivatedRoute) {
@@ -50,33 +51,23 @@ export class ListArtisteComponent implements OnInit {
       res => {
         // Swal.fire('This is a simple and sweet alert')
         res[1].name = res[1].name
-        console.log(res);
 
 
         let array = res;
         for (let i = 0; i < array.length; i++) {
-         console.log(array[i].name);
         let arr = array[i].picByte;
          //let img = this.artistes.prenom; this.artistes.name
 
          this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
           response => {
-            console.log(this.imageName);
             this.retrieveResonse = response;
-            console.log(this.retrieveResonse);
+            console.log(this.retrieveResonse.picByte);
             this.base64Data = this.retrieveResonse.picByte;
-            console.log(this.base64Data);
             array[i].picByte =this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-            console.log( this.retrievedImage);
-            console.log(array[i].picByte);
-            console.log( res.picByte);
             res[i].picByte = array[i].picByte;
             this.artistes = res;
-            console.log(res);
           }
         );
-        console.log(arr);
-        console.log(res.picByte);
       }
         this.dtTrigger.next();
       });
@@ -84,6 +75,11 @@ export class ListArtisteComponent implements OnInit {
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
+  }
+
+
+  setDefaultPic() {
+    this.pic = "/assets/images/noPhoto.png";
   }
   displayBasic: boolean;
   currentartiste: users;
@@ -97,7 +93,6 @@ export class ListArtisteComponent implements OnInit {
   modifier(u: users) {
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-artiste/' + u.id]);
-    console.log(u);
     // }
   }
 

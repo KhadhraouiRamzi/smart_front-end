@@ -70,7 +70,7 @@ export class OrangeStatComponent implements OnInit {
                     // converting to interger to find total
                     var intVal = function ( i ) {
                       return typeof i === 'string' ?
-                        i.replace(/[,]/g, '')*1 :
+                        parseFloat(i.replace(/[,]/g, ''))*1 :
                         typeof i === 'number' ?
                           i : 0;
                     };
@@ -225,7 +225,7 @@ export class OrangeStatComponent implements OnInit {
                   // converting to interger to find total
                   var intVal = function ( i ) {
                     return typeof i === 'string' ?
-                      i.replace(/[,]/g, '')*1 :
+                      parseFloat(i.replace(/[,]/g, ''))*1 :
                       typeof i === 'number' ?
                         i : 0;
                   };

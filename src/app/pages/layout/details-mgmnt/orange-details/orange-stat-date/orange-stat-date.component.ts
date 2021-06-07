@@ -41,7 +41,7 @@ export class OrangeStatDateComponent implements OnInit {
   shapes: NbComponentShape[] = [  'round' ];
 
   constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router,
-    private token: TokenStorageService) { }
+    public token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -68,7 +68,7 @@ export class OrangeStatDateComponent implements OnInit {
                     // converting to interger to find total
                     var intVal = function ( i ) {
                       return typeof i === 'string' ?
-                        i.replace(/[,]/g, '')*1 :
+                        parseFloat(i.replace(/[,]/g, ''))*1 :
                         typeof i === 'number' ?
                           i : 0;
                     };
@@ -223,9 +223,10 @@ export class OrangeStatDateComponent implements OnInit {
                   // converting to interger to find total
                   var intVal = function ( i ) {
                     return typeof i === 'string' ?
-                      i.replace(/[,]/g, '')*1 :
+                      parseFloat(i.replace(/[,]/g, ''))*1 :
                       typeof i === 'number' ?
                         i : 0;
+
                   };
 
                   // computing column Total of the complete result
