@@ -25,7 +25,7 @@ export class EditArtisteComponent implements OnInit {
   retrievedImage: any;
   base64Data: any;
   retrieveResonse: any;
-  imageName: any;
+  imageName: string;
   selectedFile: File;
   message: string;
   imageSrc: string;
@@ -33,9 +33,19 @@ export class EditArtisteComponent implements OnInit {
   submitted = false;
   myVar = [];
   constructor(private artisteService: UsersService, private router: Router, private ar: ActivatedRoute,
-    private formBuilder: FormBuilder, private marketingService: MarketingService, private httpClient: HttpClient) { }
+    private formBuilder: FormBuilder, private marketingService: MarketingService, private httpClient: HttpClient) {
+    this.imageName="assets/images/noPhoto.png";
+  }
 
   ngOnInit(): void {
+
+    this.marketingService.getlistMarketing().subscribe(
+      res => {
+        this.mark = res;
+        // Calling the DT trigger to manually render the table
+        console.log(this.mark);
+      });
+
     let routeId = this.ar.snapshot.paramMap.get('id');
     let id = parseInt(routeId);  /// car les param tj considerés comme String dans l'url
     if (!isNaN(id)) {
@@ -49,21 +59,17 @@ export class EditArtisteComponent implements OnInit {
             res => {
               this.retrieveResonse = res;
               console.log(res);
-              this.base64Data = this.retrieveResonse.picByte;
-              this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+              if(this.retrieveResonse.picByte==null){
+                this.retrievedImage="assets/images/noPhoto.png";
+              }
+              else this.retrievedImage = 'data:image/jpeg;base64,' + this.retrieveResonse.picByte;
 
             }
           );
         }
+
       )
-    } else {
     }
-    this.marketingService.getlistMarketing().subscribe(
-      res => {
-        this.mark = res;
-        // Calling the DT trigger to manually render the table
-        console.log(this.mark);
-      });
   }
 
   update(u: users) {

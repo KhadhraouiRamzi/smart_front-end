@@ -56,18 +56,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
       this.userService.getImage(this.user.id).subscribe(res=>{
 
-        if (res == null){
+        if (res.picByte==null){
 
-          this.retrievedImage;
+          this.retrievedImage="assets/images/noPhoto.png";
         }
-        else if(!(res == null))
-        {
-          this.retrieveResonse = res;
 
-          this.base64Data = this.retrieveResonse.picByte;
+        else this.retrievedImage = 'data:image/jpeg;base64,' + res.picByte;
 
-          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        }
 
 
       })

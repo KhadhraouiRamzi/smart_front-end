@@ -35,14 +35,11 @@ export class ProfileComponent implements OnInit {
 
       this.userService.getImage(this.user.id).subscribe(res=>{
 
-        this.retrieveResonse = res;
 
-        this.base64Data = this.retrieveResonse.picByte;
-
-
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        console.log( this.retrievedImage);
-        console.log( data);})
+      if(res.picByte==null){
+        this.retrievedImage="assets/images/noPhoto.png";
+      }
+        else this.retrievedImage = 'data:image/jpeg;base64,' + res.picByte;})
 
 
     });

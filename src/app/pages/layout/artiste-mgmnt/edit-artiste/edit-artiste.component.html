@@ -12,13 +12,13 @@
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="firstName">Nom artiste:</label>
+                                            <label>Nom artiste:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.nom" />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="lastName">Prénom artiste:</label>
+                                            <label>Prénom artiste:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.prenom" />
                                         </div>
                                     </td>
@@ -26,14 +26,14 @@
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="firstName">Nom artistique:</label>
+                                            <label >Nom artistique:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.nArtistique" />
                                         </div>
                                     </td>
                                     <td>
 
                                         <div>
-                                            <label for="lastName">Telephone:</label>
+                                            <label>Telephone:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.phone" />
                                         </div>
                                     </td>
@@ -41,13 +41,13 @@
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="firstName">E-mail:</label>
+                                            <label>E-mail:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.email" />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="lastName">Cin:</label>
+                                            <label>Cin:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.cin" />
                                         </div>
                                     </td>
@@ -55,13 +55,13 @@
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="firstName">Date Cin:</label>
+                                            <label>Date Cin:</label>
                                             <input type="date" class="form-control" [(ngModel)]="u.datecin" />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="lastName">Date contrat:</label>
+                                            <label>Date contrat:</label>
                                             <input type="date" class="form-control" [(ngModel)]="u.date" />
                                         </div>
                                     </td>
@@ -69,35 +69,34 @@
                                 <tr>
                                     <td>
                                         <div>
-                                            <label for="lastName">Nationnalite:</label>
+                                            <label>Nationnalite:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.nationnalite" />
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="lastName">Part:</label>
+                                            <label>Part:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.part" />
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td *ngIf="u.marketing !=null">
+                                    <td>
                                         <div>
-                                            <label for="firstName">Marketing:</label>
-                                            <select class="form-control" [(ngModel)]="u.marketing.id">
-
+                                            <label>Marketing:</label>
+                                            <select class="form-control">
                                                 <option *ngFor="let d of mark" [ngValue]="d.id">{{ d.nom }} </option>
                                             </select>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <label for="lastName">Retenu:</label>
+                                            <label>Retenu:</label>
                                             <input type="text" class="form-control" [(ngModel)]="u.retenu" />
                                         </div>
                                     </td>
                                 </tr>
-                                <tr *ngIf="u.marketing ===null">
+                                <!--<tr *ngIf="u.marketing ===null">
                                     <td>
                                         <div>
                                             <label for="firstName">Marketing:</label>
@@ -107,29 +106,23 @@
                                             </select>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div type="file">
-                                            <img style="width: 100px;height: 100px;border-radius: 100%;"
-                                                [src]="retrievedImage">
-                                            <input type="file" (change)="onFileChanged($event)">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>                                    
-                                    <td>
-                                        <div>
-                                            <label for="firstName">Carte Pro:</label>
-                                            <input type="checkbox" class="form-control" [(ngModel)]="u.pro" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div type="file"  >
-                                           <div *ngIf="retrievedImage">
-                                            <img style="width: 100px;height: 100px;border-radius: 100%;" [src]="retrievedImage">
-                                           </div>
-                                            <input type="file" (change)="onFileChanged($event)">
-                                        </div>
-                                    </td>
+                                </tr>-->
+
+                                <tr>
+                                  <td>
+                                    <div type="file">
+                                      <img style="width: 100px;height: 100px;border-radius: 100%;"
+                                           [src]="retrievedImage">
+                                      <input type="file" (change)="onFileChanged($event)">
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div>
+                                      <label>Carte Pro:  </label><br>
+                                      <input type="checkbox" class="form-control" [(ngModel)]="u.pro" >
+                                      <!--<input type="checkbox" class="form-control" style="size: legal"  />-->
+                                    </div>
+                                  </td>
                                 </tr>
                             </table>
                         </div>
@@ -162,3 +155,14 @@
         </nb-card>
     </nb-card-body>
 </nb-card>
+
+<!--<style>
+  img:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-image: url(assets/images/noPhoto.png);
+  }
+</style>-->

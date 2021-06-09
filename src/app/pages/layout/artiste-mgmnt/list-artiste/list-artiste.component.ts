@@ -61,9 +61,14 @@ export class ListArtisteComponent implements OnInit {
          this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
           response => {
             this.retrieveResonse = response;
-            console.log(this.retrieveResonse.picByte);
-            this.base64Data = this.retrieveResonse.picByte;
-            array[i].picByte =this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+            if(this.retrieveResonse.picByte==null){
+              this.retrievedImage= "assets/images/noPhoto.png"
+              array[i].picByte=this.retrievedImage;
+              res[i].picByte = array[i].picByte;
+              this.artistes = res;
+            }
+            else
+            array[i].picByte =this.retrievedImage = 'data:image/jpeg;base64,' + this.retrieveResonse.picByte;
             res[i].picByte = array[i].picByte;
             this.artistes = res;
           }
@@ -78,9 +83,6 @@ export class ListArtisteComponent implements OnInit {
   }
 
 
-  setDefaultPic() {
-    this.pic = "/assets/images/noPhoto.png";
-  }
   displayBasic: boolean;
   currentartiste: users;
 

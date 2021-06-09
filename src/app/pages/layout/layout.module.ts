@@ -86,6 +86,7 @@ import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
 import {ButtonModule} from "primeng/button";
+import {CheckboxModule} from "primeng/checkbox";
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import {ButtonModule} from "primeng/button";
         FormsModule,
         NbAlertModule,
         ButtonModule,
+        CheckboxModule,
     ],
   declarations: [
     LayoutComponent,

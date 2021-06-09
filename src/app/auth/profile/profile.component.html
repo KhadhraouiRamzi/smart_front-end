@@ -7,7 +7,7 @@
   <nb-card-header>Profile</nb-card-header>
   <nb-card-body *ngIf="user">
 
-    <img type="file" (click)="selectImage.click()" style="
+    <img  nbPopover="Cliquer pour changer !" nbPopoverTrigger="hint" nbPopoverPlacement="bottom" type="file" (click)="selectImage.click()" style="
                 display: block;
                 border-radius: 50%;
                 margin-left: auto;
@@ -16,6 +16,7 @@
                 height: 200px;" [src]="retrievedImage" >
     <input type="file" (change)="onFileChanged($event)"   style="display: none" #selectImage >
       <br>
+    <br>
     <div class="row">
       <div class="col-sm-6">
         <div class="form-group">
