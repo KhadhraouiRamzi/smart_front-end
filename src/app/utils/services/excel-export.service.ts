@@ -4,7 +4,7 @@ import { utils as XLSXUtils, writeFile } from 'xlsx';
 import { WorkBook, WorkSheet } from 'xlsx/types';*/
 
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 export interface IExportAsExcelProps {
@@ -25,8 +25,8 @@ export class ExcelExportService {
 
   constructor(private http: HttpClient) { }
 
-  uploadExcelToDetail(uploadExcelData : FormData) {
-    return this.http.post(this.baseUrl + "/uploadExcel", uploadExcelData,{ observe: 'response' });
+  uploadExcelToDetail(uploadExcelData : FormData):Observable<HttpResponse<any>> {
+    return this.http.post(this.baseUrl + "/uploadExcel", uploadExcelData,{ observe: 'response' as 'response' });
   }
 
 }

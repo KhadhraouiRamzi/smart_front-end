@@ -12,8 +12,10 @@
               Importer fichier Orange
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-              <nb-alert status="success" *ngIf="this.statut==200">{{this.message}}</nb-alert>
-
+                <nb-alert [status]="st">{{this.message}}</nb-alert>
+<!--
+                <nb-alert status="danger" *ngIf="!this.submitted && this.error?.length>0 && this.message?.length==0">{{this.error}}</nb-alert>
+-->
               <div class="col-md-12 col-lg-12 col-xxxl-11" center>
                 <nb-card>
                   <nb-card-body>

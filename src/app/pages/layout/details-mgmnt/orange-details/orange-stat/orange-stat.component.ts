@@ -24,12 +24,14 @@ export class OrangeStatComponent implements OnInit {
 
   selectedFile: File;
   message: string;
+  error: string;
   statut: any;
   hide: any;
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Liste top artiste.xlsx';
   details: details;
+  st:any;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -38,6 +40,7 @@ export class OrangeStatComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
   shapes: NbComponentShape[] = ['round'];
+  submitted: boolean=false;
 
   constructor(private excelExportService: ExcelExportService,
               private detaisSerivce: DetailsService, private r: Router, public token: TokenStorageService) {
@@ -473,11 +476,9 @@ export class OrangeStatComponent implements OnInit {
 
     uploadExcelData.append('file',this.selectedFile);
     this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
-        this.statut=response.status;
-        this.message = response.body.valueOf()['message'];
-    },error => this.message=error.message);}
 
-    trackByFn(index: number) {
-      return index;
-    }
+        this.message = response.body.valueOf()['message'];
+
+    },error => this.message=error.valueOf()['error']['message']);this.st=this.statuses3}
+
 }
