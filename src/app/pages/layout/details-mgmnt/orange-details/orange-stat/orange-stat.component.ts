@@ -53,7 +53,9 @@ export class OrangeStatComponent implements OnInit {
       pageLength: 10,
       order: [ 1, 'desc' ],
       language : DatatableLanguage.datatableFrench,
+
     };
+
     this.detaisSerivce.getStatArtiste().subscribe(
       res => {
         let role = this.token.getUser()['roles'];
