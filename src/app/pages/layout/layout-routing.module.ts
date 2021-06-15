@@ -56,6 +56,8 @@ import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
 import { ListDetailComponent } from './detail-crud/list-detail/list-detail.component';
+import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
+import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
 
 const routes: Routes = [{
   path: '',
@@ -63,11 +65,11 @@ const routes: Routes = [{
   children: [
     {
       path: 'ngx-form-detail',  
-      component: ListDetailComponent,
+      component: FormDetailComponent,
     },
     {
       path: 'ngx-edit-detail',  
-      component: ListDetailComponent,
+      component: EditDetailComponent,
     },
     {
       path: 'ngx-list-detail',  
