@@ -55,13 +55,28 @@ import { OrangeStatDateComponent } from './details-mgmnt/orange-details/orange-s
 import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange-stat-count-a/orange-stat-count-a.component';
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
+import { ListDetailComponent } from './detail-crud/list-detail/list-detail.component';
+import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
+import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
     {
-      path: 'orange-stat',  
+      path: 'ngx-form-detail',
+      component: FormDetailComponent,
+    },
+    {
+      path: 'ngx-edit-detail',
+      component: EditDetailComponent,
+    },
+    {
+      path: 'ngx-list-detail',
+      component: ListDetailComponent,
+    },
+    {
+      path: 'orange-stat',
       component: OrangeStatComponent,
     },
     {
@@ -90,7 +105,7 @@ const routes: Routes = [{
     },
     {
       path: 'orange',
-      component: OrangeDetailsComponent,  
+      component: OrangeDetailsComponent,
     },
     {
       path: 'deezer',
@@ -98,9 +113,9 @@ const routes: Routes = [{
     },
     {
       path: 'beleive',
-      component: BeleiveDetailsComponent,  
+      component: BeleiveDetailsComponent,
     },
-     
+
     {
       path: 'list-operateur',
       component: ListOperateurComponent,
@@ -204,7 +219,7 @@ const routes: Routes = [{
       path: 'test-form',
       component: TestFormComponent,
     },
-    {      
+    {
       path: 'edit-album/:id',
       component: EditAlbumComponent,
     },

@@ -1,5 +1,5 @@
 <nb-card>
-  <nb-card-header *ngIf="artistes">
+  <nb-card-header *ngIf="retrievedImage">
     Liste des artistes
   </nb-card-header>
   <nb-card-body>
@@ -31,6 +31,11 @@
                 <table>
                   <tr>
                     <div class="buttons-row">
+                      <td>
+                        <a (click)="revenu(p)" *ngFor="let status of statuses6" nbButton
+                           [status]="status" outline>
+                          <img [src]="'assets/images/revenu 2.png'"/></a>
+                      </td>
                       <td>
                         <a (click)="details(p)" *ngFor="let status of statuses" nbButton
                            [status]="status" outline>
@@ -81,5 +86,16 @@
         </p-button>
       </ng-template>
     </p-dialog>
+
+
+    <p-dialog [modal]="true"  [(visible)]="displayBasic2" [style]="{width: '40vw'}"
+      [baseZIndex]="10000">
+      <ngx-generate-pdf [inputUser]="currentdetails"></ngx-generate-pdf>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayBasic2=false" label="Ok" styleClass="p-button-text">
+        </p-button>
+      </ng-template>
+    </p-dialog>
+
   </nb-card-body>
 </nb-card>

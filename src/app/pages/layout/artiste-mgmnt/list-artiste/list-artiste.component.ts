@@ -10,6 +10,7 @@ import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/t
 import { Subject } from 'rxjs';
 import { UsersService } from '../../../../utils/services/users.service';
 import { HttpClient } from '@angular/common/http';
+import { details } from '../../../../models/details';
 @Component({
   selector: 'ngx-list-artiste',
   templateUrl: './list-artiste.component.html',
@@ -17,12 +18,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListArtisteComponent implements OnInit {
   artistes: users;
-  art : users;
+  art: users;
 
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
   statuses4: NbComponentStatus[] = ['info'];
+  statuses5: NbComponentStatus[] = ['warning'];
+  statuses6: NbComponentStatus[] = ['basic'];
+  statuses7: NbComponentStatus[] = ['control'];
 
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
@@ -84,12 +88,19 @@ export class ListArtisteComponent implements OnInit {
 
 
   displayBasic: boolean;
+  displayBasic2: boolean;
   currentartiste: users;
+  currentdetails: users;
 
   details(u: users) {
     this.currentartiste = u;
     this.displayBasic = true;
     //this.r.navigate(['/pages/layout/detail-artiste/' + u.id]);
+  }
+
+  revenu(d: users) {
+    this.currentdetails = d;
+    this.displayBasic2 = true;
   }
 
   modifier(u: users) {
@@ -103,7 +114,6 @@ export class ListArtisteComponent implements OnInit {
   }
 
   delete(p: users) {
-    console.log(p);
     if (window.confirm("êtes-vous sûr suprrimer l'artiste " + p.nom + " " + p.prenom + " ?")) {
       this.usersService.deleteUser(p.id).subscribe(res => {
         //alert('Produit deleted !');
@@ -117,7 +127,7 @@ export class ListArtisteComponent implements OnInit {
             dtInstance.destroy();
             // Call the dtTrigger to rerender again
             this.dtTrigger.next();
-           });
+          });
 
         });
 
@@ -126,25 +136,5 @@ export class ListArtisteComponent implements OnInit {
 
     }
   }
-  /*
-  getImage() {
 
-    //Make a call to Sprinf Boot to get the Image Bytes.
-
-    this.httpClient.get('http://localhost:8081/get/' + this.imageName).subscribe(
-
-      res => {
-        console.log(this.imageName);
-
-        this.retrieveResonse = res;
-
-        this.base64Data = this.retrieveResonse.picByte;
-
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-        console.log(res);
-      }
-
-    );
-
-  }*/
 }

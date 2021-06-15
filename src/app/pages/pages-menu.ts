@@ -46,7 +46,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Statéstique',
     icon: 'trending-up-outline',
-    
+
     children: [
       {
         title: 'Orange',
@@ -74,8 +74,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Beleive',
         link: '/pages/layout/beleive',
       },
+      {
+        title: 'Contenu detail',
+        link: '/pages/layout/ngx-list-detail',
+        data: "ROLE_ADMIN",
+      },
     ],
-
   },
   {
     title: 'Paramétre',

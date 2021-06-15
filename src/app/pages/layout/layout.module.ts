@@ -86,6 +86,11 @@ import { OrangeStatCountAComponent } from './details-mgmnt/orange-details/orange
 import { OrangeStatCountCComponent } from './details-mgmnt/orange-details/orange-stat-count-c/orange-stat-count-c.component';
 import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/orange-stat-plateforme/orange-stat-plateforme.component';
 import {ButtonModule} from "primeng/button";
+import { GeneratePDFComponent } from './details-mgmnt/generate-pdf/generate-pdf.component';
+import { ListDetailComponent } from './detail-crud/list-detail/list-detail.component';
+import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
+import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
+import { DetailDetailComponent } from './detail-crud/detail-detail/detail-detail.component';
 import {CheckboxModule} from "primeng/checkbox";
 
 
@@ -187,6 +192,11 @@ import {CheckboxModule} from "primeng/checkbox";
     OrangeStatCountCComponent,
     OrangeStatCountAComponent,
     OrangeStatPlateformeComponent,
+    GeneratePDFComponent,
+    ListDetailComponent,
+    EditDetailComponent,
+    FormDetailComponent,
+    DetailDetailComponent,
   ],
   providers: [
     NewsService,

@@ -33,10 +33,7 @@ export class DetailArtisteComponent implements OnInit {
   }
   ngOnInit(): void {
     if (this.artiste) {
-
       console.log(this.artiste.name)
-
-
     }
   }
 }

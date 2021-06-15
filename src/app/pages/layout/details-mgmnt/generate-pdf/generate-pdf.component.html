@@ -1,0 +1,64 @@
+<nb-card-header>
+    <p *ngIf="inputUser">Générer revenu du {{inputUser.prenom}} {{inputUser.nom}} :</p>
+</nb-card-header>
+<div class="card-body">
+    <form  aria-labelledby="title" (ngSubmit)="onSubmit()" name="form">
+        <nb-card>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td>
+                            <label>Date début</label>
+                        </td>
+                        <td>
+                            <label>Date fin</label>
+                        </td>
+                        <td>
+                            <label>Retenu %</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> 
+                        <input type="date"  #lastName="ngModel"   name="datedebut"  class="form-control"  [(ngModel)]="form.datedebut" />
+                        </td>
+                        <td>
+                        <input type="date"  #lastName="ngModel"   name="datefin" class="form-control" [(ngModel)]="form.datefin" />
+                        </td>
+                        <td>
+                        <input type="number" #lastName="ngModel"   name="retenue"  class="form-control" [(ngModel)]="form.retenue" />
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <br> 
+                <table>
+                    <tr>
+                        <td></td>
+                        <div class="text-center">
+                            <div class="buttons-row">
+                                <td>
+                                  <button  nbButton  fullWidth  status="primary"size="large" 
+                                  *ngFor="let status of statuses" nbButton [status]="status" outline> Register </button>
+                                </td>
+                                <td>
+                                    <button type="reset" *ngFor="let status of statuses2" nbButton [status]="status"
+                                        outline (click)="onReset()">
+                                        Cancel
+                                    </button>
+                                </td>
+                                <td>
+                                    <div class="buttons-row">
+                                        <button *ngFor="let status of statuses3" nbButton [status]="status" outline
+                                            (click)="Retour()">
+                                            Retour
+                                        </button>
+                                    </div>
+                                </td>
+                            </div>
+                        </div>
+                    </tr>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </form>
+</div>
