@@ -200,7 +200,9 @@ export class OrangeStatPlateformeComponent implements OnInit {
                     $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));
                     $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
-                  }
+                  },
+                  "order": [[ 1, "desc" ]],
+                  "language": DatatableLanguage.datatableFrench
                 } );
               } );
             })(jQuery); }, 150);
@@ -355,7 +357,9 @@ export class OrangeStatPlateformeComponent implements OnInit {
                   $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));
                   $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
-                }
+                },
+                "order": [[ 1, "desc" ]],
+                  "language": DatatableLanguage.datatableFrench
               } );
             } );
           })(jQuery); }, 150);

@@ -72,7 +72,7 @@ export class GeneratePDFComponent implements OnInit {
   }
 
   Retour() {
-    this.r.navigate(['/pages/layout/list-artiste']);
+    this.r.navigate(['/pages/layout/list-artiste/']);
   }
 
  }

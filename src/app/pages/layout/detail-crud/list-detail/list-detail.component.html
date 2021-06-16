@@ -34,30 +34,9 @@
                                 </th>
                                 <th> Plateforme
                                 </th>
-                                <th> Netrevenu
-                                </th>
-                                <th> Grossrevenu
-                                </th>
-                                <th> Devise
-                                </th>
-                                <th> Label
-                                </th>
-                                <th> UPC
-                                </th>
-                                <th> ISRC
-                                </th>
-                                <th> Content
-                                </th>
-                                <th> Producer
-                                </th>
+                                
                                 <th> Category
                                 </th>
-                                <th> Type
-                                </th>
-                                <th> Country
-                                </th>
-
-
                                 <th> TTC
                                 </th>
                                 <th> Part smart
@@ -70,6 +49,31 @@
                                 </th>
                                 <th> Part artiste
                                 </th>
+                                
+                                <th> Netrevenu
+                                </th>
+                                <th> Grossrevenu
+                                </th>
+                                <th> Devise
+                                </th>
+                                <th> Label
+                                </th>
+                                <th> UPC
+                                </th>
+                                <th> ISRC
+                                </th>
+                              
+                                
+                                <th> Producer
+                                </th>
+                                
+                                <th> Type
+                                </th>
+                                <th> Country
+                                </th>
+                                 
+                                
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -78,7 +82,7 @@
                                     <table>
                                         <tr>
                                             <div class="buttons-row">
-                                                <!--    <td>
+                                            <!--    <td>
                                                     <a (click)="details(p)" *ngFor="let status of statuses" nbButton
                                                         [status]="status" outline>
                                                         <img [src]="'assets/images/detail.png'" /></a>
@@ -100,33 +104,35 @@
                                     </table>
                                 </td>
                                 <td>{{p.namea}}</td>
-                                <td>{{p.nomC}}</td>
+                                <td>{{p.content}}</td>
                                 <td>{{p.album}}</td>
                                 <td>{{p.date1}}</td>
                                 <td>{{p.date2}}</td>
                                 <td>{{p.uniteprice}}</td>
                                 <td>{{p.quantite}}</td>
                                 <td>{{p.plateforme}}</td>
+                                
+                                <td>{{p.category}}</td>
+                                <td>{{p.ttc}}</td>
+                                <td>{{p.part_smart}}</td>
+                                <td>{{p.tax_telecom}}</td>
+                                <td>{{p.part_TTC}}</td>
+                                <td>{{p.htva}}</td>
+                                <td>{{p.part_artiste}}</td>
+
                                 <td>{{p.netrevenu}}</td>
                                 <td>{{p.grossrevenu}}</td>
                                 <td>{{p.devise}}</td>
                                 <td>{{p.label}}</td>
                                 <td>{{p.upc}}</td>
                                 <td>{{p.isrc}}</td>
-                                <td>{{p.content}}</td>
-                                <td>{{p.
+
                                 <td>{{p.producer}}</td>
-                                <td>{{p.category}}</td>
+
                                 <td>{{p.type}}</td>
                                 <td>{{p.country}}</td>
-                                <td>{{p.udate}}</td>
-
-                                <td>{{p.TTC}}</td>
-                                <td>{{p.part_smart}}</td>
-                                <td>{{p.tax_telecom}}</td>
-                                <td>{{p.part_TTC}}</td>
-                                <td>{{p.HTVA}}</td>
-                                <td>{{p.part_artiste}}</td>
+ 
+                              
                             </tr>
                         </tbody>
                     </table>
@@ -145,4 +151,4 @@
         </p-dialog>
  -->
     </nb-card-body>
-</nb-card>
+</nb-card> 

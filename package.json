@@ -79,7 +79,6 @@
     "tinymce": "^5.8.1",
     "tslib": "^2.0.0",
     "typeface-exo": "0.0.22",
-    "web-animations-js": "^2.3.2",
     "xlsx": "^0.16.9",
     "zone.js": "~0.10.3"
   },

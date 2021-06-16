@@ -1,5 +1,5 @@
 <nb-card-header>
-    <p *ngIf="inputUser">Générer revenu du {{inputUser.prenom}} {{inputUser.nom}} :</p>
+    <p *ngIf="inputUser">Générer revenue du {{inputUser.prenom}} {{inputUser.nom}} :</p>
 </nb-card-header>
 <div class="card-body">
     <form  aria-labelledby="title" (ngSubmit)="onSubmit()" name="form">
@@ -37,8 +37,8 @@
                         <div class="text-center">
                             <div class="buttons-row">
                                 <td>
-                                  <button  nbButton  fullWidth  status="primary"size="large" 
-                                  *ngFor="let status of statuses" nbButton [status]="status" outline> Register </button>
+                                  <button  nbButton  fullWidth  status="primary"   
+                                  *ngFor="let status of statuses" nbButton [status]="status" outline> Générer revenue </button>
                                 </td>
                                 <td>
                                     <button type="reset" *ngFor="let status of statuses2" nbButton [status]="status"

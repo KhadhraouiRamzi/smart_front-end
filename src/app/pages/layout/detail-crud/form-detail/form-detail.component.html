@@ -15,22 +15,44 @@
                                 <div *ngIf="f.namea.errors.required"> namea chanson is required</div>
                             </div>
                         </div>
+
                         <div class="form-group col-5">
                             <label>Nom chanson</label>
-                            <input type="text" formControlName="nomC" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nomC.errors }" [(ngModel)]="u.nomC" />
+                            <select formControlName="nomC" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.nomC.errors }" [(ngModel)]="u.nomC">
+                                <option *ngFor="let b of chanson" [ngValue]="b.nom">
+                                    {{ b.nom }}
+                                </option>
+                            </select>
+
                             <div *ngIf="submitted && f.nomC.errors" class="invalid-feedback">
-                                <div *ngIf="f.nomC.errors.required"> name chanson is required</div>
+                                <div *ngIf="f.nomC.errors.required">Nom chanson is required</div>
                             </div>
                         </div>
+
+
                         <div class="form-group col-5">
                             <label>Nom Album </label>
-                            <input type="text"  formControlName="nAlbum" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nAlbum.errors }" [(ngModel)]="u.album"/>
-                                <div *ngIf="submitted && f.nAlbum.errors" class="invalid-feedback">
-                                    <div *ngIf="f.nAlbum.errors.required"> nAlbum is required</div>
-                                </div>
+                            <select formControlName="album" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.album.errors }" [(ngModel)]="u.album">
+                                <option *ngFor="let b of album" [ngValue]="b.titre">
+                                    {{ b.titre }}
+                                </option>
+                            </select>
+
+                            <div *ngIf="submitted && f.album.errors" class="invalid-feedback">
+                                <div *ngIf="f.album.errors.required">Nom Album is required</div>
+                            </div>
                         </div>
+
+                        <!--<div class="form-group col-5">
+                            <label>Nom Album </label>
+                            <input type="text"  formControlName="album" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.album.errors }" [(ngModel)]="u.album"/>
+                                <div *ngIf="submitted && f.album.errors" class="invalid-feedback">
+                                    <div *ngIf="f.album.errors.required"> album is required</div>
+                                </div>
+                        </div>-->
 
                         <br>
                         <br>
@@ -38,18 +60,18 @@
                         <div class="form-group col-5">
                             <label>Date debut</label>
                             <input type="date" formControlName="date1" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="u.date1">
-                                <div *ngIf="submitted && f.date1.errors" class="invalid-feedback">
-                                    <div *ngIf="f.date1.errors.required"> date debut is required</div>
-                                </div>
+                                [ngClass]="{ 'is-invalid': submitted && f.date1.errors }" [(ngModel)]="u.date1">
+                            <div *ngIf="submitted && f.date1.errors" class="invalid-feedback">
+                                <div *ngIf="f.date1.errors.required"> date debut is required</div>
+                            </div>
                         </div>
                         <div class="form-group col-5">
                             <label>Date fin</label>
                             <input type="date" formControlName="date2" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.nArtiste.errors }" [(ngModel)]="u.date2">
-                                <div *ngIf="submitted && f.date2.errors" class="invalid-feedback">
-                                    <div *ngIf="f.date1.errors.required"> date fin is required</div>
-                                </div>
+                                [ngClass]="{ 'is-invalid': submitted && f.date2.errors }" [(ngModel)]="u.date2">
+                            <div *ngIf="submitted && f.date2.errors" class="invalid-feedback">
+                                <div *ngIf="f.date2.errors.required"> date fin is required</div>
+                            </div>
                         </div>
 
                         <br>
@@ -61,7 +83,7 @@
                                 [ngClass]="{ 'is-invalid': submitted && f.uniteprice.errors }"
                                 [(ngModel)]="u.uniteprice" />
                             <div *ngIf="submitted && f.uniteprice.errors" class="invalid-feedback">
-                                <div *ngIf="f.uniteprice.errors.required"> date chanson is required</div>
+                                <div *ngIf="f.uniteprice.errors.required"> Unit price is required</div>
                             </div>
                         </div>
 
@@ -76,7 +98,6 @@
 
                         <br>
                         <br>
-
                         <div class="form-group col-5">
                             <label>Plateforme</label>
                             <input type="text" formControlName="plateforme" class="form-control"
@@ -86,8 +107,6 @@
                                 <div *ngIf="f.plateforme.errors.required">plateforme is required</div>
                             </div>
                         </div>
-
-
 
                         <div class="form-group col-5">
                             <label>Netrevenu </label><br>
@@ -100,7 +119,7 @@
                         </div>
 
                         <div class="form-group col-5">
-                            <label>Grossrevenu</label>
+                            <label>Gross revenue</label>
                             <input type="text" formControlName="grossrevenu" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f.grossrevenu.errors }"
                                 [(ngModel)]="u.grossrevenu" />
@@ -194,7 +213,7 @@
                         <div class="form-group col-5">
                             <label>TTC</label>
                             <input type="text" formControlName="TTC" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.TTC.errors }" [(ngModel)]="u.TTC" />
+                                [ngClass]="{ 'is-invalid': submitted && f.TTC.errors }" [(ngModel)]="u.ttc" />
                             <div *ngIf="submitted && f.TTC.errors" class="invalid-feedback">
                                 <div *ngIf="f.TTC.errors.required">TTC is required</div>
                             </div>
@@ -232,7 +251,7 @@
                         <div class="form-group col-5">
                             <label>HTVA</label>
                             <input type="text" formControlName="HTVA" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && f.HTVA.errors }" [(ngModel)]="u.HTVA" />
+                                [ngClass]="{ 'is-invalid': submitted && f.HTVA.errors }" [(ngModel)]="u.htva" />
                             <div *ngIf="submitted && f.HTVA.errors" class="invalid-feedback">
                                 <div *ngIf="f.HTVA.errors.required">HTVA is required</div>
                             </div>

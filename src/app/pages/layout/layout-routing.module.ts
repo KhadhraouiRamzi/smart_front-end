@@ -68,7 +68,7 @@ const routes: Routes = [{
       component: FormDetailComponent,
     },
     {
-      path: 'ngx-edit-detail',  
+      path: 'ngx-edit-detail/:id',  
       component: EditDetailComponent,
     },
     {

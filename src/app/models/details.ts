@@ -23,10 +23,10 @@ export class details {
     country: String;
     udate: Date;
 
-    TTC: Number;
+    ttc: Number;
     part_smart: Number;
     tax_telecom: Number;
     part_TTC: Number;
-    HTVA: Number;
+    htva: Number;
     part_artiste: Number;
 }
