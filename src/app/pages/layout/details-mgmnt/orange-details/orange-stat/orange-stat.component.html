@@ -6,16 +6,24 @@
   <nb-card-body>
     <div style="margin-left: 20px;margin-right: 20px;">
       <nb-card-header>
-        <nb-accordion  *ngIf="token.getUser().roles=='ROLE_ADMIN'">
-          <nb-accordion-item #item *ngFor="let status of statuses4" outline>
+        <nb-accordion *ngIf="token.getUser().roles=='ROLE_ADMIN'">
+          <nb-accordion-item>
             <nb-accordion-item-header>
               Importer fichier Orange
             </nb-accordion-item-header>
             <nb-accordion-item-body>
-                <nb-alert [status]="st">{{this.message}}</nb-alert>
-<!--
-                <nb-alert status="danger" *ngIf="!this.submitted && this.error?.length>0 && this.message?.length==0">{{this.error}}</nb-alert>
--->
+              <div *ngIf="message && message.length>0 && !submitted" class="alert alert-success">
+                <div><strong>{{this.message}} </strong></div>
+              </div>
+
+              <div *ngIf="messageError && messageError.length>0 && submitted" class="alert alert-danger  ">
+                <div><strong>{{this.messageError}} </strong></div>
+              </div>
+
+
+              <!--
+                              <nb-alert status="danger" *ngIf="!this.submitted && this.error?.length>0 && this.message?.length==0">{{this.error}}</nb-alert>
+              -->
               <div class="col-md-12 col-lg-12 col-xxxl-11" center>
                 <nb-card>
                   <nb-card-body>
@@ -40,8 +48,8 @@
             </nb-accordion-item-body>
           </nb-accordion-item>
         </nb-accordion>
-          <br>
-            <div width="1100"> Listes d'artistes</div>
+        <br>
+        <div width="1100"> Listes d'artistes</div>
       </nb-card-header>
       <nb-card>
         <nb-card-body>

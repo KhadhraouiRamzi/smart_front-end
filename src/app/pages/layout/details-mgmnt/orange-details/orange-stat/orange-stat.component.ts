@@ -23,8 +23,8 @@ export class OrangeStatComponent implements OnInit {
   dtElement: DataTableDirective;
 
   selectedFile: File;
-  message: string;
-  error: string;
+  message: string[]=[];
+  messageError: string[]=[];
   statut: any;
   hide: any;
   dtOptions: DataTables.Settings = {};
@@ -32,7 +32,7 @@ export class OrangeStatComponent implements OnInit {
   fileName = 'Liste top artiste.xlsx';
   details: details;
   st:any;
-  statuses: NbComponentStatus[] = ['success'];
+  statuses: NbComponentStatus[] = ['success',"danger"];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
   statuses4: NbComponentStatus[] = ['basic'];
@@ -476,11 +476,17 @@ export class OrangeStatComponent implements OnInit {
 
     const uploadExcelData = new FormData();
 
-    uploadExcelData.append('file',this.selectedFile);
-    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+    this.message = this.messageError = [];
+    this.submitted = true;
 
+    uploadExcelData.append('file',this.selectedFile);
+    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe((response)=>{
+      this.submitted = false;
         this.message = response.body.valueOf()['message'];
 
-    },error => this.message=error.valueOf()['error']['message']);this.st=this.statuses3}
+
+  },error => this.messageError=error.valueOf()['error']['message'])};
+
+
 
 }
