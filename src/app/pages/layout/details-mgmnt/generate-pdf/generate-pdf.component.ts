@@ -6,6 +6,7 @@ import { details } from '../../../../models/details';
 import { users } from '../../../../models/users';
 import { DetailsService } from '../../../../utils/services/details.service';
 import { UsersService } from '../../../../utils/services/users.service';
+import {catchError, map, tap} from "rxjs/operators";
 
 @Component({
   selector: 'ngx-generate-pdf',
@@ -46,23 +47,17 @@ export class GeneratePDFComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-     
+
   }
   onSubmit() {
     //let routeId = this.ar.snapshot.paramMap.get('this.inputUser.id');
     //let idUser = parseInt();  /// car les param tj considerés comme String dans l'url
-  
+
     const {datedebut,datefin,retenue} = this.form;
 
      console.log(this.fusers.id+datedebut+datefin+retenue);
- 
-    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe(res => {
 
-      alert("Done !");
-      console.log(datedebut+" "+this.fusers.id);
- 
-      this.p = new users();
-    });
+    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe(response=>{console.log("aa"+response)});
 
   }
 

@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { details } from '../../models/details';
 import { users } from '../../models/users';
 import { HttpHeaders} from "@angular/common/http";
+import {TokenStorageService} from "../../auth/services/token-storage.service";
 
-const AUTH_API ="http://localhost:8081/rapportOrange/by-userId-datedebut-datefin";
+//const AUTH_API ="http://localhost:8081/rapportOrange/by-userId-datedebut-datefin";
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Access-Control-Allow-Origin':'http://localhost:8081','responseType':'application/pdf','Accept':'application/pdf' })
 };
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,12 @@ export class DetailsService {
 
   baseUrl: string = "http://localhost:8081";
 
-  constructor(private backend: HttpClient) { }
+  constructor(private backend: HttpClient,private token: TokenStorageService) { }
 
-  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) : Observable<any>{
-    console.log(id+" "+datedebut+" "+datefin+" "+retenue);
-    return this.backend.post(AUTH_API , {
-     id,datedebut,datefin,retenue }, httpOptions);
+  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) : Observable<any> {
+
+    return this.backend.get("http://localhost:8081/rapportOrange/by-userId-datedebut-datefin/" +id+"/"+datedebut+"/"+datefin+"/"+retenue,httpOptions);
+
   }
 
   getTopChanson(): Observable<any> {
