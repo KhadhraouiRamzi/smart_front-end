@@ -1,6 +1,7 @@
 <nb-card>
   <nb-card-header *ngIf="retrievedImage">
-    Liste des artistes
+    <p >Liste des artistes</p>
+    
   </nb-card-header>
   <nb-card-body>
     <div style="margin-left: 20px;margin-right: 20px;">
@@ -13,73 +14,67 @@
           <br>
           <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
             <thead>
-            <tr>
-              <th>Actions</th>
-              <th>Image</th>
-              <th>Nom Artiste</th>
-              <th>Prénom Artiste</th>
-              <th>Nom artestique</th>
-              <th>Télephone</th>
-              <th>E-mail</th>
-              <th>Part</th>
-              <th>Retenu</th>
-            </tr>
+              <tr>
+                <th>Actions</th>
+                <th>Image</th>
+                <th>Nom Artiste</th>
+                <th>Prénom Artiste</th>
+                <th>Nom artestique</th>
+                <th>Télephone</th>
+                <th>E-mail</th>
+                <th>Part</th>
+                <th>Retenu</th>
+              </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let p of artistes">
-              <td>
-                <table>
-                  <tr>
-                    <div class="buttons-row">
-                      <td>
-                        <a (click)="revenu(p)" *ngFor="let status of statuses6" nbButton
-                           [status]="status" outline>
-                          <img [src]="'assets/images/revenu 2.png'"/></a>
-                      </td>
-                      <td>
-                        <a (click)="details(p)" *ngFor="let status of statuses" nbButton
-                           [status]="status" outline>
-                          <img [src]="'assets/images/detail.png'"/></a>
-                      </td>
-                      <td>
-                        <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton
-                           [status]="status" outline>
-                          <img [src]="'assets/images/edit.png'"/></a>
-                      </td>
-                      <td>
-                        <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton
-                           [status]="status" outline><img
-                          [src]="'assets/images/supprimer.png'"/></a>
-                      </td>
-                    </div>
-                  </tr>
-                </table>
-              </td>
-              <td>  
-                <div *ngIf="retrievedImage">
-                  <img style="width: 100px;height: 100px;border-radius: 100%;"
-                       [src]="p.picByte">
+              <tr *ngFor="let p of artistes">
+                <td>
+                  <table>
+                    <tr>
+                      <div class="buttons-row">
+                        <td>
+                          <a (click)="revenu(p)" *ngFor="let status of statuses6" nbButton [status]="status" outline>
+                            <img [src]="'assets/images/revenu_2.png'" /></a>
+                        </td>
+                        <td>
+                          <a (click)="details(p)" *ngFor="let status of statuses" nbButton [status]="status" outline>
+                            <img [src]="'assets/images/detail.png'" /></a>
+                        </td>
+                        <td>
+                          <a (click)="modifier(p)" *ngFor="let status of statuses2" nbButton [status]="status" outline>
+                            <img [src]="'assets/images/edit.png'" /></a>
+                        </td>
+                        <td>
+                          <a (click)="delete(p)" *ngFor="let status of statuses3" nbButton [status]="status"
+                            outline><img [src]="'assets/images/supprimer.png'" /></a>
+                        </td>
+                      </div>
+                    </tr>
+                  </table>
+                </td>
+                <td>
+                  <div *ngIf="retrievedImage">
+                    <img style="width: 100px;height: 100px;border-radius: 100%;" [src]="p.picByte">
                   </div>
                   <div *ngIf="!retrievedImage">
-                    <img style="width: 100px;height: 100px;border-radius: 100%;"
-                         src="/assets/images/noPhoto.png">
+                    <img style="width: 100px;height: 100px;border-radius: 100%;" src="/assets/images/noPhoto.png">
                   </div>
-              </td>
-              <td>{{ p.nom}}</td>
-              <td>{{ p.prenom }}</td>
-              <td>{{ p.nArtistique }}</td>
-              <td>{{ p.phone }}</td>
-              <td>{{ p.email }}</td>
-              <td>{{ p.part }}</td>
-              <td>{{ p.retenu }}</td>
-            </tr>
+                </td>
+                <td>{{ p.nom}}</td>
+                <td>{{ p.prenom }}</td>
+                <td>{{ p.nArtistique }}</td>
+                <td>{{ p.phone }}</td>
+                <td>{{ p.email }}</td>
+                <td>{{ p.part }}</td>
+                <td>{{ p.retenu }}</td>
+              </tr>
             </tbody>
           </table>
         </nb-card-body>
       </nb-card>
     </div>
     <p-dialog [modal]="true" header="Fiche artiste" [(visible)]="displayBasic" [style]="{width: '50vw'}"
-              [baseZIndex]="10000">
+      [baseZIndex]="10000">
       <ngx-detail-artiste [artiste]="currentartiste"></ngx-detail-artiste>
       <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
@@ -87,15 +82,14 @@
       </ng-template>
     </p-dialog>
 
-    
-    <p-dialog [modal]="true"  [(visible)]="displayBasic2" [style]="{width: '40vw'}"
-      [baseZIndex]="10000"> 
+    <p-dialog [modal]="true" [(visible)]="displayBasic2" [style]="{width: '40vw'}" [baseZIndex]="10000">
       <ngx-generate-pdf [inputUser]="currentdetails"></ngx-generate-pdf>
       <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)="displayBasic2=false" label="Ok" styleClass="p-button-text">
         </p-button>
       </ng-template>
     </p-dialog>
+ 
 
   </nb-card-body>
 </nb-card>

@@ -8,26 +8,27 @@ import { DetailsService } from '../../../../utils/services/details.service';
 import { UsersService } from '../../../../utils/services/users.service';
 
 @Component({
-  selector: 'ngx-generate-pdf',
-  templateUrl: './generate-pdf.component.html',
-  styleUrls: ['./generate-pdf.component.scss']
+  selector: 'ngx-revenu-historique',
+  templateUrl: './revenu-historique.component.html',
+  styleUrls: ['./revenu-historique.component.scss']
 })
-export class GeneratePDFComponent implements OnInit {
-  registerForm: FormGroup;
-  submitted = false;
-  u: details = new details();
-  p: users = new users();
-  fusers:users;
+export class RevenuHistoriqueComponent implements OnInit {
+
+  @Input() details: details; 
   statuses: NbComponentStatus[] = ['primary'];
   statuses2: NbComponentStatus[] = ['warning'];
   statuses4: NbComponentStatus[] = ['info'];
   statuses3: NbComponentStatus[] = ['danger'];
+  fusers: users;
 
-    form: any = {
+  form: any = {
     datedebut: null,
     datefin: null,
     retenue: null,
   };
+  registerForm: FormGroup;
+  submitted = false;
+
   constructor(private artisteService: UsersService, private router: Router, private ar: ActivatedRoute,
     private detailsService: DetailsService, private formBuilder: FormBuilder, private r: Router) { }
 
@@ -46,24 +47,6 @@ export class GeneratePDFComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-     
-  }
-  onSubmit() {
-    //let routeId = this.ar.snapshot.paramMap.get('this.inputUser.id');
-    //let idUser = parseInt();  /// car les param tj considerés comme String dans l'url
-  
-    const {datedebut,datefin,retenue} = this.form;
-
-     console.log(this.fusers.id+datedebut+datefin+retenue);
- 
-    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe(res => {
-
-      alert("Done !");
-      console.log(datedebut+" "+this.fusers.id);
- 
-      this.p = new users();
-    });
-
   }
 
   onReset() {
@@ -74,12 +57,6 @@ export class GeneratePDFComponent implements OnInit {
   Retour() {
     this.r.navigate(['/pages/layout/list-artiste/']);
   }
-  displayBasic: boolean;
-  currenthist:users;
-  
-  hist(u: users) {
-    this.currenthist = u;
-    this.displayBasic = true;
+  onSubmit() {
   }
-
- }
+}

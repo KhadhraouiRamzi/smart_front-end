@@ -91,6 +91,8 @@ import { ListDetailComponent } from './detail-crud/list-detail/list-detail.compo
 import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
 import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
 import { DetailDetailComponent } from './detail-crud/detail-detail/detail-detail.component';
+import { ListHistoriqueComponent } from './historique-mgmnt/list-historique/list-historique.component';
+import { RevenuHistoriqueComponent } from './historique-mgmnt/revenu-historique/revenu-historique.component';
 
 
 @NgModule({
@@ -195,6 +197,8 @@ import { DetailDetailComponent } from './detail-crud/detail-detail/detail-detail
     EditDetailComponent,
     FormDetailComponent,
     DetailDetailComponent,
+    ListHistoriqueComponent,
+    RevenuHistoriqueComponent,
   ],
   providers: [
     NewsService,

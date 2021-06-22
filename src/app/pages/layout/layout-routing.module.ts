@@ -58,11 +58,16 @@ import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/or
 import { ListDetailComponent } from './detail-crud/list-detail/list-detail.component';
 import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
 import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
+import { ListHistoriqueComponent } from './historique-mgmnt/list-historique/list-historique.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
+    {
+      path: 'Historique',  
+      component: ListHistoriqueComponent,
+    },
     {
       path: 'ngx-form-detail',  
       component: FormDetailComponent,

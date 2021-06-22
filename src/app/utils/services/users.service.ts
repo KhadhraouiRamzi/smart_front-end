@@ -76,4 +76,5 @@ export class UsersService {
   getUserById(id) {
     return this.backend.get<users>(this.baseUrl + "/user/by-id/" + id);
   }
+
 }

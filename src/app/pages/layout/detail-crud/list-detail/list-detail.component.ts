@@ -33,7 +33,7 @@ export class ListDetailComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5
+      pageLength: 10
     };
 
     this.detailService.getlistDetail().subscribe(

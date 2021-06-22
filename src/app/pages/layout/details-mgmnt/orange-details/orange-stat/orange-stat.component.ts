@@ -188,7 +188,7 @@ export class OrangeStatComponent implements OnInit {
                     // Total filtré:
                     $( apiFiltre.column( 0 ).footer() ).html('Total Filtré');
                     $( apiFiltre.column( 1 ).footer()).html(ttc.toFixed(3));
-                    $( apiFiltre.column( 2 ).footer() ).html(nbr_ecoute.toFixed(3));
+                    $( apiFiltre.column( 2 ).footer() ).html(nbr_ecoute.toFixed());
                     $( apiFiltre.column( 3 ).footer() ).html(part_smart.toFixed(3));
                     $( apiFiltre.column( 4 ).footer() ).html(tax_telecom.toFixed(3));
                     $( apiFiltre.column( 5 ).footer() ).html(part_ttc.toFixed(3));
@@ -198,7 +198,7 @@ export class OrangeStatComponent implements OnInit {
                     // Total Final:
                     $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
                     $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
-                    $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed(3));
+                    $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                     $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
                     $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                     $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
@@ -357,7 +357,7 @@ export class OrangeStatComponent implements OnInit {
                   $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
                   $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                   $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
-                  $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed(3));
+                  $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                   $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
                   $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                   $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));

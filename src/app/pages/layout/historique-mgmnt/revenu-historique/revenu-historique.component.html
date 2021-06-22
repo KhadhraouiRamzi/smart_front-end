@@ -43,18 +43,7 @@
                                     <button nbButton fullWidth status="primary" *ngFor="let status of statuses" nbButton
                                         [status]="status" outline> Générer revenue </button>
                                 </td>
-                           <!-- <td>
-                                    <button *ngFor="let status of statuses2" nbButton [status]="status" outline
-                                        (click)="hist()">
-                                        Historique
-                                    </button>
-                                </td>-->
-                                <td>
-                                    <button type="reset" *ngFor="let status of statuses2" nbButton [status]="status"
-                                        outline (click)="onReset()">
-                                        Cancel
-                                    </button>
-                                </td>
+                             
                                 <td>
                                     <div class="buttons-row">
                                         <button *ngFor="let status of statuses3" nbButton [status]="status" outline
@@ -67,15 +56,7 @@
                         </div>
                     </tr>
                 </table>
-
-                <p-dialog [modal]="true" header="Fiche revenu" [(visible)]="displayBasic" [style]="{width: '50vw'}"
-                    [baseZIndex]="10000">
-                    <ngx-revenu-historique [inputUser]="currenthist"></ngx-revenu-historique>
-                    <ng-template pTemplate="footer">
-                        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
-                        </p-button>
-                    </ng-template>
-                </p-dialog>
+ 
 
             </nb-card-body>
         </nb-card>

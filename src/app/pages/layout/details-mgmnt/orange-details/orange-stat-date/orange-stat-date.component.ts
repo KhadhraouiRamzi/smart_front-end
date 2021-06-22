@@ -193,7 +193,7 @@ export class OrangeStatDateComponent implements OnInit {
                     // Total Final:
                     $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
                     $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
-                    $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed(3));
+                    $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                     $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
                     $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                     $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
@@ -201,7 +201,7 @@ export class OrangeStatDateComponent implements OnInit {
                     $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                   },
-                  "order": [[ 1, "desc" ]],
+                  "order": [[ 2, "desc" ]],
                   "language": DatatableLanguage.datatableFrench
                 } );
               } );
@@ -351,7 +351,7 @@ export class OrangeStatDateComponent implements OnInit {
                   // Total Final:
                   $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
                   $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
-                  $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed(3));
+                  $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                   $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
                   $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                   $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
@@ -359,7 +359,7 @@ export class OrangeStatDateComponent implements OnInit {
                   $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                 },
-                "order": [[ 1, "desc" ]],
+                "order": [[ 2, "desc" ]],
                   "language": DatatableLanguage.datatableFrench
               } );
             } );
