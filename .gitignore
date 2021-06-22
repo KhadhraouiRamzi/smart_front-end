@@ -6,6 +6,7 @@
 # Intellij
 tslint.json
 tsconfig.json
+.eslintrc.json
 
 # dependencies
 /node_modules
