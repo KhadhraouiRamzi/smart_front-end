@@ -26,15 +26,20 @@ export class FormDetailComponent implements OnInit {
   submitted = false;
   u: details = new details();
   details: details[]=[]; 
- 
+  users: users[]=[];
+  plateforme: plateforme[] = [];
+  operateur : operateur [] = [];
+  album: album[] = [];
+  chanson : chanson[] = [];
   statuses: NbComponentStatus[] = [ 'primary' ];
   statuses2: NbComponentStatus[] = [ 'warning' ];
   statuses3: NbComponentStatus[] = ['danger'];
   statuses4: NbComponentStatus[] = ['info'];
 
  
-  constructor(private formBuilder: FormBuilder,  private detailCrudService: DetailCrudService,
-   private r: Router, private operateurService : OperateurService) { }
+  constructor(private formBuilder: FormBuilder, private albumService :AlbumService ,private plateformeService: PlateformeService,
+    private userService: UsersService, private chansonService: ChansonService,  private detailCrudService: DetailCrudService,
+   private r: Router, private operateurService : OperateurService ) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -64,18 +69,50 @@ export class FormDetailComponent implements OnInit {
       HTVA: ['', Validators.required],
       part_artiste: ['', Validators.required],
 
-
       acceptTerms: [false, Validators.requiredTrue]
     })
-
    
+    this.operateurService.getlistOperateur().subscribe(res => {
+      this.operateur = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.operateur);
+    });
+
+     
+    this.operateurService.getlistOperateur().subscribe(res => {
+      this.operateur = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.operateur);
+    });
+    
+    this.plateformeService.getlistPlateforme().subscribe(res => {
+      this.plateforme = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.plateforme);
+    });
+
+    this.albumService.getlistAlbum().subscribe(res => {
+      this.album = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.album);
+    });
+
+    this.userService.getlistArtFour().subscribe(res => {
+      this.users = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.users);
+    });
 
     this.detailCrudService.getlistDetail().subscribe(res => {
       this.details = res;
       // Calling the DT trigger to manually render the table
       console.log(this.details);
     });
- 
+    this.chansonService.getlistChanson().subscribe(res => {
+      this.chanson = res;
+      // Calling the DT trigger to manually render the table
+      console.log(this.chanson);
+    });
   }
 
   get f() { return this.registerForm.controls; }
@@ -92,7 +129,7 @@ export class FormDetailComponent implements OnInit {
       console.log(this.u);
       alert("ajout avec succès !");
       //console.log(this.u);
-     // this.u = new chanson();
+     // this.u = new detail();
     });
   }
   onReset() {

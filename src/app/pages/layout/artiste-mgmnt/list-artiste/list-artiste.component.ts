@@ -1,17 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { users } from '../../../../models/users';
 
 import { DataTableDirective } from 'angular-datatables';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NbComponentShape, NbComponentSize, NbComponentStatus } from '@nebular/theme';
+import { NbComponentStatus } from '@nebular/theme';
 import { Subject } from 'rxjs';
 import { UsersService } from '../../../../utils/services/users.service';
 import { HttpClient } from '@angular/common/http';
-import { details } from '../../../../models/details';
-@Component({
+ @Component({
   selector: 'ngx-list-artiste',
   templateUrl: './list-artiste.component.html',
   styleUrls: ['./list-artiste.component.scss']
@@ -38,7 +35,7 @@ export class ListArtisteComponent implements OnInit {
   base64Data: any;
   retrieveResonse: any;
   imageName: any;
-  //img: String;
+  img: any;
   private pic: string;
 
   constructor(private httpClient: HttpClient, private service: SmartTableData, private usersService: UsersService,
@@ -53,10 +50,9 @@ export class ListArtisteComponent implements OnInit {
 
     this.usersService.getArts().subscribe(
       res => {
+        //  this.img ="img [src]='assets/images/revenu 2.png'";
         // Swal.fire('This is a simple and sweet alert')
         res[1].name = res[1].name
-
-
         let array = res;
         for (let i = 0; i < array.length; i++) {
         let arr = array[i].picByte;
@@ -86,11 +82,12 @@ export class ListArtisteComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-
   displayBasic: boolean;
   displayBasic2: boolean;
+  displayBasic3: boolean;
   currentartiste: users;
   currentdetails: users;
+  currenthist:users;
 
   details(u: users) {
     this.currentartiste = u;
@@ -103,6 +100,10 @@ export class ListArtisteComponent implements OnInit {
     this.displayBasic2 = true;
   }
 
+  hist(d: users) {
+    this.currenthist = d;
+    this.displayBasic3 = true;
+  }
   modifier(u: users) {
     //if (window.confirm("êtes-vous sûr de modifier le produit " + u.nom + " ?")) {
     this.r.navigate(['/pages/layout/edit-artiste/' + u.id]);
@@ -130,11 +131,7 @@ export class ListArtisteComponent implements OnInit {
           });
 
         });
-
-
       })
-
     }
   }
-
 }

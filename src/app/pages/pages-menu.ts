@@ -82,6 +82,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: 'Paiement',
+    icon: 'credit-card-outline',
+    link: '/pages/layout/Historique',
+  },
+  {
     title: 'Paramétre',
     icon: 'settings-2-outline',
     children: [

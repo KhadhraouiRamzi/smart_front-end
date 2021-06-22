@@ -58,27 +58,32 @@ import { OrangeStatPlateformeComponent } from './details-mgmnt/orange-details/or
 import { ListDetailComponent } from './detail-crud/list-detail/list-detail.component';
 import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
 import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
+import { ListHistoriqueComponent } from './historique-mgmnt/list-historique/list-historique.component';
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
     {
-      path: 'ngx-form-detail',
+      path: 'Historique',  
+      component: ListHistoriqueComponent,
+    },
+    {
+      path: 'ngx-form-detail',  
       component: FormDetailComponent,
     },
     {
-      path: 'ngx-edit-detail',
+      path: 'ngx-edit-detail/:id',  
       component: EditDetailComponent,
     },
     {
-      path: 'ngx-list-detail',
+      path: 'ngx-list-detail',  
       component: ListDetailComponent,
     },
-    {
-      path: 'orange-stat',
+    {  
+      path: 'orange-stat',  
       component: OrangeStatComponent,
-    },
+    },  
     {
       path: 'orange-stat-category',
       component: OrangeStatCategoryComponent,
@@ -105,7 +110,7 @@ const routes: Routes = [{
     },
     {
       path: 'orange',
-      component: OrangeDetailsComponent,
+      component: OrangeDetailsComponent,  
     },
     {
       path: 'deezer',
@@ -113,9 +118,9 @@ const routes: Routes = [{
     },
     {
       path: 'beleive',
-      component: BeleiveDetailsComponent,
+      component: BeleiveDetailsComponent,  
     },
-
+     
     {
       path: 'list-operateur',
       component: ListOperateurComponent,
@@ -219,7 +224,7 @@ const routes: Routes = [{
       path: 'test-form',
       component: TestFormComponent,
     },
-    {
+    {      
       path: 'edit-album/:id',
       component: EditAlbumComponent,
     },

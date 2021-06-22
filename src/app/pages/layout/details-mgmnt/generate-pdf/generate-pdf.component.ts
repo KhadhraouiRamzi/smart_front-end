@@ -67,7 +67,14 @@ export class GeneratePDFComponent implements OnInit {
   }
 
   Retour() {
-    this.r.navigate(['/pages/layout/list-artiste']);
+    this.r.navigate(['/pages/layout/list-artiste/']);
+  }
+  displayBasic: boolean;
+  currenthist:users;
+  
+  hist(u: users) {
+    this.currenthist = u;
+    this.displayBasic = true;
   }
 
  }
