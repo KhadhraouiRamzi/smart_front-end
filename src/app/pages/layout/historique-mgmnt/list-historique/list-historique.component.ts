@@ -56,7 +56,7 @@ export class ListHistoriqueComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 15,
-      order: [10, 'desc'],
+      order: [11, 'desc'],
       language: DatatableLanguage.datatableFrench,
     };
 
