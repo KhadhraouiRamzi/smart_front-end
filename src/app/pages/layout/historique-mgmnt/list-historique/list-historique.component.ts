@@ -9,7 +9,7 @@ import { Browser } from "leaflet";
 import { HistoriqueService } from '../../../../utils/services/historique.service';
 import { historique } from '../../../../models/historique';
 import { DatatableLanguage } from '../../../../../assets/data/DatatableLanguage';
-import {utils, WorkBook, WorkSheet, writeFile} from "xlsx";
+import { utils, WorkBook, WorkSheet, writeFile } from "xlsx";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { details } from '../../../../models/details';
@@ -20,8 +20,8 @@ import { DetailsService } from '../../../../utils/services/details.service';
   styleUrls: ['./list-historique.component.scss']
 })
 export class ListHistoriqueComponent implements OnInit {
-  
-  @ViewChild(DataTableDirective, {static: false})
+
+  @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
   selectedFile: File;
@@ -32,7 +32,7 @@ export class ListHistoriqueComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger = new Subject();
   fileName = 'Hitorique Reneue artiste.xlsx';
-  st:any;
+  st: any;
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
@@ -41,18 +41,23 @@ export class ListHistoriqueComponent implements OnInit {
   statuses6: NbComponentStatus[] = ['info'];
   statuses7: NbComponentStatus[] = ['control'];
   shapes: NbComponentShape[] = ['round'];
-  submitted: boolean=false;
+  submitted: boolean = false;
 
-  hist : any;
-  constructor(private detailsService :DetailsService, private historiqueService: HistoriqueService, private r: Router, 
+  hist: any;
+  form: any = {
+    datedebut: null,
+    datefin: null,
+    retenue: null,
+  };
+  constructor(private detailsService: DetailsService, private historiqueService: HistoriqueService, private r: Router,
     private ar: ActivatedRoute, protected token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 15,
-      order: [10, 'desc'],
-      language : DatatableLanguage.datatableFrench,
+      order: [11, 'desc'],
+      language: DatatableLanguage.datatableFrench,
     };
 
     this.historiqueService.getHistRevenu().subscribe(
@@ -64,22 +69,23 @@ export class ListHistoriqueComponent implements OnInit {
         if (role == "ROLE_ARTISTE") {
           this.historiqueService.getHistRevenuById(idUser).subscribe(data => {
             this.hist = data;
+            this.dtTrigger.next();
           })
         }
         else {
           console.log(res);
           this.hist = res;
           console.log(res);
+          this.dtTrigger.next();
         }
-        this.dtTrigger.next();
       });
   }
 
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
-  } 
-  
+  }
+
   exportexcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('table-orange-stat');
@@ -104,10 +110,10 @@ export class ListHistoriqueComponent implements OnInit {
       let fileWidth = 208;
       let fileHeight = canvas.height * fileWidth / canvas.width;
 
-        const FILEURI = canvas.toDataURL('image/png')
-        let PDF = new jsPDF('p', 'mm', 'a4');
-        let position = 0;
-        PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+      const FILEURI = canvas.toDataURL('image/png')
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
 
       PDF.save('Revenue artistes.pdf');
     });
@@ -135,6 +141,60 @@ export class ListHistoriqueComponent implements OnInit {
 
     // Download PDF doc
     pdf.save('Revenue Artiste.pdf');
+  }
+
+  paye(p : details) {
+    if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
+      
+    const {namea,date1,date2} = this.form;
+
+    console.log(p[0],p[1],p[2]);
+
+   this.detailsService.paiementParMois(p[0],p[1],p[2]).subscribe(
+     response=>{
+       console.log("aa"+response)
+     
+        this.historiqueService.getHistRevenu().subscribe(
+          res => {          
+            this.hist = res;
+          // rerender datatable
+          this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+            // Destroy the table first
+            dtInstance.destroy();
+            // Call the dtTrigger to rerender again
+            this.dtTrigger.next();
+          });
+        });
+      })
+    }
+    else window.alert("Sorry you are not authorised !!");
+  }
+
+  nonPaye(p : details) {
+    if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
+      
+      const {namea,date1,date2} = this.form;
+  
+      console.log(p[0],p[1],p[2]);
+  
+     this.detailsService.compenseParMois(p[0],p[1],p[2]).subscribe(
+       response=>{
+         console.log("aa"+response)
+       
+          this.historiqueService.getHistRevenu().subscribe(
+            res => {          
+              this.hist = res;
+            // rerender datatable
+            this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+              // Destroy the table first
+              dtInstance.destroy();
+              // Call the dtTrigger to rerender again
+              this.dtTrigger.next();
+            });
+          });
+        })
+      }
+      else window.alert("Sorry you are not authorised !!");
   }
 
   /*

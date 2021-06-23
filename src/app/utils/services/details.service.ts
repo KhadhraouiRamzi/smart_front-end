@@ -133,10 +133,14 @@ export class DetailsService {
   getStatTotal(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/statTotal");
   }
-  
-  paiementParMois(namea: String, date1:Date,date2:Date) : Observable<any>{ 
+
+  paiementParMois(namea: String, date1:Date,date2:Date) : Observable<any>{
     console.log(namea+" "+date1+" "+date2);
-    return this.backend.post(this.baseUrl + "/paiementParMois" , { 
-      namea,date1,date2 }, httpOptions);
+    return this.backend.put(this.baseUrl + "/paiementParMois/"+namea+"/"+date1+"/"+date2, httpOptions);
+  }
+
+  compenseParMois(namea: String, date1:Date,date2:Date) : Observable<any>{
+    console.log(namea+" "+date1+" "+date2);
+    return this.backend.put(this.baseUrl + "/compenseParMois/"+namea+"/"+date1+"/"+date2, httpOptions);
   }
 }
