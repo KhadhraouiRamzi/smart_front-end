@@ -7,6 +7,7 @@ import { users } from '../../../../models/users';
 import { DetailsService } from '../../../../utils/services/details.service';
 import { UsersService } from '../../../../utils/services/users.service';
 import {catchError, map, tap} from "rxjs/operators";
+import {formatDate} from "@angular/common";
 
 @Component({
   selector: 'ngx-generate-pdf',
@@ -57,7 +58,23 @@ export class GeneratePDFComponent implements OnInit {
 
      console.log(this.fusers.id+datedebut+datefin+retenue);
 
-    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe(response=>{console.log("aa"+response)});
+    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe((res) => {
+      console.log(res);
+      const blob = new Blob([res], { type: 'application/pdf' });
+      // window.open(URL.createObjectURL(blob));
+      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, 'testss.pdf');
+      } else {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        const currentDate = new Date();
+        const cValue = formatDate(currentDate, 'yyyyMMdd_HHmmss', 'en-US');
+        a.download = 'rapport_'+this.fusers.nom+'_'+this.fusers.prenom+'_'+cValue+'.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+    })
 
   }
 
@@ -71,7 +88,7 @@ export class GeneratePDFComponent implements OnInit {
   }
   displayBasic: boolean;
   currenthist:users;
-  
+
   hist(u: users) {
     this.currenthist = u;
     this.displayBasic = true;

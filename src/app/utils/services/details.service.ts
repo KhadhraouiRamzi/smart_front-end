@@ -19,9 +19,10 @@ export class DetailsService {
 
   constructor(private backend: HttpClient,private token: TokenStorageService) { }
 
-  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) : Observable<any> {
+  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) : any {
 
-    return this.backend.get("http://localhost:8081/rapportOrange/by-userId-datedebut-datefin/" +id+"/"+datedebut+"/"+datefin+"/"+retenue,httpOptions);
+    return this.backend.get("http://localhost:8081/rapportOrange/by-userId-datedebut-datefin/" +id+"/"+datedebut+"/"+datefin+"/"+retenue,{ responseType: 'blob',headers: {'Accept': 'application/pdf'}});
+
 
   }
 
