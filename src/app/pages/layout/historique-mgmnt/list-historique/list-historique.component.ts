@@ -156,7 +156,7 @@ export class ListHistoriqueComponent implements OnInit {
      
         this.historiqueService.getHistRevenu().subscribe(
           res => {          
-            this.hist = res;
+            this.hist = res;  
           // rerender datatable
           this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
             // Destroy the table first

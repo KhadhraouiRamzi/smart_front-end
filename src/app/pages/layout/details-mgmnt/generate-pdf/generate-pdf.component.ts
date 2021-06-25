@@ -6,8 +6,10 @@ import { details } from '../../../../models/details';
 import { users } from '../../../../models/users';
 import { DetailsService } from '../../../../utils/services/details.service';
 import { UsersService } from '../../../../utils/services/users.service';
-import {catchError, map, tap} from "rxjs/operators";
-import {formatDate} from "@angular/common";
+import { catchError, map, tap } from "rxjs/operators";
+import { formatDate } from "@angular/common";
+import { HistoriqueService } from '../../../../utils/services/historique.service';
+import { TokenStorageService } from '../../../../auth/services/token-storage.service';
 
 @Component({
   selector: 'ngx-generate-pdf',
@@ -19,19 +21,19 @@ export class GeneratePDFComponent implements OnInit {
   submitted = false;
   u: details = new details();
   p: users = new users();
-  fusers:users;
+  fusers: users;
   statuses: NbComponentStatus[] = ['primary'];
   statuses2: NbComponentStatus[] = ['warning'];
   statuses4: NbComponentStatus[] = ['info'];
   statuses3: NbComponentStatus[] = ['danger'];
-
-    form: any = {
+  hist: any;
+  form: any = {
     datedebut: null,
     datefin: null,
     retenue: null,
   };
-  constructor(private artisteService: UsersService, private router: Router, private ar: ActivatedRoute,
-    private detailsService: DetailsService, private formBuilder: FormBuilder, private r: Router) { }
+  constructor(private historiqueService: HistoriqueService, private artisteService: UsersService, private router: Router, private ar: ActivatedRoute,
+    private detailsService: DetailsService, private formBuilder: FormBuilder, private r: Router, protected token: TokenStorageService) { }
 
   @Input() inputUser: users;
   @Output() onChange: EventEmitter<users> = new EventEmitter();
@@ -51,14 +53,11 @@ export class GeneratePDFComponent implements OnInit {
 
   }
   onSubmit() {
-    //let routeId = this.ar.snapshot.paramMap.get('this.inputUser.id');
-    //let idUser = parseInt();  /// car les param tj considerés comme String dans l'url
+    const { datedebut, datefin, retenue } = this.form;
 
-    const {datedebut,datefin,retenue} = this.form;
+    console.log(this.fusers.id + datedebut + datefin + retenue);
 
-     console.log(this.fusers.id+datedebut+datefin+retenue);
-
-    this.detailsService.generatePdf(this.fusers.id,datedebut,datefin,retenue).subscribe((res) => {
+    this.detailsService.generatePdf(this.fusers.id, datedebut, datefin, retenue).subscribe((res) => {
       console.log(res);
       const blob = new Blob([res], { type: 'application/pdf' });
       // window.open(URL.createObjectURL(blob));
@@ -69,7 +68,7 @@ export class GeneratePDFComponent implements OnInit {
         a.href = URL.createObjectURL(blob);
         const currentDate = new Date();
         const cValue = formatDate(currentDate, 'yyyyMMdd_HHmmss', 'en-US');
-        a.download = 'rapport_'+this.fusers.nom+'_'+this.fusers.prenom+'_'+cValue+'.pdf';
+        a.download = 'rapport_' + this.fusers.nom + '_' + this.fusers.prenom + '_' + cValue + '.pdf';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -87,11 +86,31 @@ export class GeneratePDFComponent implements OnInit {
     this.r.navigate(['/pages/layout/list-artiste/']);
   }
   displayBasic: boolean;
-  currenthist:users;
+  currenthist: users;
 
-  hist(u: users) {
+  histt(u: users) {
     this.currenthist = u;
     this.displayBasic = true;
   }
 
- }
+  paye(p: details) {
+    if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
+
+      const { datedebut, datefin } = this.form;
+
+      console.log(this.fusers.nArtistique, datedebut, datefin);
+
+      this.detailsService.paiementParMois(this.fusers.nArtistique, datedebut, datefin).subscribe(
+        response => {
+          console.log("aa" + response)
+
+          this.historiqueService.getHistRevenu().subscribe(
+            res => {
+              this.hist = res;
+
+            });
+        })
+    }
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
+  }
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 
 const MINUTES_UNITL_AUTO_LOGOUT = 60 // in mins
-const CHECK_INTERVAL = 1000 // in ms
+const CHECK_INTERVAL = 6000 // in ms
 const STORE_KEY =  'lastAction';
 
 @Injectable({
@@ -33,15 +33,12 @@ export class AutoLogoutService {
     document.body.addEventListener('keyup',() => this.reset());
     document.body.addEventListener('keypress',() => this.reset());
     window.addEventListener("storage",() => this.storageEvt());
-
   }
 
-  reset() {
-
+  reset() {  
     //console.log('date got by using events',Date.now());
     this.setLastAction(Date.now());
     //console.log('store key',localStorage.getItem(STORE_KEY));
-
   }
 
   initInterval() {
