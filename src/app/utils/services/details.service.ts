@@ -23,7 +23,6 @@ export class DetailsService {
 
     return this.backend.get("http://localhost:8081/rapportOrange/by-userId-datedebut-datefin/" +id+"/"+datedebut+"/"+datefin+"/"+retenue,{ responseType: 'blob',headers: {'Accept': 'application/pdf'}});
 
-
   }
 
   getTopChanson(): Observable<any> {
@@ -102,8 +101,6 @@ export class DetailsService {
     return this.backend.get<any>(this.baseUrl + "/statDate/by-userId/"+id);
   }
 
-
-
   getTopChansonById(id: any): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topChanson/by-userId/"+id);
   }
@@ -144,4 +141,10 @@ export class DetailsService {
     console.log(namea+" "+date1+" "+date2);
     return this.backend.put(this.baseUrl + "/compenseParMois/"+namea+"/"+date1+"/"+date2, httpOptions);
   }
+
+  paiementParMoisHist(namea: String, date1:Date,date2:Date) : Observable<any>{
+    console.log(namea+" "+date1+" "+date2);
+    return this.backend.put(this.baseUrl + "/paiementParMoisHist/"+namea+"/"+date1+"/"+date2, httpOptions);
+  }
+
 }

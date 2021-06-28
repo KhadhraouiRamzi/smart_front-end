@@ -94,7 +94,7 @@ export class ListChansonComponent implements OnInit {
     if (this.token.getUser()['roles']=="ROLE_ADMIN") {
       this.r.navigate(['/pages/layout/form-chanson/']);
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
   delete(p: chanson) {
     if (this.token.getUser()['roles']=="ROLE_ADMIN") {
@@ -120,7 +120,7 @@ export class ListChansonComponent implements OnInit {
 
       }
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 
 }

@@ -100,9 +100,10 @@ export class GeneratePDFComponent implements OnInit {
 
       console.log(this.fusers.nArtistique, datedebut, datefin);
 
-      this.detailsService.paiementParMois(this.fusers.nArtistique, datedebut, datefin).subscribe(
+      this.detailsService.paiementParMoisHist(this.fusers.nArtistique, datedebut, datefin).subscribe(
         response => {
           console.log("aa" + response)
+          alert('Paiement réussi !');
 
           this.historiqueService.getHistRevenu().subscribe(
             res => {
