@@ -167,7 +167,7 @@ export class ListHistoriqueComponent implements OnInit {
         });
       })
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 
   nonPaye(p : details) {
@@ -194,7 +194,7 @@ export class ListHistoriqueComponent implements OnInit {
           });
         })
       }
-      else window.alert("Sorry you are not authorised !!");
+      else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 
   /*
@@ -217,7 +217,7 @@ export class ListHistoriqueComponent implements OnInit {
         })
       }
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 */
 }

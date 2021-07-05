@@ -74,14 +74,14 @@ export class ListAlbumComponent implements OnInit {
     if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
       this.r.navigate(['/pages/layout/form-album/']);
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
   modifier(u: album) {
     if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
       this.r.navigate(['/pages/layout/edit-album/' + u.id]);
       console.log(u);
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 
   delete(p: album) {
@@ -105,6 +105,6 @@ export class ListAlbumComponent implements OnInit {
         })
       }
     }
-    else window.alert("Sorry you are not authorised !!");
+    else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
 }

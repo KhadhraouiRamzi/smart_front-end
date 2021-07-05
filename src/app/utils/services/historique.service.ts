@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { users } from '../../models/users';
 
 @Injectable({
@@ -16,7 +15,6 @@ export class HistoriqueService {
     return this.backend.get<users>(this.baseUrl + "/HistRevenu/by-id/" + id);
   }
 
-  
   getHistRevenu() {
     return this.backend.get<users>(this.baseUrl + "/HistRevenu");
   }
