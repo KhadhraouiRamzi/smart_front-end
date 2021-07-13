@@ -1,0 +1,310 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header"> Ajouter un nouveau detail</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <nb-card>
+                <nb-card-body>
+                    <div class="form-row">
+
+                        <div class="form-group col-5">
+                            <label>Nom artiste</label>
+                            <input type="text" formControlName="namea" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.namea.errors }" [(ngModel)]="u.namea" />
+                            <div *ngIf="submitted && f.namea.errors" class="invalid-feedback">
+                                <div *ngIf="f.namea.errors.required"> namea chanson is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Nom chanson</label>
+                            <select formControlName="nomC" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.nomC.errors }" [(ngModel)]="u.nomC">
+                                <option *ngFor="let b of chanson" [ngValue]="b.nom">
+                                    {{ b.nom }}
+                                </option>
+                            </select>
+
+                            <div *ngIf="submitted && f.nomC.errors" class="invalid-feedback">
+                                <div *ngIf="f.nomC.errors.required">Nom chanson is required</div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-5">
+                            <label>Nom Album </label>
+                            <select formControlName="album" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.album.errors }" [(ngModel)]="u.album">
+                                <option *ngFor="let b of album" [ngValue]="b.titre">
+                                    {{ b.titre }}
+                                </option>
+                            </select>
+
+                            <div *ngIf="submitted && f.album.errors" class="invalid-feedback">
+                                <div *ngIf="f.album.errors.required">Nom Album is required</div>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group col-5">
+                            <label>Nom Album </label>
+                            <input type="text"  formControlName="album" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.album.errors }" [(ngModel)]="u.album"/>
+                                <div *ngIf="submitted && f.album.errors" class="invalid-feedback">
+                                    <div *ngIf="f.album.errors.required"> album is required</div>
+                                </div>
+                        </div>-->
+
+                        <br>
+                        <br>
+
+                        <div class="form-group col-5">
+                            <label>Date debut</label>
+                            <input type="date" formControlName="date1" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.date1.errors }" [(ngModel)]="u.date1">
+                            <div *ngIf="submitted && f.date1.errors" class="invalid-feedback">
+                                <div *ngIf="f.date1.errors.required"> date debut is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Date fin</label>
+                            <input type="date" formControlName="date2" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.date2.errors }" [(ngModel)]="u.date2">
+                            <div *ngIf="submitted && f.date2.errors" class="invalid-feedback">
+                                <div *ngIf="f.date2.errors.required"> date fin is required</div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div class="form-group col-5">
+                            <label>Unite price</label>
+                            <input type="text" formControlName="uniteprice" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.uniteprice.errors }"
+                                [(ngModel)]="u.uniteprice" />
+                            <div *ngIf="submitted && f.uniteprice.errors" class="invalid-feedback">
+                                <div *ngIf="f.uniteprice.errors.required"> Unit price is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Quantite</label>
+                            <input type="text" formControlName="quantite" class="form-control"
+                                [(ngModel)]="u.quantite" />
+                            <div *ngIf="submitted && f.quantite.errors" class="invalid-feedback">
+                                <div *ngIf="f.quantite.errors.required"> </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <div class="form-group col-5">
+                            <label>Plateforme</label>
+                            <input type="text" formControlName="plateforme" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.plateforme.errors }"
+                                [(ngModel)]="u.plateforme" />
+                            <div *ngIf="submitted && f.plateforme.errors" class="invalid-feedback">
+                                <div *ngIf="f.plateforme.errors.required">plateforme is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Netrevenu </label><br>
+                            <input multiple class="form-control" formControlName="netrevenu" lass="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.plateforme.errors }"
+                                [(ngModel)]="u.netrevenu" />
+                            <div *ngIf="submitted && f.netrevenu.errors" class="invalid-feedback">
+                                <div *ngIf="f.netrevenu.errors.required"> netrevenu is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Gross revenue</label>
+                            <input type="text" formControlName="grossrevenu" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.grossrevenu.errors }"
+                                [(ngModel)]="u.grossrevenu" />
+                            <div *ngIf="submitted && f.grossrevenu.errors" class="invalid-feedback">
+                                <div *ngIf="f.grossrevenu.errors.required">grossrevenu is required</div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-5">
+                            <label>Devise</label>
+                            <input type="text" formControlName="devise" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.devise.errors }" [(ngModel)]="u.devise" />
+                            <div *ngIf="submitted && f.devise.errors" class="invalid-feedback">
+                                <div *ngIf="f.devise.errors.required">devise is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Label</label>
+                            <input type="text" formControlName="label" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.label.errors }" [(ngModel)]="u.label" />
+                            <div *ngIf="submitted && f.label.errors" class="invalid-feedback">
+                                <div *ngIf="f.label.errors.required">label is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>UPC</label>
+                            <input type="text" formControlName="upc" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.upc.errors }" [(ngModel)]="u.upc" />
+                            <div *ngIf="submitted && f.upc.errors" class="invalid-feedback">
+                                <div *ngIf="f.upc.errors.required">upc is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>ISRC</label>
+                            <input type="text" formControlName="isrc" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.isrc.errors }" [(ngModel)]="u.isrc" />
+                            <div *ngIf="submitted && f.isrc.errors" class="invalid-feedback">
+                                <div *ngIf="f.isrc.errors.required">isrc is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Content</label>
+                            <input type="text" formControlName="content" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.content.errors }" [(ngModel)]="u.content" />
+                            <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
+                                <div *ngIf="f.content.errors.required">content is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Producer</label>
+                            <input type="text" formControlName="producer" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.producer.errors }" [(ngModel)]="u.producer" />
+                            <div *ngIf="submitted && f.producer.errors" class="invalid-feedback">
+                                <div *ngIf="f.producer.errors.required">producer is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Category</label>
+                            <input type="text" formControlName="category" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.category.errors }" [(ngModel)]="u.category" />
+                            <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                                <div *ngIf="f.category.errors.required">category is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Type</label>
+                            <input type="text" formControlName="type" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.type.errors }" [(ngModel)]="u.type" />
+                            <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                                <div *ngIf="f.type.errors.required">type is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Country</label>
+                            <input type="text" formControlName="country" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.country.errors }" [(ngModel)]="u.country" />
+                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                <div *ngIf="f.country.errors.required">country is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>TTC</label>
+                            <input type="text" formControlName="TTC" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.TTC.errors }" [(ngModel)]="u.ttc" />
+                            <div *ngIf="submitted && f.TTC.errors" class="invalid-feedback">
+                                <div *ngIf="f.TTC.errors.required">TTC is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Part Smart</label>
+                            <input type="text" formControlName="part_smart" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.part_smart.errors }"
+                                [(ngModel)]="u.part_smart" />
+                            <div *ngIf="submitted && f.part_smart.errors" class="invalid-feedback">
+                                <div *ngIf="f.part_smart.errors.required">part_smart is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Tax telecom</label>
+                            <input type="text" formControlName="tax_telecom" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.tax_telecom.errors }"
+                                [(ngModel)]="u.tax_telecom" />
+                            <div *ngIf="submitted && f.tax_telecom.errors" class="invalid-feedback">
+                                <div *ngIf="f.tax_telecom.errors.required">tax_telecom is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Part TTC</label>
+                            <input type="text" formControlName="part_TTC" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.part_TTC.errors }" [(ngModel)]="u.part_TTC" />
+                            <div *ngIf="submitted && f.part_TTC.errors" class="invalid-feedback">
+                                <div *ngIf="f.part_TTC.errors.required">part_TTC is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>HTVA</label>
+                            <input type="text" formControlName="HTVA" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.HTVA.errors }" [(ngModel)]="u.htva" />
+                            <div *ngIf="submitted && f.HTVA.errors" class="invalid-feedback">
+                                <div *ngIf="f.HTVA.errors.required">HTVA is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Part artiste</label>
+                            <input type="text" formControlName="part_artiste" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.part_artiste.errors }"
+                                [(ngModel)]="u.part_artiste" />
+                            <div *ngIf="submitted && f.part_artiste.errors" class="invalid-feedback">
+                                <div *ngIf="f.part_artiste.errors.required">part_artiste is required</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                            [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                        <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                        <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is
+                            required
+                        </div>
+                    </div>
+                    <table>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="buttons-row">
+                                    <button *ngFor="let status of statuses" nbButton [status]="status" outline>
+                                        Register
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="buttons-row">
+                                    <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                        (click)="onReset()">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="buttons-row">
+                                    <button *ngFor="let status of statuses3" nbButton [status]="status" outline
+                                        (click)="Retour()">
+                                        Retour
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </nb-card-body>
+            </nb-card>
+        </form>
+    </div>
+</div>
