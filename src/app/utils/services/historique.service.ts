@@ -10,7 +10,7 @@ export class HistoriqueService {
   baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient) { }
-  
+
   getHistRevenuById(id) {
     return this.backend.get<users>(this.baseUrl + "/HistRevenu/by-id/" + id);
   }
