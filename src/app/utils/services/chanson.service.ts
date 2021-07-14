@@ -28,7 +28,7 @@ export class ChansonService {
   }
 
   getlistChanson(): Observable<any> {
-    return this.backend.get<any>(this.baseUrl + "/chansons");
+    return this.backend.get<any>(this.baseUrl + "/chanson");
   }
 
   addChanson(u: chanson) {

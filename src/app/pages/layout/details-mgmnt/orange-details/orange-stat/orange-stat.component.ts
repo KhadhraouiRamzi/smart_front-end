@@ -32,7 +32,7 @@ export class OrangeStatComponent implements OnInit {
   fileName = 'Liste top artiste.xlsx';
   details: details;
   st:any;
-  statuses: NbComponentStatus[] = ['success',"danger"];
+  statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
   statuses3: NbComponentStatus[] = ['danger'];
   statuses4: NbComponentStatus[] = ['basic'];

@@ -95,22 +95,24 @@ export class GeneratePDFComponent implements OnInit {
 
   paye(p: details) {
     if (this.token.getUser()['roles'] == "ROLE_ADMIN") {
+      if (window.confirm("Voulez-vous vraiment effectuer cette opération ?")) {
 
-      const { datedebut, datefin } = this.form;
+        const { datedebut, datefin } = this.form;
 
-      console.log(this.fusers.nArtistique, datedebut, datefin);
+        console.log(this.fusers.nArtistique, datedebut, datefin);
 
-      this.detailsService.paiementParMoisHist(this.fusers.nArtistique, datedebut, datefin).subscribe(
-        response => {
-          console.log("aa" + response)
-          alert('Paiement réussi !');
+        this.detailsService.paiementParMoisHist(this.fusers.nArtistique, datedebut, datefin).subscribe(
+          response => {
+            console.log("aa" + response)
+            alert('Paiement réussi !');
 
-          this.historiqueService.getHistRevenu().subscribe(
-            res => {
-              this.hist = res;
+            this.historiqueService.getHistRevenu().subscribe(
+              res => {
+                this.hist = res;
 
-            });
-        })
+              });
+          })
+      }
     }
     else window.alert("Désolé vous n'êtes pas autorisé !!");
   }
