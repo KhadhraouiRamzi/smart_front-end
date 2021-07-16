@@ -1,0 +1,93 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header"> Ajouter un nouveau Ftp</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label>User</label>
+                    <select formControlName="user" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.user.errors }" [(ngModel)]="u.user">
+                        <option *ngFor="let d of user" [ngValue]="d">
+                            {{ d.nom }} {{ d.prenom }}
+                        </option>
+                    </select>
+
+
+                    <div *ngIf="submitted && f.user.errors" class="invalid-feedback">
+                        <div *ngIf="f.user.errors.required">User is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Haut</label>
+                    <input type="text" formControlName="haut" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.haut.errors }" [(ngModel)]="u.haut" />
+                    <div *ngIf="submitted && f.haut.errors" class="invalid-feedback">
+                        <div *ngIf="f.haut.errors.required">haut is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Identifiant</label>
+                    <input type="text" formControlName="identifiant" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.identifiant.errors }" [(ngModel)]="u.identifiant" />
+                    <div *ngIf="submitted && f.identifiant.errors" class="invalid-feedback">
+                        <div *ngIf="f.identifiant.errors.required">identifiant is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Mot de passe</label>
+                    <input type="text" formControlName="mp" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.mp.errors }" [(ngModel)]="u.mp" />
+                    <div *ngIf="submitted && f.mp.errors" class="invalid-feedback">
+                        <div *ngIf="f.mp.errors.required"> Mot de passe is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Port</label>
+                    <input type="number" formControlName="port" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.port.errors }" [(ngModel)]="u.port" />
+                    <div *ngIf="submitted && f.port.errors" class="invalid-feedback">
+                        <div *ngIf="f.port.errors.required">port is required</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required
+                </div>
+            </div>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline>
+                                    Register
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="onReset()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+
+        </form>
+    </div>
+</div>

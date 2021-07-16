@@ -1,0 +1,233 @@
+<nb-card>
+    <nb-card-header>
+        Edit Detail
+    </nb-card-header>
+    <nb-card-body>
+        <nb-card>
+            <nb-card-header>
+                <div class="buttons-row">
+                    <div class="form-row">
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180%>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Nom artiste:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.namea" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Nom chanson:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.content" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Album:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.album" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Date debut:</label>
+                                            <input type="date" class="form-control" [(ngModel)]="u.date1" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Date fin:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.date2" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label> Uniteprice </label><br>
+                                            <input type="text" class="form-control" [(ngModel)]="u.uniteprice" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Quantite:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.quantite" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Plateforme:</label><br>
+                                            <input type="text" class="form-control" [(ngModel)]="u.plateforme" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Category:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.category" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>TTC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.ttc" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Part smart:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.part_smart" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Tax telecom:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.tax_telecom" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Part TTC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.part_TTC" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>HTVA:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.htva" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Category:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.category" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>TTC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.ttc" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Part artiste:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.part_artiste" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Net revenue:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.netrevenu" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Grossrevenu:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.grossrevenu" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Devise:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.devise" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Label:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.label" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>UPC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.upc" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>ISRC:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.isrc" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Producer:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.producer" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label>Type:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.type" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label>Country:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.country" />
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>

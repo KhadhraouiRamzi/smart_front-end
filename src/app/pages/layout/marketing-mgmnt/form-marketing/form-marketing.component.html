@@ -1,0 +1,85 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header"> Ajouter un nouveau marketing</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label>Nom Marketing</label>
+                    <input type="text" formControlName="nom" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" [(ngModel)]="u.nom" />
+                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                        <div *ngIf="f.nom.errors.required"> nom marketing is required</div>
+                    </div>
+                </div>
+ 
+                <div class="form-group col-5">
+                    <label>Date Marketing</label>
+                    <input type="date" formControlName="datemark" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.datemark.errors }" [(ngModel)]="u.datemark" />
+                    <div *ngIf="submitted && f.datemark.errors" class="invalid-feedback">
+                        <div *ngIf="f.datemark.errors.required"> date marketing is required</div>
+                    </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <label>Montant</label>
+                    <input type="number" formControlName="montant" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.montant.errors }" [(ngModel)]="u.montant" />
+                    <div *ngIf="submitted && f.montant.errors" class="invalid-feedback">
+                        <div *ngIf="f.montant.errors.required">montant is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Type</label>
+                    <input type="text" formControlName="type" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.type.errors }" [(ngModel)]="u.type" />
+                    <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                        <div *ngIf="f.type.errors.required">type is required</div>
+                    </div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Devise</label>
+                    <input type="text" formControlName="devise" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.devise.errors }" [(ngModel)]="u.devise" />
+                    <div *ngIf="submitted && f.devise.errors" class="invalid-feedback">
+                        <div *ngIf="f.devise.errors.required">devise is required</div>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                    [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required
+                </div>
+            </div>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline>
+                                    Register
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="onReset()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </nb-card-body>
+
+        </form>
+    </div>
+</div>
