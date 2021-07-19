@@ -71,8 +71,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/layout/deezer',
       },
       {
-        title: 'Beleive',
-        link: '/pages/layout/beleive',
+        title: 'Believe',
+        link: '/pages/layout/believe',
       },
       {
         title: 'Contenu detail',

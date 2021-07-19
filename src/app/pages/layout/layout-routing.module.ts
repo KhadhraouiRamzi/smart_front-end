@@ -59,6 +59,11 @@ import { ListDetailComponent } from './detail-crud/list-detail/list-detail.compo
 import { FormDetailComponent } from './detail-crud/form-detail/form-detail.component';
 import { EditDetailComponent } from './detail-crud/edit-detail/edit-detail.component';
 import { ListHistoriqueComponent } from './historique-mgmnt/list-historique/list-historique.component';
+import { BelieveStatPlateformeComponent } from './details-mgmnt/beleive-details/believe-stat-plateforme/believe-stat-plateforme.component';
+import { BelieveStatDateComponent } from './details-mgmnt/beleive-details/believe-stat-date/believe-stat-date.component';
+import { BelieveStatChansonComponent } from './details-mgmnt/beleive-details/believe-stat-chanson/believe-stat-chanson.component';
+import { BelieveStatPaysComponent } from './details-mgmnt/beleive-details/believe-stat-pays/believe-stat-pays.component';
+import { BelieveStatAbonnementComponent } from './details-mgmnt/beleive-details/believe-stat-abonnement/believe-stat-abonnement.component';
 
 const routes: Routes = [{
   path: '',
@@ -117,10 +122,30 @@ const routes: Routes = [{
       component: DeezerDetailsComponent,
     },
     {
-      path: 'beleive',
+      path: 'believe',
       component: BeleiveDetailsComponent,  
     },
-     
+   
+    {
+      path: 'believe-stat-platefrome',
+      component: BelieveStatPlateformeComponent,
+    },
+    {
+      path: 'believe-stat-chanson',
+      component: BelieveStatChansonComponent,
+    },
+    {
+      path: 'believe-stat-date',
+      component: BelieveStatDateComponent,
+    },
+    {
+      path: 'believe-stat-abonnement',
+      component: BelieveStatAbonnementComponent,
+    },
+    {
+      path: 'believe-stat-pays',
+      component: BelieveStatPaysComponent,
+    },
     {
       path: 'list-operateur',
       component: ListOperateurComponent,

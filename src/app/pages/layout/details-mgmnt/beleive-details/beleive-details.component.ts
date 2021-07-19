@@ -7,10 +7,10 @@ import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
 import { utils, WorkBook, WorkSheet, writeFile } from "xlsx";
 import { ExcelExportService } from '../../../../utils/services/excel-export.service';
-import { DetailsService } from '../../../../utils/services/details.service';
 import { TokenStorageService } from '../../../../auth/services/token-storage.service';
 import { DatatableLanguage } from '../../../../../assets/data/DatatableLanguage';
 import { details } from '../../../../models/details';
+import { BelieveService } from '../../../../utils/services/believe.service';
 declare var jQuery: any;
 
 @Component({
@@ -43,7 +43,7 @@ export class BeleiveDetailsComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(private excelExportService: ExcelExportService,
-    private detaisSerivce: DetailsService, private r: Router, public token: TokenStorageService) {
+    private believeSerivce: BelieveService, private r: Router, public token: TokenStorageService) {
   }
 
 
@@ -55,12 +55,12 @@ export class BeleiveDetailsComponent implements OnInit {
       language: DatatableLanguage.datatableFrench,
     };
 
-    this.detaisSerivce.getStatArtiste().subscribe(
+    this.believeSerivce.getStatArtisteBelieve().subscribe(
       res => {
         let role = this.token.getUser()['roles'];
         let idUser = this.token.getUser().id;
         if (role == "ROLE_ARTISTE") {
-          this.detaisSerivce.getStatArtisteById(idUser).subscribe(data => {
+          this.believeSerivce.getStatArtisteBelieveById(idUser).subscribe(data => {
             this.details = data;
 
             /* ------------script Js pour ajouter les totales filtrées et final des stats---------------*/
@@ -444,38 +444,25 @@ export class BeleiveDetailsComponent implements OnInit {
   }
 
   Artiste() {
-    this.r.navigate(['/pages/layout/orange-stat/']);
+    this.r.navigate(['/pages/layout/believe/']);
   }
   Chanson() {
-    this.r.navigate(['/pages/layout/orange-stat-chanson/']);
+    this.r.navigate(['/pages/layout/believe-stat-chanson/']);
   }
-  Categorie() {
-    this.r.navigate(['/pages/layout/orange-stat-category/']);
+  Pays() {
+    this.r.navigate(['/pages/layout/believe-stat-pays/']);
   }
   Mois() {
-    this.r.navigate(['/pages/layout/orange-stat-date/']);
+    this.r.navigate(['/pages/layout/believe-stat-date/']);
   }
-  CountA() {
-    this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
-  }
-  CountD() {
-    this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
+  Abonnement() {
+    this.r.navigate(['/pages/layout/believe-stat-abonnement/']);
   }
   Plateforme() {
-    this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
+    this.r.navigate(['/pages/layout/believe-stat-platefrome/']);
   }
 
-  ajouter() {
-    this.r.navigate(['/pages/layout/orange/']);
-  }
 
-  pays() {
-    this.r.navigate(['/pages/layout/pays/']);
-  }
-
-  abonnement() {
-    this.r.navigate(['/pages/layout/abonnement/']);
-  }
 
   selectFile(event) {
     this.selectedFile = event.target.files[0];

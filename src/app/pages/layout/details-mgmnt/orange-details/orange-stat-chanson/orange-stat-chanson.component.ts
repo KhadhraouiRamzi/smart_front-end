@@ -406,30 +406,7 @@ export class OrangeStatChansonComponent implements OnInit {
         PDF.save('Liste top chansons.pdf');
     });
   }
-
-  generatePdf() {
-    var pdf = new jsPDF();
-
-    pdf.setFontSize(2);
-    pdf.text('Smart Technoloy PDF', 11, 8);
-    pdf.setFontSize(12);
-    pdf.setTextColor(99);
-
-    (pdf as any).autoTable({
-      head: this.header,
-      body: this.details,
-      theme: 'plain',
-      didDrawCell: data => {
-        console.log(data.column.index)
-      }
-    })
-
-    // Open PDF document in browser's new tab
-    pdf.output('dataurlnewwindow')
-
-    // Download PDF doc
-    pdf.save('Artiste.pdf');
-  }
+ 
 
   Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
