@@ -16,10 +16,10 @@ const httpOptions = {
 export class DetailsService {
 
   baseUrl: string = "http://localhost:8081";
-
+ 
   constructor(private backend: HttpClient,private token: TokenStorageService) { }
 
-  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) : any {
+  generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) :  Observable<any> {
 
     return this.backend.get("http://localhost:8081/rapportOrange/by-userId-datedebut-datefin/" +id+"/"+datedebut+"/"+datefin+"/"+retenue,{ responseType: 'blob',headers: {'Accept': 'application/pdf'}});
 

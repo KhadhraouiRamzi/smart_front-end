@@ -24,7 +24,7 @@
                         </td>
                         <td>
                             <input type="date" #lastName="ngModel" name="datefin" class="form-control"
-                                [(ngModel)]="form.datefin" />
+                                [(ngModel)]="form.datefin" [min]="form.datedebut"/>
                         </td>
                         <td>
                             <input type="number" #lastName="ngModel" name="retenue" class="form-control"

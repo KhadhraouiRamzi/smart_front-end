@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
 import { details } from '../../../../models/details';
@@ -17,6 +17,8 @@ import { TokenStorageService } from '../../../../auth/services/token-storage.ser
   styleUrls: ['./generate-pdf.component.scss']
 })
 export class GeneratePDFComponent implements OnInit {
+  startDate = new FormControl(new Date());
+  endDate = new FormControl(new Date());
   registerForm: FormGroup;
   submitted = false;
   u: details = new details();
@@ -32,6 +34,7 @@ export class GeneratePDFComponent implements OnInit {
     datefin: null,
     retenue: null,
   };
+  message: string;
   constructor(private historiqueService: HistoriqueService, private artisteService: UsersService, private router: Router, private ar: ActivatedRoute,
     private detailsService: DetailsService, private formBuilder: FormBuilder, private r: Router, protected token: TokenStorageService) { }
 
@@ -58,20 +61,24 @@ export class GeneratePDFComponent implements OnInit {
     console.log(this.fusers.id + datedebut + datefin + retenue);
 
     this.detailsService.generatePdf(this.fusers.id, datedebut, datefin, retenue).subscribe((res) => {
-      console.log(res);
-      const blob = new Blob([res], { type: 'application/pdf' });
-      // window.open(URL.createObjectURL(blob));
-      if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-        window.navigator.msSaveOrOpenBlob(blob, 'testss.pdf');
-      } else {
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        const currentDate = new Date();
-        const cValue = formatDate(currentDate, 'yyyyMMdd_HHmmss', 'en-US');
-        a.download = 'rapport_' + this.fusers.nom + '_' + this.fusers.prenom + '_' + cValue + '.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      if (res.status === 500) {
+        this.message='Désolé vous n avez pas de résultat !!';
+      }
+      else {
+        const blob = new Blob([res], { type: 'application/pdf' });
+        // window.open(URL.createObjectURL(blob));
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveOrOpenBlob(blob, 'testss.pdf');
+        } else {
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          const currentDate = new Date();
+          const cValue = formatDate(currentDate, 'yyyyMMdd_HHmmss', 'en-US');
+          a.download = 'rapport_' + this.fusers.nom + '_' + this.fusers.prenom + '_' + cValue + '.pdf';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
       }
     })
 
@@ -102,7 +109,7 @@ export class GeneratePDFComponent implements OnInit {
         console.log(this.fusers.nArtistique, datedebut, datefin);
 
         this.detailsService.paiementParMoisHist(this.fusers.nArtistique, datedebut, datefin).subscribe(
-          response => { 
+          response => {
             console.log("aa" + response)
             alert('Paiement réussi !');
 

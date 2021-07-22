@@ -347,7 +347,7 @@
                       $(apiFiltre.column(0).footer()).html('Total Filtré');
                       $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
                       $(apiFiltre.column(2).footer()).html(ttc.toFixed(3));
-                      $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed(3));
+                      $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed());
                       $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
                       $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                       $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
