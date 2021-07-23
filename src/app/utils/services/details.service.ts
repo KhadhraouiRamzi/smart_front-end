@@ -106,7 +106,7 @@ export class DetailsService {
   }
 
   getTopPlateformeById(id: any): Observable<any> {
-    return this.backend.get<any>(this.baseUrl + "/statPlateforme/by-userId/"+id);
+    return this.backend.get<any>(this.baseUrl + "/topPlateforme/by-userId/"+id);
   }
   getTopArtisteById(id: any): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topArtiste/by-userId/"+id);

@@ -101,7 +101,7 @@ export class BeleiveDetailsComponent implements OnInit {
                           return intVal(a) + intVal(b);
                         }, 0);
 
-                      var tax_telecom = apiFiltre
+                      /*var tax_telecom = apiFiltre
                         .column(4, { page: 'current' })
                         .data()
                         .reduce(function (a, b) {
@@ -120,10 +120,10 @@ export class BeleiveDetailsComponent implements OnInit {
                         .data()
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
-                        }, 0);
+                        }, 0);*/
 
                       var part_artiste = apiFiltre
-                        .column(7, { page: 'current' })
+                        .column(4, { page: 'current' })
                         .data()
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
@@ -154,7 +154,7 @@ export class BeleiveDetailsComponent implements OnInit {
                         }, 0);
 
                       // Total over all pages
-                      var totalPartTelecom = apiFiltre
+                      /*var totalPartTelecom = apiFiltre
                         .column(4)
                         .data()
                         .reduce(function (a, b) {
@@ -175,11 +175,11 @@ export class BeleiveDetailsComponent implements OnInit {
                         .data()
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
-                        }, 0);
+                        }, 0);*/
 
                       // Total over all pages
                       var totalPartArtiste = apiFiltre
-                        .column(7)
+                        .column(4)
                         .data()
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
@@ -191,20 +191,20 @@ export class BeleiveDetailsComponent implements OnInit {
                       $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
                       $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed());
                       $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
-                      $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
+                      /*$(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                       $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
-                      $(apiFiltre.column(6).footer()).html(htva.toFixed(3));
-                      $(apiFiltre.column(7).footer()).html(part_artiste.toFixed(3));
+                      $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
+                      $(apiFiltre.column(4).footer()).html(part_artiste.toFixed(3));
 
                       // Total Final:
                       $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
                       $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                       $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                       $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
-                      $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
+                      /*$('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                       $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
-                      $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));
-                      $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
+                      $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));*/
+                      $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                     },
                     "order": [[1, "desc"]],
@@ -260,7 +260,7 @@ export class BeleiveDetailsComponent implements OnInit {
                         return intVal(a) + intVal(b);
                       }, 0);
 
-                    var tax_telecom = apiFiltre
+                    /*var tax_telecom = apiFiltre
                       .column(4, { page: 'current' })
                       .data()
                       .reduce(function (a, b) {
@@ -279,10 +279,10 @@ export class BeleiveDetailsComponent implements OnInit {
                       .data()
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
-                      }, 0);
+                      }, 0);*/
 
                     var part_artiste = apiFiltre
-                      .column(7, { page: 'current' })
+                      .column(4, { page: 'current' })
                       .data()
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
@@ -313,7 +313,7 @@ export class BeleiveDetailsComponent implements OnInit {
                       }, 0);
 
                     // Total over all pages
-                    var totalPartTelecom = apiFiltre
+                   /* var totalPartTelecom = apiFiltre
                       .column(4)
                       .data()
                       .reduce(function (a, b) {
@@ -334,11 +334,11 @@ export class BeleiveDetailsComponent implements OnInit {
                       .data()
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
-                      }, 0);
+                      }, 0);*/
 
                     // Total over all pages
                     var totalPartArtiste = apiFiltre
-                      .column(7)
+                      .column(4)
                       .data()
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
@@ -351,9 +351,9 @@ export class BeleiveDetailsComponent implements OnInit {
                     $(apiFiltre.column(2).footer()).html(ttc.toFixed(3));
                     $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed(  ));
                     $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
-                    $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
+                   /* $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                     $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
-                    $(apiFiltre.column(6).footer()).html(htva.toFixed(3));
+                    $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
                     $(apiFiltre.column(7).footer()).html(part_artiste.toFixed(3));
 
                     // Total Final:
@@ -362,9 +362,9 @@ export class BeleiveDetailsComponent implements OnInit {
                     $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                     $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                     $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
-                    $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
+                    /*$('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                     $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
-                    $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));
+                    $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));*/
                     $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                   },
