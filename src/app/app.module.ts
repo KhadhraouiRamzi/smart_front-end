@@ -29,7 +29,6 @@ import {
 import { AuthGuard } from './auth/auth-guard.service';
 import { authInterceptorProviders } from './auth/auth.interceptor';
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

@@ -2,14 +2,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { users } from '../../../../models/users';
-
+import { utils, WorkBook, WorkSheet, writeFile } from "xlsx"; 
 import { DataTableDirective } from 'angular-datatables';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
 import { Subject } from 'rxjs';
 import { UsersService } from '../../../../utils/services/users.service';
 import { HttpClient } from '@angular/common/http';
- @Component({
+import { DatatableLanguage } from '../../../../../assets/data/DatatableLanguage';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+@Component({
   selector: 'ngx-list-artiste',
   templateUrl: './list-artiste.component.html',
   styleUrls: ['./list-artiste.component.scss']
@@ -17,6 +20,7 @@ import { HttpClient } from '@angular/common/http';
 export class ListArtisteComponent implements OnInit {
   artistes: users;
   art: users;
+  fileName = 'Liste des artistes.xlsx';
 
   statuses: NbComponentStatus[] = ['success'];
   statuses2: NbComponentStatus[] = ['primary'];
@@ -56,26 +60,38 @@ export class ListArtisteComponent implements OnInit {
         res[1].name = res[1].name
         let array = res;
         for (let i = 0; i < array.length; i++) {
-        let arr = array[i].picByte;
-         //let img = this.artistes.prenom; this.artistes.name
+          let arr = array[i].picByte;
+          //let img = this.artistes.prenom; this.artistes.name
 
-         this.httpClient.get('http://localhost:8081/get/' +array[i].id ).subscribe(
-          response => {
-            this.retrieveResonse = response;
-            if(this.retrieveResonse.picByte==null){
-              this.retrievedImage= "assets/images/noPhoto.png"
-              array[i].picByte=this.retrievedImage;
+          this.httpClient.get('http://localhost:8081/get/' + array[i].id).subscribe(
+            response => {
+              this.retrieveResonse = response;
+              if (this.retrieveResonse.picByte == null) {
+                this.retrievedImage = "assets/images/noPhoto.png"
+                array[i].picByte = this.retrievedImage;
+                res[i].picByte = array[i].picByte;
+                this.artistes = res;
+              }
+              else
+                array[i].picByte = this.retrievedImage = 'data:image/jpeg;base64,' + this.retrieveResonse.picByte;
               res[i].picByte = array[i].picByte;
               this.artistes = res;
             }
-            else
-            array[i].picByte =this.retrievedImage = 'data:image/jpeg;base64,' + this.retrieveResonse.picByte;
-            res[i].picByte = array[i].picByte;
-            this.artistes = res;
-          }
-        );
-      }
-        this.dtTrigger.next();
+          );
+        }
+        setTimeout(function () {
+          (function ($) {
+            $(document).ready(function () {
+              $('#table-orange-stat').DataTable({
+                "footerCallback": function (row, data, start, end, display) {
+                console.log(res);
+                },
+                "order": [[1, "desc"]],
+                "language": DatatableLanguage.datatableFrench
+              });
+            });
+          })(jQuery);
+        }, 150);
       });
   }
   ngOnDestroy(): void {
@@ -88,7 +104,7 @@ export class ListArtisteComponent implements OnInit {
   displayBasic3: boolean;
   currentartiste: users;
   currentdetails: users;
-  currenthist:users;
+  currenthist: users;
 
   details(u: users) {
     this.currentartiste = u;
@@ -96,6 +112,38 @@ export class ListArtisteComponent implements OnInit {
     //this.r.navigate(['/pages/layout/detail-artiste/' + u.id]);
   }
 
+  exportexcel(): void {
+    /* table id is passed over here */
+    let element = document.getElementById('table-orange-stat');
+    const ws: WorkSheet = utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: WorkBook = utils.book_new();
+    utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    writeFile(wb, this.fileName);
+  }
+
+
+  header = [['Nom Artiste', 'Net Revenu', 'Nombre d écoute']]
+
+  public openPDF(): void {
+    let DATA = document.getElementById('table-orange-stat');
+
+    html2canvas(DATA).then(canvas => {
+
+      let fileWidth = 208;
+      let fileHeight = canvas.height * fileWidth / canvas.width;
+
+      const FILEURI = canvas.toDataURL('image/png')
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
+
+      PDF.save('Liste des artistes.pdf');
+    });
+  } 
   revenu(d: users) {
     this.currentdetails = d;
     this.displayBasic2 = true;

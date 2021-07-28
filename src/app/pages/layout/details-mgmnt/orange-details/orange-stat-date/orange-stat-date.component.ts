@@ -183,7 +183,7 @@ export class OrangeStatDateComponent implements OnInit {
                     // Total filtré:
                     $( apiFiltre.column( 0 ).footer() ).html('Total Filtré');
                     $( apiFiltre.column( 2 ).footer() ).html(ttc.toFixed(3));
-                    $( apiFiltre.column( 3 ).footer() ).html(nbr_ecoute.toFixed(3));
+                    $( apiFiltre.column( 3 ).footer() ).html(nbr_ecoute.toFixed());
                     $( apiFiltre.column( 4 ).footer() ).html(part_smart.toFixed(3));
                     $( apiFiltre.column( 5 ).footer() ).html(tax_telecom.toFixed(3));
                     $( apiFiltre.column( 6 ).footer() ).html(part_ttc.toFixed(3));
@@ -341,7 +341,7 @@ export class OrangeStatDateComponent implements OnInit {
                   // Total filtré:
                   $( apiFiltre.column( 0 ).footer() ).html('Total Filtré');
                   $( apiFiltre.column( 2 ).footer() ).html(ttc.toFixed(3));
-                  $( apiFiltre.column( 3 ).footer() ).html(nbr_ecoute.toFixed(3));
+                  $( apiFiltre.column( 3 ).footer() ).html(nbr_ecoute.toFixed());
                   $( apiFiltre.column( 4 ).footer() ).html(part_smart.toFixed(3));
                   $( apiFiltre.column( 5 ).footer() ).html(tax_telecom.toFixed(3));
                   $( apiFiltre.column( 6 ).footer() ).html(part_ttc.toFixed(3));
@@ -464,7 +464,7 @@ export class OrangeStatDateComponent implements OnInit {
     const uploadExcelData = new FormData();
 
     uploadExcelData.append('file',this.selectedFile);
-    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+    this.excelExportService.uploadExcelOrangeToDetail(uploadExcelData).subscribe(response=>{
         this.statut=response.status;
         this.message = response.body.valueOf()['message'];
     },error => this.message=error.message);}

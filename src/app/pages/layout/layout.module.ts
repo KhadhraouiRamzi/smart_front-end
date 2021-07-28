@@ -93,6 +93,12 @@ import { FormDetailComponent } from './detail-crud/form-detail/form-detail.compo
 import { DetailDetailComponent } from './detail-crud/detail-detail/detail-detail.component';
 import { ListHistoriqueComponent } from './historique-mgmnt/list-historique/list-historique.component';
 import { RevenuHistoriqueComponent } from './historique-mgmnt/revenu-historique/revenu-historique.component';
+import { BelieveStatPlateformeComponent } from './details-mgmnt/beleive-details/believe-stat-plateforme/believe-stat-plateforme.component';
+import { BelieveStatDateComponent } from './details-mgmnt/beleive-details/believe-stat-date/believe-stat-date.component';
+import { BelieveStatAbonnementComponent } from './details-mgmnt/beleive-details/believe-stat-abonnement/believe-stat-abonnement.component';
+import { BelieveStatPaysComponent } from './details-mgmnt/beleive-details/believe-stat-pays/believe-stat-pays.component';
+import { BelieveStatChansonComponent } from './details-mgmnt/beleive-details/believe-stat-chanson/believe-stat-chanson.component';
+import { BelieveStatComponent } from './details-mgmnt/beleive-details/believe-stat/believe-stat.component';
 
 
 @NgModule({
@@ -199,6 +205,12 @@ import { RevenuHistoriqueComponent } from './historique-mgmnt/revenu-historique/
     DetailDetailComponent,
     ListHistoriqueComponent,
     RevenuHistoriqueComponent,
+    BelieveStatPlateformeComponent,
+    BelieveStatDateComponent,
+    BelieveStatAbonnementComponent,
+    BelieveStatPaysComponent,
+    BelieveStatChansonComponent,
+    BelieveStatComponent,
   ],
   providers: [
     NewsService,

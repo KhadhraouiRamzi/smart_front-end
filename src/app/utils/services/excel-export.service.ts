@@ -25,8 +25,12 @@ export class ExcelExportService {
 
   constructor(private http: HttpClient) { }
 
-  uploadExcelToDetail(uploadExcelData : FormData):Observable<HttpResponse<any>> {
-    return this.http.post(this.baseUrl + "/uploadExcel", uploadExcelData,{ observe: 'response' as 'response' });
+  uploadExcelOrangeToDetail(uploadExcelData : FormData):Observable<HttpResponse<any>> {
+    return this.http.post(this.baseUrl + "/uploadExcelOrange", uploadExcelData,{ observe: 'response' as 'response' });
+  }
+
+  uploadExcelBeliveToDetail(uploadExcelData : FormData):Observable<HttpResponse<any>> {
+    return this.http.post(this.baseUrl + "/uploadExcelBelieve", uploadExcelData,{ observe: 'response' as 'response' });
   }
 
 }

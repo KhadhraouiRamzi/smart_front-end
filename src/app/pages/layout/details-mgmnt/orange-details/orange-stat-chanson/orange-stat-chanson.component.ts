@@ -342,7 +342,7 @@ export class OrangeStatChansonComponent implements OnInit {
                   // Total filtré:
                   $( apiFiltre.column( 0 ).footer() ).html('Total Filtré');
                   $( apiFiltre.column( 1 ).footer() ).html(ttc.toFixed(3));
-                  $( apiFiltre.column( 2 ).footer() ).html(nbr_ecoute.toFixed(3));
+                  $( apiFiltre.column( 2 ).footer() ).html(nbr_ecoute.toFixed());
                   $( apiFiltre.column( 3 ).footer() ).html(part_smart.toFixed(3));
                   $( apiFiltre.column( 4 ).footer() ).html(tax_telecom.toFixed(3));
                   $( apiFiltre.column( 5 ).footer() ).html(part_ttc.toFixed(3));
@@ -407,29 +407,6 @@ export class OrangeStatChansonComponent implements OnInit {
     });
   }
 
-  generatePdf() {
-    var pdf = new jsPDF();
-
-    pdf.setFontSize(2);
-    pdf.text('Smart Technoloy PDF', 11, 8);
-    pdf.setFontSize(12);
-    pdf.setTextColor(99);
-
-    (pdf as any).autoTable({
-      head: this.header,
-      body: this.details,
-      theme: 'plain',
-      didDrawCell: data => {
-        console.log(data.column.index)
-      }
-    })
-
-    // Open PDF document in browser's new tab
-    pdf.output('dataurlnewwindow')
-
-    // Download PDF doc
-    pdf.save('Artiste.pdf');
-  }
 
   Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
@@ -464,7 +441,7 @@ export class OrangeStatChansonComponent implements OnInit {
     const uploadExcelData = new FormData();
 
     uploadExcelData.append('file',this.selectedFile);
-    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+    this.excelExportService.uploadExcelOrangeToDetail(uploadExcelData).subscribe(response=>{
         this.statut=response.status;
         this.message = response.body.valueOf()['message'];
     },error => this.message=error.message);}

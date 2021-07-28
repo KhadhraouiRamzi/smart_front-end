@@ -5,20 +5,21 @@ import jsPDF from 'jspdf';
 import { NbComponentShape, NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
-import { utils, WorkBook, WorkSheet, writeFile } from "xlsx";
-import { ExcelExportService } from '../../../../utils/services/excel-export.service';
-import { TokenStorageService } from '../../../../auth/services/token-storage.service';
-import { DatatableLanguage } from '../../../../../assets/data/DatatableLanguage';
-import { details } from '../../../../models/details';
-import { BelieveService } from '../../../../utils/services/believe.service';
+import { utils, WorkBook, WorkSheet, writeFile } from "xlsx"; 
+import { details } from '../../../../../models/details';
+import { BelieveService } from '../../../../../utils/services/believe.service';
+import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
+import { TokenStorageService } from '../../../../../auth/services/token-storage.service';
+import { DatatableLanguage } from '../../../../../../assets/data/DatatableLanguage';
 declare var jQuery: any;
 
 @Component({
-  selector: 'ngx-beleive-details',
-  templateUrl: './beleive-details.component.html',
-  styleUrls: ['./beleive-details.component.scss']
+  selector: 'ngx-believe-stat-chanson',
+  templateUrl: './believe-stat-chanson.component.html',
+  styleUrls: ['./believe-stat-chanson.component.scss']
 })
-export class BeleiveDetailsComponent implements OnInit {
+
+export class BelieveStatChansonComponent implements OnInit {
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -46,7 +47,6 @@ export class BeleiveDetailsComponent implements OnInit {
     private believeSerivce: BelieveService, private r: Router, public token: TokenStorageService) {
   }
 
-
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -55,12 +55,12 @@ export class BeleiveDetailsComponent implements OnInit {
       language: DatatableLanguage.datatableFrench,
     };
 
-    this.believeSerivce.getStatArtisteBelieve().subscribe(
+    this.believeSerivce.getStatChansonBelieve().subscribe(
       res => {
         let role = this.token.getUser()['roles'];
         let idUser = this.token.getUser().id;
         if (role == "ROLE_ARTISTE") {
-          this.believeSerivce.getStatArtisteBelieveById(idUser).subscribe(data => {
+          this.believeSerivce.getStatChansonBelieveById(idUser).subscribe(data => {
             this.details = data;
 
             /* ------------script Js pour ajouter les totales filtrées et final des stats---------------*/
@@ -101,26 +101,7 @@ export class BeleiveDetailsComponent implements OnInit {
                           return intVal(a) + intVal(b);
                         }, 0);
 
-                      /*var tax_telecom = apiFiltre
-                        .column(4, { page: 'current' })
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);
-
-                      var part_ttc = apiFiltre
-                        .column(5, { page: 'current' })
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);
-
-                      var htva = apiFiltre
-                        .column(6, { page: 'current' })
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);*/
+                       
 
                       var part_artiste = apiFiltre
                         .column(4, { page: 'current' })
@@ -153,30 +134,7 @@ export class BeleiveDetailsComponent implements OnInit {
                           return intVal(a) + intVal(b);
                         }, 0);
 
-                      // Total over all pages
-                      /*var totalPartTelecom = apiFiltre
-                        .column(4)
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);
-
-                      // Total over all pages
-                      var totalPartTTC = apiFiltre
-                        .column(5)
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);
-
-                      // Total over all pages
-                      var totalPartHTVA = apiFiltre
-                        .column(6)
-                        .data()
-                        .reduce(function (a, b) {
-                          return intVal(a) + intVal(b);
-                        }, 0);*/
-
+                     
                       // Total over all pages
                       var totalPartArtiste = apiFiltre
                         .column(4)
@@ -191,7 +149,7 @@ export class BeleiveDetailsComponent implements OnInit {
                       $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
                       $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed());
                       $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
-                      /*$(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
+                     /* $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                       $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
                       $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
                       $(apiFiltre.column(4).footer()).html(part_artiste.toFixed(3));
@@ -260,7 +218,7 @@ export class BeleiveDetailsComponent implements OnInit {
                         return intVal(a) + intVal(b);
                       }, 0);
 
-                    /*var tax_telecom = apiFiltre
+                   /* var tax_telecom = apiFiltre
                       .column(4, { page: 'current' })
                       .data()
                       .reduce(function (a, b) {
@@ -349,12 +307,12 @@ export class BeleiveDetailsComponent implements OnInit {
                     $(apiFiltre.column(0).footer()).html('Total Filtré');
                     $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
                     $(apiFiltre.column(2).footer()).html(ttc.toFixed(3));
-                    $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed(  ));
+                    $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed());
                     $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
-                   /* $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
+                    /*$(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                     $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
                     $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
-                    $(apiFiltre.column(7).footer()).html(part_artiste.toFixed(3));
+                    $(apiFiltre.column(4).footer()).html(part_artiste.toFixed(3));
 
                     // Total Final:
                     $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
@@ -365,7 +323,7 @@ export class BeleiveDetailsComponent implements OnInit {
                     /*$('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                     $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
                     $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));*/
-                    $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
+                    $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                   },
                   "order": [[1, "desc"]],
@@ -380,11 +338,7 @@ export class BeleiveDetailsComponent implements OnInit {
 
         }
       });
-
-
-
-
-  }
+ }
 
   exportexcel(): void {
     /* table id is passed over here */
@@ -415,33 +369,9 @@ export class BeleiveDetailsComponent implements OnInit {
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
 
-      PDF.save('Liste top artistes.pdf');
+      PDF.save('Liste abonnement.pdf');
     });
-  }
-
-  generatePdf() {
-    var pdf = new jsPDF();
-
-    pdf.setFontSize(2);
-    pdf.text('Smart Technoloy PDF', 11, 8);
-    pdf.setFontSize(12);
-    pdf.setTextColor(99);
-
-    (pdf as any).autoTable({
-      head: this.header,
-      body: this.details,
-      theme: 'plain',
-      didDrawCell: data => {
-        console.log(data.column.index)
-      }
-    })
-
-    // Open PDF document in browser's new tab
-    pdf.output('dataurlnewwindow')
-
-    // Download PDF doc
-    pdf.save('Artiste.pdf');
-  }
+  } 
 
   Artiste() {
     this.r.navigate(['/pages/layout/believe/']);
@@ -483,3 +413,4 @@ export class BeleiveDetailsComponent implements OnInit {
     }, error => this.messageError = error.valueOf()['error']['message'])
   };
 }
+

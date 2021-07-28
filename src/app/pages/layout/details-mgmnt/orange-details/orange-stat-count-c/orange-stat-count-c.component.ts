@@ -16,7 +16,7 @@ import { ExcelExportService } from '../../../../../utils/services/excel-export.s
   styleUrls: ['./orange-stat-count-c.component.scss']
 })
 export class OrangeStatCountCComponent implements OnInit {
-  
+
   @ViewChild(DataTableDirective, { static: false })
   dtElement: DataTableDirective;
 
@@ -37,7 +37,7 @@ export class OrangeStatCountCComponent implements OnInit {
   statuses7: NbComponentStatus[] = ['control'];
 
   constructor(private excelExportService: ExcelExportService, private detaisSerivce: DetailsService, private r: Router) { }
- 
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -72,19 +72,19 @@ export class OrangeStatCountCComponent implements OnInit {
 
   public openPDF():void {
     let DATA = document.getElementById('excel-table');
-      
+
     html2canvas(DATA).then(canvas => {
-        
+
         let fileWidth = 208;
         let fileHeight = canvas.height * fileWidth / canvas.width;
-        
+
         const FILEURI = canvas.toDataURL('image/png')
         let PDF = new jsPDF('p', 'mm', 'a4');
         let position = 0;
         PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight)
-        
+
         PDF.save('Liste top chansons.pdf');
-    });     
+    });
   }
 
   generatePdf() {
@@ -107,34 +107,34 @@ export class OrangeStatCountCComponent implements OnInit {
     // Open PDF document in browser's new tab
     pdf.output('dataurlnewwindow')
 
-    // Download PDF doc  
+    // Download PDF doc
     pdf.save('Artiste.pdf');
   }
-  
-  Artiste(){    
+
+  Artiste(){
     this.r.navigate(['/pages/layout/orange-stat/']);
   }
-  Chanson(){    
+  Chanson(){
     this.r.navigate(['/pages/layout/orange-stat-chanson/']);
   }
-  Categorie(){    
+  Categorie(){
     this.r.navigate(['/pages/layout/orange-stat-category/']);
   }
-  Mois(){    
+  Mois(){
     this.r.navigate(['/pages/layout/orange-stat-date/']);
   }
-  CountA(){    
+  CountA(){
     this.r.navigate(['/pages/layout/orange-stat-count-artsite/']);
   }
-  CountD(){    
+  CountD(){
     this.r.navigate(['/pages/layout/orange-stat-count-chanson/']);
   }
-  
+
   Plateforme(){
     this.r.navigate(['/pages/layout/orange-stat-platefrome/']);
   }
-  
-  
+
+
   selectFile(event) {
     this.selectedFile = event.target.files[0];
   }
@@ -145,7 +145,7 @@ export class OrangeStatCountCComponent implements OnInit {
     const uploadExcelData = new FormData();
 
     uploadExcelData.append('file',this.selectedFile);
-    this.excelExportService.uploadExcelToDetail(uploadExcelData).subscribe(response=>{
+    this.excelExportService.uploadExcelOrangeToDetail(uploadExcelData).subscribe(response=>{
         this.statut=response.status;
         this.message = response.body.valueOf()['message'];
     },error => this.message=error.message);}
