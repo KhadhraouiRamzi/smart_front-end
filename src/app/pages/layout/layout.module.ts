@@ -99,6 +99,7 @@ import { BelieveStatAbonnementComponent } from './details-mgmnt/beleive-details/
 import { BelieveStatPaysComponent } from './details-mgmnt/beleive-details/believe-stat-pays/believe-stat-pays.component';
 import { BelieveStatChansonComponent } from './details-mgmnt/beleive-details/believe-stat-chanson/believe-stat-chanson.component';
 import { BelieveStatComponent } from './details-mgmnt/beleive-details/believe-stat/believe-stat.component';
+import { DeezerStatComponent } from './details-mgmnt/deezer-details/deezer-stat/deezer-stat.component';
 
 
 @NgModule({
@@ -211,6 +212,7 @@ import { BelieveStatComponent } from './details-mgmnt/beleive-details/believe-st
     BelieveStatPaysComponent,
     BelieveStatChansonComponent,
     BelieveStatComponent,
+    DeezerStatComponent,
   ],
   providers: [
     NewsService,
