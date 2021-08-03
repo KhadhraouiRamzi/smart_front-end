@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import { NbComponentShape, NbComponentStatus } from '@nebular/theme';
 import html2canvas from 'html2canvas';
 import { DataTableDirective } from 'angular-datatables';
-import { utils, WorkBook, WorkSheet, writeFile } from "xlsx"; 
+import { utils, WorkBook, WorkSheet, writeFile } from "xlsx";
 import { details } from '../../../../../models/details';
 import { BelieveService } from '../../../../../utils/services/believe.service';
 import { ExcelExportService } from '../../../../../utils/services/excel-export.service';
@@ -68,7 +68,7 @@ export class BelieveStatChansonComponent implements OnInit {
             setTimeout(function () {
               (function ($) {
                 $(document).ready(function () {
-                  $('#table-orange-stat').DataTable({
+                  $('#table-believe-stat-chanson').DataTable({
                     "footerCallback": function (row, data, start, end, display) {
                       var apiFiltre = this.api(), data;
                       // converting to interger to find total
@@ -101,7 +101,7 @@ export class BelieveStatChansonComponent implements OnInit {
                           return intVal(a) + intVal(b);
                         }, 0);
 
-                       
+
 
                       var part_artiste = apiFiltre
                         .column(4, { page: 'current' })
@@ -134,7 +134,7 @@ export class BelieveStatChansonComponent implements OnInit {
                           return intVal(a) + intVal(b);
                         }, 0);
 
-                     
+
                       // Total over all pages
                       var totalPartArtiste = apiFiltre
                         .column(4)
@@ -185,7 +185,7 @@ export class BelieveStatChansonComponent implements OnInit {
           setTimeout(function () {
             (function ($) {
               $(document).ready(function () {
-                $('#table-orange-stat').DataTable({
+                $('#table-believe-stat-chanson').DataTable({
                   "footerCallback": function (row, data, start, end, display) {
                     var apiFiltre = this.api(), data;
                     // converting to interger to find total
@@ -306,7 +306,6 @@ export class BelieveStatChansonComponent implements OnInit {
                     // Total filtré:
                     $(apiFiltre.column(0).footer()).html('Total Filtré');
                     $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
-                    $(apiFiltre.column(2).footer()).html(ttc.toFixed(3));
                     $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed());
                     $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
                     /*$(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
@@ -316,7 +315,6 @@ export class BelieveStatChansonComponent implements OnInit {
 
                     // Total Final:
                     $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
-                    $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                     $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                     $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                     $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
@@ -342,7 +340,7 @@ export class BelieveStatChansonComponent implements OnInit {
 
   exportexcel(): void {
     /* table id is passed over here */
-    let element = document.getElementById('table-orange-stat');
+    let element = document.getElementById('table-believe-stat-chanson');
     const ws: WorkSheet = utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
@@ -357,7 +355,7 @@ export class BelieveStatChansonComponent implements OnInit {
   header = [['Nom Artiste', 'Net Revenu', 'Nombre d écoute']]
 
   public openPDF(): void {
-    let DATA = document.getElementById('table-orange-stat');
+    let DATA = document.getElementById('table-believe-stat-chanson');
 
     html2canvas(DATA).then(canvas => {
 
@@ -371,7 +369,7 @@ export class BelieveStatChansonComponent implements OnInit {
 
       PDF.save('Liste abonnement.pdf');
     });
-  } 
+  }
 
   Artiste() {
     this.r.navigate(['/pages/layout/believe/']);

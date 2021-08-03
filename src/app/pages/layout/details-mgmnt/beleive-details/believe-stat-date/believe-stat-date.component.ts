@@ -61,7 +61,7 @@ export class BelieveStatDateComponent implements OnInit {
 
             setTimeout(function() { (function ($) {
               $(document).ready(function() {
-                $('#table-orange-stat-date').DataTable({
+                $('#table-believe-stat-date').DataTable({
                   "footerCallback": function (row, data, start, end, display ) {
                     var apiFiltre = this.api(), data;
                     // converting to interger to find total
@@ -218,7 +218,7 @@ export class BelieveStatDateComponent implements OnInit {
 
           setTimeout(function() { (function ($) {
             $(document).ready(function() {
-              $('#table-orange-stat-date').DataTable({
+              $('#table-believe-stat-date').DataTable({
                 "footerCallback": function (row, data, start, end, display ) {
                   var apiFiltre = this.api(), data;
                   // converting to interger to find total
@@ -374,7 +374,7 @@ export class BelieveStatDateComponent implements OnInit {
 
   exportexcel(): void {
     /* table id is passed over here */
-    let element = document.getElementById('table-orange-stat-date');
+    let element = document.getElementById('table-believe-stat-date');
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
@@ -389,7 +389,7 @@ export class BelieveStatDateComponent implements OnInit {
   header = [['Date debut', 'Date fin','Net revenu', 'Nombre d écoute']]
 
   public openPDF():void {
-    let DATA = document.getElementById('table-orange-stat-date');
+    let DATA = document.getElementById('table-believe-stat-date');
 
     html2canvas(DATA).then(canvas => {
 

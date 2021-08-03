@@ -68,7 +68,7 @@ export class BeleiveDetailsComponent implements OnInit {
             setTimeout(function () {
               (function ($) {
                 $(document).ready(function () {
-                  $('#table-orange-stat').DataTable({
+                  $('#table-believe-stat-artiste').DataTable({
                     "footerCallback": function (row, data, start, end, display) {
                       var apiFiltre = this.api(), data;
                       // converting to interger to find total
@@ -227,7 +227,7 @@ export class BeleiveDetailsComponent implements OnInit {
           setTimeout(function () {
             (function ($) {
               $(document).ready(function () {
-                $('#table-orange-stat').DataTable({
+                $('#table-believe-stat-artiste').DataTable({
                   "footerCallback": function (row, data, start, end, display) {
                     var apiFiltre = this.api(), data;
                     // converting to interger to find total
@@ -348,24 +348,22 @@ export class BeleiveDetailsComponent implements OnInit {
                     // Total filtré:
                     $(apiFiltre.column(0).footer()).html('Total Filtré');
                     $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
-                    $(apiFiltre.column(2).footer()).html(ttc.toFixed(3));
                     $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed(  ));
                     $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
                    /* $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                     $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
                     $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
-                    $(apiFiltre.column(7).footer()).html(part_artiste.toFixed(3));
+                    $(apiFiltre.column(4).footer()).html(part_artiste.toFixed(3));
 
                     // Total Final:
                     $('tr:eq(1) th:eq(0)', apiFiltre.table().footer()).html('Total Final');
-                    $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                     $('tr:eq(1) th:eq(1)', apiFiltre.table().footer()).html(total_ttc.toFixed(3));
                     $('tr:eq(1) th:eq(2)', apiFiltre.table().footer()).html(totalNbrEcoute.toFixed());
                     $('tr:eq(1) th:eq(3)', apiFiltre.table().footer()).html(totalPartSmart.toFixed(3));
                     /*$('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartTelecom.toFixed(3));
                     $('tr:eq(1) th:eq(5)', apiFiltre.table().footer()).html(totalPartTTC.toFixed(3));
                     $('tr:eq(1) th:eq(6)', apiFiltre.table().footer()).html(totalPartHTVA.toFixed(3));*/
-                    $('tr:eq(1) th:eq(7)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
+                    $('tr:eq(1) th:eq(4)', apiFiltre.table().footer()).html(totalPartArtiste.toFixed(3));
 
                   },
                   "order": [[1, "desc"]],
@@ -388,7 +386,7 @@ export class BeleiveDetailsComponent implements OnInit {
 
   exportexcel(): void {
     /* table id is passed over here */
-    let element = document.getElementById('table-orange-stat');
+    let element = document.getElementById('table-believe-stat-artiste');
     const ws: WorkSheet = utils.table_to_sheet(element);
 
     /* generate workbook and add the worksheet */
@@ -403,7 +401,7 @@ export class BeleiveDetailsComponent implements OnInit {
   header = [['Nom Artiste', 'Net Revenu', 'Nombre d écoute']]
 
   public openPDF(): void {
-    let DATA = document.getElementById('table-orange-stat');
+    let DATA = document.getElementById('table-believe-stat-artiste');
 
     html2canvas(DATA).then(canvas => {
 
