@@ -59,6 +59,7 @@ export class BeleiveDetailsComponent implements OnInit {
       res => {
         let role = this.token.getUser()['roles'];
         let idUser = this.token.getUser().id;
+
         if (role == "ROLE_ARTISTE") {
           this.believeSerivce.getStatArtisteBelieveById(idUser).subscribe(data => {
             this.details = data;
@@ -220,6 +221,8 @@ export class BeleiveDetailsComponent implements OnInit {
         }
         else {
           console.log(res);
+          console.log(res[4]);
+          console.log(res[7]);
           this.details = res;
 
           /* ------------script Js pour ajouter les totales filtrées et final des stats---------------*/
@@ -350,7 +353,7 @@ export class BeleiveDetailsComponent implements OnInit {
                     $(apiFiltre.column(1).footer()).html(ttc.toFixed(3));
                     $(apiFiltre.column(2).footer()).html(nbr_ecoute.toFixed(  ));
                     $(apiFiltre.column(3).footer()).html(part_smart.toFixed(3));
-                   /* $(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
+                    /*$(apiFiltre.column(4).footer()).html(tax_telecom.toFixed(3));
                     $(apiFiltre.column(5).footer()).html(part_ttc.toFixed(3));
                     $(apiFiltre.column(6).footer()).html(htva.toFixed(3));*/
                     $(apiFiltre.column(4).footer()).html(part_artiste.toFixed(3));
@@ -378,11 +381,7 @@ export class BeleiveDetailsComponent implements OnInit {
 
         }
       });
-
-
-
-
-  }
+ }
 
   exportexcel(): void {
     /* table id is passed over here */
@@ -459,8 +458,6 @@ export class BeleiveDetailsComponent implements OnInit {
   Plateforme() {
     this.r.navigate(['/pages/layout/believe-stat-platefrome/']);
   }
-
-
 
   selectFile(event) {
     this.selectedFile = event.target.files[0];
