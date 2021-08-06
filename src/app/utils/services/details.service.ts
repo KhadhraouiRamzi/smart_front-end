@@ -16,7 +16,7 @@ const httpOptions = {
 export class DetailsService {
 
   baseUrl: string = "http://localhost:8081";
- 
+
   constructor(private backend: HttpClient,private token: TokenStorageService) { }
 
   generatePdf(id: Number, datedebut:Date,datefin:Date,retenue:Number) :  Observable<any> {

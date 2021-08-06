@@ -41,7 +41,7 @@ export class BelieveService {
   getTopAbonnementBelieve(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topAbonnementBelieve");
   }
- 
+
   getTopDateBelieve(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topDateBelieve");
   }
@@ -90,7 +90,7 @@ export class BelieveService {
   getStatDateBelieveById(id: any){
     return this.backend.get<any>(this.baseUrl + "/statDateBelieve/by-userId/"+id);
   }
-  
+
   getStatAbonnementBelieveById(id: any){
     return this.backend.get<any>(this.baseUrl + "/statAbonnementBelieve/by-userId/"+id);
   }

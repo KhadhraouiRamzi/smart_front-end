@@ -15,7 +15,7 @@ import {AutoLogoutServiceService} from "./utils/services/auto-logout-service.ser
 })
 export class AppComponent implements OnInit {
 
-  constructor(private analytics: AnalyticsService, private seoService: SeoService, private httpClient: HttpClient,private  autoLogoutService: AutoLogoutServiceService) {}
+  constructor(private analytics: AnalyticsService, private seoService: SeoService, private httpClient: HttpClient) {}
 
   ngOnInit(): void {
     this.analytics.trackPageViews();

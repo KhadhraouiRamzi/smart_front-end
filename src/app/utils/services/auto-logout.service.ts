@@ -1,7 +1,8 @@
+/*
 import { Injectable } from '@angular/core';
 import {Router} from "@angular/router";
 
-const MINUTES_UNITL_AUTO_LOGOUT = 60// in mins
+const MINUTES_UNITL_AUTO_LOGOUT = 3600000// in mins
 const CHECK_INTERVAL = 6000 // in ms
 const STORE_KEY =  'lastAction';
 
@@ -35,7 +36,7 @@ export class AutoLogoutService {
     window.addEventListener("storage",() => this.storageEvt());
   }
 
-  reset() {  
+  reset() {
     //console.log('date got by using events',Date.now());
     this.setLastAction(Date.now());
     //console.log('store key',localStorage.getItem(STORE_KEY));
@@ -68,3 +69,4 @@ export class AutoLogoutService {
   }
 
 }
+*/

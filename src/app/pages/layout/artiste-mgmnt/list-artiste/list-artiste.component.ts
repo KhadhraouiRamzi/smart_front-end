@@ -2,7 +2,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SmartTableData } from '../../../../@core/data/smart-table';
 import { users } from '../../../../models/users';
-import { utils, WorkBook, WorkSheet, writeFile } from "xlsx"; 
+import { utils, WorkBook, WorkSheet, writeFile } from "xlsx";
 import { DataTableDirective } from 'angular-datatables';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NbComponentStatus } from '@nebular/theme';
@@ -143,7 +143,7 @@ export class ListArtisteComponent implements OnInit {
 
       PDF.save('Liste des artistes.pdf');
     });
-  } 
+  }
   revenu(d: users) {
     this.currentdetails = d;
     this.displayBasic2 = true;
