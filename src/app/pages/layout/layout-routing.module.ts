@@ -64,31 +64,32 @@ import { BelieveStatDateComponent } from './details-mgmnt/beleive-details/believ
 import { BelieveStatChansonComponent } from './details-mgmnt/beleive-details/believe-stat-chanson/believe-stat-chanson.component';
 import { BelieveStatPaysComponent } from './details-mgmnt/beleive-details/believe-stat-pays/believe-stat-pays.component';
 import { BelieveStatAbonnementComponent } from './details-mgmnt/beleive-details/believe-stat-abonnement/believe-stat-abonnement.component';
+import {DeezerStatComponent} from "./details-mgmnt/deezer-details/deezer-stat/deezer-stat.component";
 
 const routes: Routes = [{
   path: '',
   component: LayoutComponent,
   children: [
     {
-      path: 'Historique',  
+      path: 'Historique',
       component: ListHistoriqueComponent,
     },
     {
-      path: 'ngx-form-detail',  
+      path: 'ngx-form-detail',
       component: FormDetailComponent,
     },
     {
-      path: 'ngx-edit-detail/:id',  
+      path: 'ngx-edit-detail/:id',
       component: EditDetailComponent,
     },
     {
-      path: 'ngx-list-detail',  
+      path: 'ngx-list-detail',
       component: ListDetailComponent,
     },
-    {  
-      path: 'orange-stat',  
+    {
+      path: 'orange-stat',
       component: OrangeStatComponent,
-    },  
+    },
     {
       path: 'orange-stat-category',
       component: OrangeStatCategoryComponent,
@@ -115,17 +116,17 @@ const routes: Routes = [{
     },
     {
       path: 'orange',
-      component: OrangeDetailsComponent,  
+      component: OrangeDetailsComponent,
     },
     {
       path: 'deezer',
-      component: DeezerDetailsComponent,
+      component: DeezerStatComponent,
     },
     {
       path: 'believe',
-      component: BeleiveDetailsComponent,  
+      component: BeleiveDetailsComponent,
     },
-   
+
     {
       path: 'believe-stat-platefrome',
       component: BelieveStatPlateformeComponent,
@@ -249,7 +250,7 @@ const routes: Routes = [{
       path: 'test-form',
       component: TestFormComponent,
     },
-    {      
+    {
       path: 'edit-album/:id',
       component: EditAlbumComponent,
     },

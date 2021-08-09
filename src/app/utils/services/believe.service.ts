@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class BelieveService {
 
-  baseUrl: string = "http://localhost:8081";  
+  baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient,private token: TokenStorageService) { }
 

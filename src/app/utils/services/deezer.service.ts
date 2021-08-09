@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class DeezerService {
 
-  baseUrl: string = "http://localhost:8081";  
+  baseUrl: string = "http://localhost:8081";
 
   constructor(private backend: HttpClient,private token: TokenStorageService) { }
 
@@ -41,7 +41,7 @@ export class DeezerService {
   getTopAbonnementDeezer(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topAbonnementDeezer");
   }
- 
+
   getTopDateDeezer(): Observable<any> {
     return this.backend.get<any>(this.baseUrl + "/topDateDeezer");
   }
@@ -90,7 +90,7 @@ export class DeezerService {
   getStatDateDeezerById(id: any){
     return this.backend.get<any>(this.baseUrl + "/statDateDeezer/by-userId/"+id);
   }
-  
+
   getStatAbonnementDeezerById(id: any){
     return this.backend.get<any>(this.baseUrl + "/statAbonnementDeezer/by-userId/"+id);
   }

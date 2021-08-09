@@ -33,4 +33,8 @@ export class ExcelExportService {
     return this.http.post(this.baseUrl + "/uploadExcelBelieve", uploadExcelData,{ observe: 'response' as 'response' });
   }
 
+  uploadExcelDeezerToDetail(uploadExcelData : FormData):Observable<HttpResponse<any>> {
+    return this.http.post(this.baseUrl + "/uploadExcelDeezer", uploadExcelData,{ observe: 'response' as 'response' });
+  }
+
 }

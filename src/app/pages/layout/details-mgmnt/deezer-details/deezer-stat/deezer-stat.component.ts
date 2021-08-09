@@ -109,14 +109,14 @@ export class DeezerStatComponent implements OnInit {
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
                         }, 0);
- 
+
                       var part_ttc = apiFiltre
                         .column(5, { page: 'current' })
                         .data()
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
                         }, 0);
- 
+
                       var htva = apiFiltre
                         .column(6, { page: 'current' })
                         .data()
@@ -162,7 +162,7 @@ export class DeezerStatComponent implements OnInit {
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
                         }, 0);
- 
+
                       // Total over all pages
                       var totalPartTTC = apiFiltre
                         .column(5)
@@ -170,7 +170,7 @@ export class DeezerStatComponent implements OnInit {
                         .reduce(function (a, b) {
                           return intVal(a) + intVal(b);
                         }, 0);
- 
+
                       // Total over all pages
                       var totalPartHTVA = apiFiltre
                         .column(6)
@@ -270,14 +270,14 @@ export class DeezerStatComponent implements OnInit {
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
                       }, 0);
- 
+
                     var part_ttc = apiFiltre
                       .column(5, { page: 'current' })
                       .data()
                       .reduce(function (a, b) {
                         return intVal(a) + intVal(b);
                       }, 0);
- 
+
                     var htva = apiFiltre
                       .column(6, { page: 'current' })
                       .data()
@@ -323,7 +323,7 @@ export class DeezerStatComponent implements OnInit {
                        .reduce(function (a, b) {
                          return intVal(a) + intVal(b);
                        }, 0);
- 
+
                      // Total over all pages
                      var totalPartTTC = apiFiltre
                        .column(5)
@@ -331,7 +331,7 @@ export class DeezerStatComponent implements OnInit {
                        .reduce(function (a, b) {
                          return intVal(a) + intVal(b);
                        }, 0);
- 
+
                      // Total over all pages
                      var totalPartHTVA = apiFiltre
                        .column(6)
@@ -475,7 +475,7 @@ export class DeezerStatComponent implements OnInit {
     this.submitted = true;
 
     uploadExcelData.append('file', this.selectedFile);
-    this.excelExportService.uploadExcelBeliveToDetail(uploadExcelData).subscribe((response) => {
+    this.excelExportService.uploadExcelDeezerToDetail(uploadExcelData).subscribe((response) => {
       this.submitted = false;
       this.message = response.body.valueOf()['message'];
     }, error => this.messageError = error.valueOf()['error']['message'])
