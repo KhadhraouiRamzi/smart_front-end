@@ -1,0 +1,142 @@
+<nb-card>
+  <nb-card-header>
+    Tendances quotidiennes Orange
+  </nb-card-header>
+
+  <nb-card-body>
+    <div style="margin-left: 20px;margin-right: 20px;">
+      <nb-card-header>
+        <nb-accordion *ngIf="token.getUser().roles=='ROLE_ADMIN'">
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Importer fichier Orange
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <div *ngIf="message && message.length>0 && !submitted" class="alert alert-success">
+                <div><strong>{{this.message}} </strong></div>
+              </div>
+
+              <div *ngIf="messageError && messageError.length>0 && submitted" class="alert alert-danger  ">
+                <div><strong>{{this.messageError}} </strong></div>
+              </div>
+
+              <div class="col-md-12 col-lg-12 col-xxxl-11" center>
+                <nb-card>
+                  <nb-card-body>
+
+                    <div>
+                      <div style="float: left;flex-flow: row wrap">
+                               <input type="file" (change)="selectFile($event)"> NB: Le fichier
+                        il doit etre de type "Classeur Excel" (.xlsx) !
+                      </div>
+                        
+                      <div style="float: right;flex-flow: row wrap">
+                              
+                        <button class="btn btn-primary btn-lg active" (click)="uploadd()" value="upload">Upload
+                        </button>
+                      </div>
+                    </div>
+
+                  </nb-card-body>
+                </nb-card>
+              </div>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+        </nb-accordion>
+        <br>
+        <div width="1100"> Listes d'artistes</div>
+
+      </nb-card-header>
+      <nb-card>
+        <nb-card-body>
+          <td>
+            <table>
+                <tr>
+                    <td> <a (click)="Mois()" *ngFor="let status of statuses2" nbButton [status]="status"
+                      outline>
+                            Date d'écoute</a></td>
+                    <td *ngIf="token.getUser().roles=='ROLE_ADMIN'"><a (click)="Artiste()"
+                            *ngFor="let status of statuses6" nbButton [status]="status" hero>
+                            Artiste </a></td>
+                    <td> <a class="card-header" (click)="Chanson()" *ngFor="let status of statuses" nbButton
+                            [status]="status" outline>
+                            Chanson</a></td>
+                    <td> <a (click)="Plateforme()" *ngFor="let status of statuses5" nbButton
+                            [status]="status" outline>
+                            Plateforme</a></td>
+                    <td> <a (click)="Categorie()" *ngFor="let status of statuses3" nbButton
+                            [status]="status" outline>
+                            Categorie</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+          <br>
+          <div class="card-header">
+
+            <a style="cursor: pointer" (click)="exportexcel()" class="img">
+              <img [src]="'assets/images/Excel-Transparent.png'" />
+            </a>
+
+            <a style="cursor: pointer" (click)="openPDF()" class="img">
+              <img [src]="'assets/images/pdf_icone.png'" />
+            </a>
+            <br>
+            <br>
+            <table id="table-orange-stat" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+              class="table table-striped table-bordered table-sm row-border hover">
+              <thead>
+                <tr>
+                  <th class="th-center">Nom Artiste</th>
+                  <th class="th-center">Nombre d'écoute</th>
+                  <th class="th-center" *ngIf="token.getUser().roles=='ROLE_ADMIN'">Révenu Globale Opération</th>
+                  <th class="th-center">Révenu Globale Smart</th>
+                  <th class="th-center">Tax Telecom</th>
+                  <th class="th-center">HTVA</th>
+                  <th class="th-center">Part artiste</th>
+                  <th class="th-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of details">
+                   <td>{{ p[0] }}</td>
+                  <td class="th-center">{{ p[2] | number }}</td>
+                  <td class="th-center" *ngIf="token.getUser().roles=='ROLE_ADMIN'">{{ p[1] | number: '.3' }}</td>
+                  <td class="th-center">{{ p[3] | number: '.3'}}</td>
+                  <td class="th-center">{{ p[4] | number: '.3'}}</td>
+                  <td class="th-center">{{ p[6] | number: '.3'}}</td>
+                  <td class="th-center">{{ p[7] | number: '.3'}}</td>
+                  <td>
+                    <a nbPopover="VOIR PLUS !!" nbPopoverTrigger="hint" nbPopoverStatus="primary" (click)="Stat(p)"
+                      *ngFor="let status of statuses2" nbButton [status]="status" outline>
+                      <img [src]="'assets/images/details.png'" /></a>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                  <th class="th-nober"></th>
+                  <th class="th-nober"></th>
+                  <th class="th-nober"></th>
+                  <th class="th-nober"></th>
+                  <th class="th-nober"></th>
+                  <th class="th-nober"></th> 
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+    <p-dialog [modal]="true" header="Fiche artiste" [(visible)]="displayBasic" [style]="{width: '75vw'}" [baseZIndex]="10000">
+      <ngx-orange-modals [Details]="currentartiste"></ngx-orange-modals>
+      <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+        </p-button>
+      </ng-template>
+    </p-dialog>
+
+  </nb-card-body>
+</nb-card>

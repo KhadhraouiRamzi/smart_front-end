@@ -1,0 +1,81 @@
+<nb-card>
+    <nb-card-header>
+        Edit devise
+    </nb-card-header>
+    <nb-card-body>
+  
+        <nb-card>
+            <nb-card-header>
+                <div class="buttons-row">
+                    <div class="form-row">
+  
+                        <div class="col-md-6" *ngIf="u">
+                            <table width=180% >
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label for="firstName">Devise:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.nomd" />
+                                        </div>
+                                    </td>
+                              
+                                    <td>
+  
+                                        <div>
+                                            <label for="lastName">Code:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.code" />
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+  
+                                    <td>
+  
+                                        <div>
+                                            <label for="firstName">Cours:</label>
+                                            <input type="text" class="form-control" [(ngModel)]="u.cours" />
+                                        </div>
+                                    </td>
+                                    <td>
+  
+                                      <div>
+                                          <label for="lastName">Date cours:</label>
+                                          <input type="date" class="form-control" [(ngModel)]="u.datecours" />
+                                      </div>
+                                  </td>
+                                </tr>
+                                 
+                            </table>
+  
+                        </div>
+                    </div>
+                </div>
+            </nb-card-header>
+            <nb-card-body>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses" nbButton [status]="status" outline
+                                    (click)="update(u)">
+                                    Update
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="buttons-row">
+                                <button *ngFor="let status of statuses2" nbButton [status]="status" outline
+                                    (click)="annuler()">
+                                    Annuler
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+  
+            </nb-card-body>
+        </nb-card>
+  
+    </nb-card-body>
+  </nb-card>

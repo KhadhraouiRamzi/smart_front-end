@@ -1,0 +1,222 @@
+<nb-card>
+  <nb-card-header class="h3 location">
+    Tendances quotidiennes
+  </nb-card-header>
+  <nb-card-body>
+    <div style="margin-left: 20px;margin-right: 20px;">
+      <div class="row">
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Chansons
+              </div>
+              <div class="card-header">
+                <table id="excel-table" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Nom Chanson</th>
+                    <th>Révenu Globale Opération</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Révenu Globale Smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopChanson">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-chanson">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Artistes
+              </div>
+              <div class="card-header">
+                <table id="excel-tablee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Nom Artiste</th>
+                    <th>Révenu Globale Opération</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Révenu Globale Smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopArtiste">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Catégories
+              </div>
+              <div class="card-header">
+                <table id="excel-tableeee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Catégorie</th>
+                    <th>Révenu Globale Opération</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Révenu Globale Smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopCategory">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-category">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-body>
+              <div class="title h5" style="margin-left: 20%">
+                Top Platformes
+              </div>
+              <div class="card-header">
+                <table id="excel-tableeeee" class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                  <tr>
+                    <th>Top Platforme</th>
+                    <th>Révenu Globale Opération</th>
+                    <th>Nombre d'écoute</th>
+                    <th>Révenu Globale Smart</th>
+                    <th>Part artiste</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let p of detailsTopPlatform">
+                    <td>{{ p[0] }}</td>
+                    <td>{{ p[1] }}</td>
+                    <td>{{ p[2] }}</td>
+                    <td>{{ p[3] }}</td>
+                    <td>{{ p[7] }}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </nb-card-body>
+            <a href="http://localhost:4200/pages/layout/orange-stat-platefrome">Plus D'info....></a>
+            <br>
+          </nb-card>
+        </div>
+      </div>
+      <nb-card>
+        <nb-card-body>
+          <div class="title h5" style="margin-left: 20%">
+            Top Date
+          </div>
+          <div class="card-header">
+            <table id="excel-tableeeeee" class="table table-striped table-bordered table-sm row-border hover">
+              <thead>
+              <tr>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>Révenu Globale Opération</th>
+                <th>Nombre d'écoute</th>
+                <th>Révenu Globale Smart</th>
+                <th>Part artiste</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let p of detailsTopDate">
+                <td>{{ p[0] }}</td>
+                <td>{{ p[1] }}</td>
+                <td>{{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[4] }}</td>
+                <td>{{ p[8] }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </nb-card-body>
+        <a href="http://localhost:4200/pages/layout/orange-stat-date">Plus D'info....></a>
+        <br>
+      </nb-card>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+<!--
+
+<div class="row">
+  <div class="col-xxxl-3 col-md-6" *ngFor="let statusCard of statusCards">
+    <ngx-status-card [title]="statusCard.title" [type]="statusCard.type">
+      <i [ngClass]="statusCard.iconClass"></i>
+    </ngx-status-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-temperature></ngx-temperature>
+  </div>
+
+  <div class="col-xxxl-9 col-xxl-8 col-lg-7 col-md-6">
+    <ngx-electricity></ngx-electricity>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xxxl-9 col-xl-12">
+    <ngx-rooms></ngx-rooms>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-7 col-md-6">
+    <ngx-contacts></ngx-contacts>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-lg-5 col-md-6">
+    <ngx-solar [chartValue]="solarValue"></ngx-solar>
+
+    <ngx-kitten></ngx-kitten>
+  </div>
+
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-traffic></ngx-traffic>
+    <ngx-weather></ngx-weather>
+  </div>
+
+  <div class="col-xxxl-6 col-xxl-12 col-md-7">
+    <ngx-security-cameras></ngx-security-cameras>
+  </div>
+</div>
+-->

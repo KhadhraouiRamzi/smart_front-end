@@ -1,0 +1,65 @@
+<form [formGroup]="form" #signUpForm="ngForm" class="normal-form">
+    <nb-radio-group formControlName="role">
+        <nb-radio value="1">Patient</nb-radio>
+        <nb-radio value="2">Doctor</nb-radio>
+    </nb-radio-group>
+    <br>
+    <input type="file" #Image accept="image/*" [disabled]="form.value.role==1">
+</form>
+
+
+ <!--<form [formGroup]="form2" #signUpForm="ngForm" class="normal-form">
+ -->
+     <div class="demo-items">
+        <nb-radio-group [(value)]="radioGroupValue" formControlName="role">
+            <nb-radio [value]="true"  (change)="handleClick(this)">
+                Artiste
+            </nb-radio>
+            <nb-radio [value]="false"  (change)="handleClick(this)">
+                Fournisseur
+            </nb-radio>
+
+        </nb-radio-group>
+        <br>
+        <input type="text"  disabled="disabled">
+    
+        <select formControlName="nAlbum" class="form-control"  disabled="disabled">
+            <option [value]="1" >   Artiste 1    </option>
+            <option [value]="2" >   Artiste 2    </option>
+            <option [value]="3" >   Artiste 3    </option>
+        </select>
+    </div>
+ <!--</form>
+ -->
+ 
+<input type="radio" name="radSize" id="generic_test" [value]="false" checked="checked"  (change)="handleClick(this)"/>
+<label for="generic_test">Generic Test</label>
+
+<input type="radio" name="radSize" id="project_test" [value]="true"  (change)="handleClick(this)" />
+<label for="project_test">Project Test</label>
+
+<select disabled="disabled" id="ddlProject">
+<option>liste 1</option>
+<option selected="selected">liqte 2</option>
+<option>lite 3</option>
+</select>
+<br>
+
+
+<div>
+    Laptop: 
+    <select id="sel" (change)="updateCheckBox(this)">
+        <option>-- Select --</option>
+        <option value="Del">Del</option>
+        <option value="Asus">Asus</option>
+    </select>
+    <p>
+        <input type="checkbox" name="offer" disabled="disabled" id="chk1" /> Exchange Offer <br />
+        <input type="checkbox" name="offer" disabled="disabled" id="chk2" /> Gift Voucher <br />
+        <input type="checkbox" name="offer" disabled="disabled" id="chk3" /> Free UPS
+    </p>
+</div>
+
+<div id="div" 
+    style="margin-top:10px;display:block;color:green;">
+</div>
